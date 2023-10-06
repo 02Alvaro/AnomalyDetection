@@ -1,0 +1,27 @@
+version: '3'
+services:
+  anomaly_detection:
+    build:
+      context: ./anomalyDetection
+    volumes:
+      - ./anomalyDetection:/app
+    depends_on:
+      - db
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+  db:
+    image: mysql:8.0
+    volumes:
+      - ./database/init_sql:/docker-entrypoint-initdb.d
+      - ./database/init_csv:/var/lib/mysql-files/init_csv
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}

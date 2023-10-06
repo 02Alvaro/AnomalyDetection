@@ -1,0 +1,7 @@
+pip==23.1.2
+pandas==2.0.3
+pyod==1.1.0
+hyperopt==0.2.7
+sqlalchemy==1.4.25
+pymysql==1.0.2
+cryptography==3.4.8
