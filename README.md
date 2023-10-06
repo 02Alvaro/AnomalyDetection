@@ -8,7 +8,7 @@ El proyecto se compone de dos servicios principales definidos en un archivo `doc
 
 - `anomaly_detection`: este es el servicio principal que realiza el análisis de datos y la detección de anomalías. Este servicio se basa en un Dockerfile en la carpeta `anomalyDetection` y monta esta carpeta en `/app` dentro del contenedor.
 
-- `db`: este servicio ejecuta una base de datos MySQL. Los scripts SQL para inicializar la base de datos se encuentran en la carpeta `/database/sql` y los archivos CSV para poblar la base de datos se encuentran en la carpeta `/database/csv` , los cuales deberá de descargar de [Open University Learning Analytics dataset](https://analyse.kmi.open.ac.uk/open_dataset). Esta base de datos está expuesta en el puerto 3306.
+- `db`: este servicio ejecuta una base de datos MySQL. Los scripts SQL para inicializar la base de datos se encuentran en la carpeta `/database/sql` y los archivos CSV para poblar la base de datos se encuentran en la carpeta `/database/csv`. Esta base de datos está expuesta en el puerto 3306.
 
 ## Cómo ejecutar el proyecto
 
@@ -16,7 +16,7 @@ Para ejecutar el proyecto, se necesita tener instalado Docker y Docker Compose. 
 
 Antes de ejecutar el comando, asegúrate de que has establecido las variables de entorno `MYSQL_HOST`,`MYSQL_USER`,`MYSQL_PASSWORD`,`MYSQL_ROOT_PASSWORD` y `MYSQL_DATABASE` con los valores deseados en un fichero .env.
 
-Por temas de tamaño, los archivos de datos no se incluyen en el repositorio. Para descargarlos, ejecuta el script `download_data.sh` en la carpeta `database/csv`. Esto descargará los archivos CSV necesarios para poblar la base de datos.
+Por temas de tamaño, los archivos de datos no se incluyen en el repositorio. Para descargarlos, descargue los ficheros del enlace indicado en dependencias. Esto descargará los archivos CSV necesarios para poblar la base de datos.
 
 ## Dependencias
 
