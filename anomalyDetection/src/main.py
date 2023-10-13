@@ -1,9 +1,11 @@
 from time import time
 from joblib import Parallel, delayed
-from anomalyDetection import randomize, process_dataset
+from anomalyDetection.anomalyDetection import randomize, process_dataset
 import numpy as np
 import os
 import pandas as pd
+from anomalyDetection.gateway.CommandHandler import CommandHandler
+
 
 
 def main():
@@ -60,8 +62,17 @@ def main():
         )
 
 
+
+
+def main2():
+    handler = CommandHandler()
+    json_args = { }
+    metrics = handler.run_algorithm('lstm_vae', 'dataset.csv', json_args)
+    print(metrics)
+
+
 if __name__ == "__main__":
     t0 = time()
-    main()
+    main2()
     t1 = time()
     print(f"Tiempo total: {round(t1 - t0, ndigits=4)} segundos")
