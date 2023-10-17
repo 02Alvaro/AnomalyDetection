@@ -4,7 +4,8 @@ from anomalyDetection.anomalyDetection import randomize, process_dataset
 import numpy as np
 import os
 import pandas as pd
-from anomalyDetection.gateway.CommandHandler import CommandHandler
+from anomalyDetection.gateway.CommandBus import CommandBus
+from anomalyDetection.gateway.Algorithms.AlgorithmCommandFactory import AlgorithmCommandFactory
 
 
 
@@ -63,16 +64,14 @@ def main():
 
 
 
-
-def main2():
-    handler = CommandHandler()
-    json_args = { }
-    metrics = handler.run_algorithm('lstm_vae', 'dataset.csv', json_args)
-    print(metrics)
-
+def main3():
+    commandBus = CommandBus()
+    commandBus.execute(AlgorithmCommandFactory.create_command('lstm_vae', 'dataset.csv'))
+    
 
 if __name__ == "__main__":
     t0 = time()
-    main2()
+    print(main3())
     t1 = time()
     print(f"Tiempo total: {round(t1 - t0, ndigits=4)} segundos")
+
