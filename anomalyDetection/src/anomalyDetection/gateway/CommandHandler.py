@@ -1,6 +1,9 @@
+''''
 import os
 import json
 import pandas as pd
+
+from anomalyDetection.src.anomalyDetection.gateway.utils.DockerExecutor import DockerExecutor
 from .DockerCommand import DockerCommand
 from ..anomalyDetection import performance_metrics
 
@@ -15,8 +18,8 @@ class CommandHandler:
         pwd = os.getcwd()
         json_str = json.dumps(json_args)
         docker_command_str = self.algorithm_map.get(algorithm_name).format(pwd=pwd, file_name=file_name, json_str=json_str)
-        command = DockerCommand(docker_command_str)
-        command.execute()
+        DockerExecutor.execute(docker_command_str)
+        
         return self.evaluate_performance('E:/TFG/anomalyDetection/src/TimeEval-algorithms-main/2-results/anomaly_scores.ts', 'E:/TFG/anomalyDetection/src/TimeEval-algorithms-main/1-data/dataset.csv')
 
     def evaluate_performance(self, result_file, original_file):
@@ -33,3 +36,5 @@ class CommandHandler:
         metrics = performance_metrics(is_anomaly, anomaly_scores['binarized_scores'])
 
         return metrics
+
+'''
