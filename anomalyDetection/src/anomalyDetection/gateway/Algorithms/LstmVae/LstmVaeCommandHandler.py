@@ -16,10 +16,11 @@ class LstmVaeCommandHandler(CommandHandler):
 
     def dockerAlgorithm(self, command: LstmVaeCommand):
         dockerChain='docker run --rm -v {pwd}/TimeEval-algorithms-main/1-data:/data:ro -v {pwd}/TimeEval-algorithms-main/2-results:/results:rw registry.gitlab.hpi.de/akita/i/lstm_vae:latest execute-algorithm \'{{"executionType": "execute", "dataInput": "/data/{file_name}", "dataOutput": "/results/anomaly_scores.ts", "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl", "customParameters": {json_str}}}\''
-
+        print(dockerChain)
         pwd = os.getcwd()
         json_str = self.toJson(command)
         docker_command_str = dockerChain.format(pwd=pwd, file_name=command.filePath, json_str=json_str)
+        print(docker_command_str)
         DockerExecutor().execute(docker_command_str)
 
     def toJson(self, command: LstmVaeCommand):
