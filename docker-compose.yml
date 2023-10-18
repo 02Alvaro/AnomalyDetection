@@ -5,6 +5,7 @@ services:
       context: ./anomalyDetection
     volumes:
       - ./anomalyDetection:/app
+      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - db
     environment:

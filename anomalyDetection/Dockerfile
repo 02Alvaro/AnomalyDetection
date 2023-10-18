@@ -5,5 +5,6 @@ WORKDIR /app
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
-
-CMD ["python","src/main.py"]
+RUN apt-get update && apt-get install -y docker.io
+#CMD ["python","src/main.py"]
+CMD ["tail", "-f", "/dev/null"]
