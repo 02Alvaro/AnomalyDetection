@@ -2,6 +2,6 @@ from anomalyDetection.gateway.Algorithms.LstmVae.LstmVaeCommand import LstmVaeCo
 
 class AlgorithmCommandFactory:
     @staticmethod
-    def create_command(algorithm_name, file_name):
+    def create_command(algorithm_name, file_name, **kwargs):
         if algorithm_name == 'lstm_vae':
-            return LstmVaeCommand(filePath=file_name)
+            return LstmVaeCommand(filePath=file_name, **kwargs)
