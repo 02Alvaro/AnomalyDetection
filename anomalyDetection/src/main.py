@@ -3,9 +3,11 @@ from joblib import Parallel, delayed
 from anomalyDetection.anomalyDetection import randomize, process_dataset
 import numpy as np
 import os
+import yaml
 import pandas as pd
 from anomalyDetection.gateway.CommandBus import CommandBus
 from anomalyDetection.gateway.Algorithms.AlgorithmCommandFactory import AlgorithmCommandFactory
+from anomalyDetection.gateway.utils.CommandFactory import CommandFactory
 
 
 
@@ -66,12 +68,27 @@ def main():
 
 def main3():
     commandBus = CommandBus()
-    commandBus.execute(AlgorithmCommandFactory.create_command('lstm_vae', 'dataset.csv'))
+    commandBus.execute(AlgorithmCommandFactory.create_command('lstm_vae', 'Processed_AAA.csv'))
     
+
+class ConfigLoader:
+    @staticmethod
+    def load_config(config_path="config.yaml"):
+        with open(config_path, 'r') as file:
+            return yaml.safe_load(file)
+
+def main4():
+    config = ConfigLoader.load_config()
+    commands = CommandFactory.create_commands_from_config(config)
+    
+    commandBus = CommandBus()
+    for command in commands:
+        commandBus.execute(command)
+
 
 if __name__ == "__main__":
     t0 = time()
-    print(main3())
+    main4()
     t1 = time()
     print(f"Tiempo total: {round(t1 - t0, ndigits=4)} segundos")
 
