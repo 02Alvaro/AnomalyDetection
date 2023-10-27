@@ -6,27 +6,37 @@ from anomalyDetection.anomalyDetection import performance_metrics
 
 from anomalyDetection.gateway.Algorithms.LstmVae.LstmVaeCommand import LstmVaeCommand
 from anomalyDetection.gateway.Interfaces.CommandHandler import CommandHandler
-from anomalyDetection.gateway.utils.DockerExecutor import DockerExecutor
+from anomalyDetection.gateway.utils.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
+
+DATA_PATH = "E:/TFG/anomalyDetection/src/TimeEval-algorithms-main/1-data"
+DATA_PATH_DOCKER = "/app/src/TimeEval-algorithms-main/1-data"
+RESULTS_PATH = "E:/TFG/anomalyDetection/src/TimeEval-algorithms-main/2-results"
+RESULTS_PATH_DOCKER = "/app/src/TimeEval-algorithms-main/2-results"
 
 class LstmVaeCommandHandler(CommandHandler):
-
+    def __init__(self) -> None:
+        self.time_eval_wrapper = TimeEvalWrapper(DATA_PATH, RESULTS_PATH)
 
     def execute(self, command: LstmVaeCommand):
-        self.dockerAlgorithm(command)
-        self.evaluate_performance(command.filePath, '/app/src/TimeEval-algorithms-main/2-results/anomaly_scores.ts')
+        self.executeAlgorithm(command)
+        self.evaluate_performance(command.filePath, os.path.join(RESULTS_PATH_DOCKER, 'anomaly_scores.ts'))
 
-    def dockerAlgorithm(self, command: LstmVaeCommand):
-        absolute_data_path = "E:/TFG/anomalyDetection/src/TimeEval-algorithms-main/1-data"
-        absolute_results_path = "E:/TFG/anomalyDetection/src/TimeEval-algorithms-main/2-results"
-        
-        dockerChain='docker run --rm -v {data_path}:/data:ro -v {results_path}:/results:rw registry.gitlab.hpi.de/akita/i/lstm_vae:latest execute-algorithm \'{{"executionType": "execute", "dataInput": "/data/{file_name}", "dataOutput": "/results/anomaly_scores.ts", "modelInput": "/results/model.pkl", "modelOutput": "/results/model.pkl", "customParameters": {json_str}}}\''
-        json_str = json.dumps(asdict(command))
-        print(json_str)
-        docker_command_str = dockerChain.format(data_path=absolute_data_path, results_path=absolute_results_path, file_name=command.filePath, json_str=json_str)
-        DockerExecutor().execute(docker_command_str)
+    def executeAlgorithm(self, command: LstmVaeCommand):
+        param_dict = asdict(command)
+        del param_dict['filePath']
+
+        time_eval_parameters = TimeEvalParameters(
+            name='lstm_vae',
+            execution_type='execute',
+            data_input=command.filePath,
+            parameters=param_dict
+        )
+
+        self.time_eval_wrapper.execute(time_eval_parameters)
 
     def evaluate_performance(self,original_file, result_file ):
-        file="/app/src/TimeEval-algorithms-main/1-data/"+original_file
+        file = os.path.join(DATA_PATH_DOCKER, original_file)
+        result_file = os.path.join(RESULTS_PATH_DOCKER, result_file)
         anomaly_scores = pd.read_csv(result_file)
         original_data = pd.read_csv(file)
 

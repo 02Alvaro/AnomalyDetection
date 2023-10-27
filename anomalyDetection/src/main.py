@@ -73,7 +73,7 @@ def main3():
 
 class ConfigLoader:
     @staticmethod
-    def load_config(config_path="config.yaml"):
+    def load_config(config_path="/app/src/config.yaml"):
         with open(config_path, 'r') as file:
             return yaml.safe_load(file)
 
@@ -85,6 +85,8 @@ def main4():
     for command in commands:
         commandBus.execute(command)
 
+def main5():
+    print(os.path.abspath(__file__ ))
 
 if __name__ == "__main__":
     t0 = time()
