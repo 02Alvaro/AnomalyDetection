@@ -1,7 +1,7 @@
 algorithms:
-  - name: dae
+  - name: autoencoder
     executions:
-        - file_name: "dataset.csv"
+        - file_name: "multi-dataset.csv"
           parameters:
             latent_size: 31
             epochs: 11
