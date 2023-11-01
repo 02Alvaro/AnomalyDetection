@@ -1,11 +1,7 @@
 algorithms:
-  - name: lstm_vae
+  - name: dae
     executions:
-      - file_name: "dataset.csv"
-        parameters:
-          learning_rate: 0.001
-          epochs: 10
-      - file_name: "dataset.csv"
-        parameters:
-          learning_rate: 0.002
-          epochs: 20
+        - file_name: "dataset.csv"
+          parameters:
+            latent_size: 31
+            epochs: 11
