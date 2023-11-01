@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from anomalyDetection.gateway.Interfaces.Command import Command
+from anomalyDetection.gateway.CommandPattern.Command import Command
 
 
 @dataclass
