@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+
 from anomalyDetection.gateway.Interfaces.Command import Command
+
 
 @dataclass
 class LstmVaeCommand(Command):

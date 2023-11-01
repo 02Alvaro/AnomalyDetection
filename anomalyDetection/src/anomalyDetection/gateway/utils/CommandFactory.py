@@ -1,4 +1,7 @@
-from anomalyDetection.gateway.Algorithms.AlgorithmCommandFactory import AlgorithmCommandFactory
+from anomalyDetection.gateway.Algorithms.AlgorithmCommandFactory import (
+    AlgorithmCommandFactory,
+)
+
 
 class CommandFactory:
     @staticmethod
@@ -8,7 +11,11 @@ class CommandFactory:
             algorithm_name = algorithm_config["name"]
             for execution in algorithm_config.get("executions", []):
                 file_name = execution["file_name"]
-                parameters = execution["parameters"] # Puedes usar esto para sobreescribir/definir parámetros específicos si es necesario.
-                command = AlgorithmCommandFactory.create_command(algorithm_name, file_name, **parameters)
+                parameters = execution[
+                    "parameters"
+                ]  # Puedes usar esto para sobreescribir/definir parámetros específicos si es necesario.
+                command = AlgorithmCommandFactory.create_command(
+                    algorithm_name, file_name, **parameters
+                )
                 commands.append(command)
         return commands
