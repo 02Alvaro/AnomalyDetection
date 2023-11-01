@@ -2,7 +2,7 @@ import os
 from dataclasses import asdict
 
 import pandas as pd
-from anomalyDetection.gateway.Algorithms.LstmVae.LstmVaeCommand import LstmVaeCommand
+from anomalyDetection.gateway.Algorithms.dae.DaeCommand import DaeCommand
 from anomalyDetection.gateway.CommandPattern.CommandHandler import CommandHandler
 from anomalyDetection.gateway.utils.datapaths import (
     DATA_PATH,
@@ -18,22 +18,22 @@ from anomalyDetection.gateway.utils.TimeEvalWrapper import (
 from anomalyDetection.anomalyDetection import performance_metrics
 
 
-class LstmVaeCommandHandler(CommandHandler):
+class DaeCommandHandler(CommandHandler):
     def __init__(self) -> None:
         self.time_eval_wrapper = TimeEvalWrapper(DATA_PATH, RESULTS_PATH)
 
-    def execute(self, command: LstmVaeCommand):
+    def execute(self, command: DaeCommand):
         self.executeAlgorithm(command)
         self.evaluate_performance(
             command.filePath, os.path.join(RESULTS_PATH_DOCKER, "anomaly_scores.ts")
         )
 
-    def executeAlgorithm(self, command: LstmVaeCommand):
+    def executeAlgorithm(self, command: DaeCommand):
         param_dict = asdict(command)
         del param_dict["filePath"]
 
         time_eval_parameters = TimeEvalParameters(
-            name="lstm_vae",
+            name="dae",
             execution_type="execute",
             data_input=command.filePath,
             parameters=param_dict,
