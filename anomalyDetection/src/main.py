@@ -7,7 +7,7 @@ import yaml
 from anomalyDetection.gateway.Algorithms.AlgorithmCommandFactory import (
     AlgorithmCommandFactory,
 )
-from anomalyDetection.gateway.Interfaces.CommandBus import CommandBus
+from anomalyDetection.gateway.CommandPattern.CommandBus import CommandBus
 from anomalyDetection.gateway.utils.CommandFactory import CommandFactory
 from joblib import Parallel, delayed
 

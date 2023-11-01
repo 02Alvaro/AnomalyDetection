@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from anomalyDetection.gateway.Interfaces.Command import Command
+from anomalyDetection.gateway.CommandPattern.Command import Command
 
 
 class CommandHandler(ABC):

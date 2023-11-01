@@ -1,4 +1,4 @@
-from anomalyDetection.gateway.Interfaces.Command import Command, CommandHandler
+from anomalyDetection.gateway.CommandPattern.Command import Command, CommandHandler
 
 
 class CommandBus:

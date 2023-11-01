@@ -4,7 +4,7 @@ from dataclasses import asdict
 
 import pandas as pd
 from anomalyDetection.gateway.Algorithms.LstmVae.LstmVaeCommand import LstmVaeCommand
-from anomalyDetection.gateway.Interfaces.CommandHandler import CommandHandler
+from anomalyDetection.gateway.CommandPattern.CommandHandler import CommandHandler
 from anomalyDetection.gateway.utils.TimeEvalWrapper import (
     TimeEvalParameters,
     TimeEvalWrapper,
