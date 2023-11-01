@@ -1,3 +1,9 @@
+from anomalyDetection.gateway.Algorithms.autoencoder.AutoEncoderCommand import (
+    AutoEncoderCommand,
+)
+from anomalyDetection.gateway.Algorithms.autoencoder.AutoEncoderCommandHandler import (
+    AutoEncoderCommandHandler,
+)
 from anomalyDetection.gateway.Algorithms.dae.DaeCommand import DaeCommand
 from anomalyDetection.gateway.Algorithms.dae.DaeCommandHandler import DaeCommandHandler
 from anomalyDetection.gateway.Algorithms.LstmVae.LstmVaeCommand import LstmVaeCommand
@@ -13,6 +19,7 @@ class CommandBus:
         self.handlers = {}
         self.register_handler(LstmVaeCommand, LstmVaeCommandHandler())
         self.register_handler(DaeCommand, DaeCommandHandler())
+        self.register_handler(AutoEncoderCommand, AutoEncoderCommandHandler())
 
     def register_handler(self, command_type, handler: CommandHandler):
         self.handlers[command_type] = handler

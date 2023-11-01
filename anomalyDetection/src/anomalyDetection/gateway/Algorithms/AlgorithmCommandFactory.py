@@ -1,3 +1,6 @@
+from anomalyDetection.gateway.Algorithms.autoencoder.AutoEncoderCommand import (
+    AutoEncoderCommand,
+)
 from anomalyDetection.gateway.Algorithms.dae.DaeCommand import DaeCommand
 from anomalyDetection.gateway.Algorithms.LstmVae.LstmVaeCommand import LstmVaeCommand
 
@@ -9,3 +12,5 @@ class AlgorithmCommandFactory:
             return LstmVaeCommand(filePath=file_name, **kwargs)
         elif algorithm_name == "dae":
             return DaeCommand(filePath=file_name, **kwargs)
+        elif algorithm_name == "autoencoder":
+            return AutoEncoderCommand(filePath=file_name, **kwargs)
