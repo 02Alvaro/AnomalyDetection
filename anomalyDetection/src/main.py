@@ -1,19 +1,9 @@
-import os
 from time import time
 
-import numpy as np
-import pandas as pd
-import yaml
-from anomalyDetection.gateway.Algorithms.AlgorithmCommandFactory import (
-    AlgorithmCommandFactory,
-)
-from anomalyDetection.gateway.CommandPattern.CommandBus import CommandBus
-from anomalyDetection.gateway.utils.CommandFactory import CommandFactory
-from joblib import Parallel, delayed
+from application.factories.FileAlgorithmFactory import FileAlgorithmFactory
+from application.services.AlgorithmManager import AlgorithmManager
 
-from anomalyDetection.anomalyDetection import process_dataset, randomize
-
-
+"""
 def main():
     csv_datasets = ["AAA.csv"]
     classifiers_parameters = {
@@ -66,37 +56,19 @@ def main():
         all_results_df.to_csv(
             os.path.join(os.getcwd(), "metrics", "all_results.csv"), index=False
         )
+"""
+
+import application.algorithms
 
 
-def main3():
-    commandBus = CommandBus()
-    commandBus.execute(
-        AlgorithmCommandFactory.create_command("lstm_vae", "Processed_AAA.csv")
-    )
-
-
-class ConfigLoader:
-    @staticmethod
-    def load_config(config_path="/app/src/config.yaml"):
-        with open(config_path, "r") as file:
-            return yaml.safe_load(file)
-
-
-def main4():
-    config = ConfigLoader.load_config()
-    commands = CommandFactory.create_commands_from_config(config)
-
-    commandBus = CommandBus()
+def main():
+    commands = FileAlgorithmFactory.create_from_config()
     for command in commands:
-        commandBus.execute(command)
-
-
-def main5():
-    print(os.path.abspath(__file__))
+        AlgorithmManager.execute(command)
 
 
 if __name__ == "__main__":
     t0 = time()
-    main4()
+    main()
     t1 = time()
     print(f"Tiempo total: {round(t1 - t0, ndigits=4)} segundos")

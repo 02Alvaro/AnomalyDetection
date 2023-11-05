@@ -1,7 +1,6 @@
 algorithms:
-  - name: autoencoder
+  - name: lstmvae
     executions:
-        - file_name: "multi-dataset.csv"
+        - file_name: "dataset.csv"
           parameters:
-            latent_size: 31
-            epochs: 11
+            lstm_layers: 10
