@@ -2,7 +2,7 @@ import os
 from dataclasses import asdict
 
 import pandas as pd
-from application.algorithms.LstmVae.LstmVaeData import LstmVaeData
+from application.algorithms.lstmVae.LstmVaeData import LstmVaeData
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
 from application.utils.datapaths import (

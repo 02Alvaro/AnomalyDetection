@@ -1,6 +1,7 @@
 algorithms:
-  - name: lstmvae
+  - name: cof
     executions:
         - file_name: "dataset.csv"
           parameters:
-            lstm_layers: 10
+            n_neighbors : 5
+            tarjet_variable: "is_anomaly"
