@@ -14,6 +14,7 @@ class AlgorithmManager:
 
         return decorator
 
+    @staticmethod
     def execute(algorithm: AlgorithmData):
         executor_class: AlgorithmExecutor = AlgorithmManager.executors.get(
             algorithm.__class__
