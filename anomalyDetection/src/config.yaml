@@ -1,7 +1,19 @@
 algorithms:
   - name: lof
+    train:
+        - file_name : "dataset.csv"
+          model_name: "lof_model.pkl"
+          parameters:
+            n_neighbors : 20
+            tarjet_variable: "is_anomaly"
+        - file_name : "dataset.csv"
+          model_name: "lof_model2.pkl"
+          parameters:
+            n_neighbors : 20
+            tarjet_variable: "is_anomaly"
     executions:
         - file_name: "dataset.csv"
+          model_name: "lof_model.pkl"
           parameters:
             n_neighbors : 20
             tarjet_variable: "is_anomaly"
