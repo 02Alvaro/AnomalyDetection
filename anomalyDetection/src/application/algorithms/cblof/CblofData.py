@@ -15,4 +15,4 @@ class CblofData(AlgorithmData):
     use_weights: bool = False
     check_estimator: bool = False
     random_state: int = None
-    tarjet_variable: str = None
+    target_variable: str = None

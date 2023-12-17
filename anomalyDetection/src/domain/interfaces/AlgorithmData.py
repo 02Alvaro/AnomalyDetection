@@ -3,5 +3,6 @@ from dataclasses import dataclass
 
 @dataclass
 class AlgorithmData:
-    file_path: str
+    data_file: str
     model_name: str
+    report_file: str

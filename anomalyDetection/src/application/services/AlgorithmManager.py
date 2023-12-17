@@ -18,7 +18,7 @@ class AlgorithmManager:
         return decorator
 
     @staticmethod
-    def trainer_for(target_class: AlgorithmExecutor):
+    def trainer_for(target_class: AlgorithmTrainer):
         def decorator(cls):
             AlgorithmManager.trainers[target_class] = cls
             return cls
@@ -38,11 +38,11 @@ class AlgorithmManager:
 
     @staticmethod
     def train(algorithm: AlgorithmData):
-        executor_class: AlgorithmTrainer = AlgorithmManager.trainers.get(
+        trainer_class: AlgorithmTrainer = AlgorithmManager.trainers.get(
             algorithm.__class__
         )
-        if not executor_class:
+        if not trainer_class:
             raise TrainerNotFound(algorithm)
 
-        algorithm_trainer = executor_class()
+        algorithm_trainer = trainer_class()
         algorithm_trainer.train(algorithm)

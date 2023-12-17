@@ -6,45 +6,47 @@ from application.algorithms.dae.DaeData import DaeData
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
 from application.utils.datapaths import (
-    DATA_PATH,
     DATA_PATH_DOCKER,
-    RESULTS_PATH,
+    DATA_PATH_HOST,
     RESULTS_PATH_DOCKER,
+    RESULTS_PATH_HOST,
 )
 from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
+from domain.interfaces.EvaluationRepository import EvaluationRepository
 from domain.services.metrics import performance_metrics
 
 
 @AlgorithmManager.executor_for(DaeData)
 class DaeExecutor(AlgorithmExecutor):
-    def __init__(self) -> None:
-        self.time_eval_wrapper = TimeEvalWrapper(DATA_PATH, RESULTS_PATH)
+    def __init__(self, repository: EvaluationRepository, time_eval: TimeEvalWrapper):
+        self.time_eval = time_eval
+        self.repositoy = repository
 
     def execute(self, command: DaeData):
         self.executeAlgorithm(command)
         self.evaluate_performance(
-            command.file_path, os.path.join(RESULTS_PATH_DOCKER, "anomaly_scores.ts")
+            command.data_file, os.path.join(RESULTS_PATH_DOCKER, "anomaly_scores.ts")
         )
 
     def executeAlgorithm(self, command: DaeData):
         param_dict = asdict(command)
-        del param_dict["file_path"]
+        del param_dict["data_file"]
 
         time_eval_parameters = TimeEvalParameters(
             name="dae",
             execution_type="train",
-            data_input=command.file_path,
+            data_input=command.data_file,
             parameters=param_dict,
         )
 
-        self.time_eval_wrapper.execute(time_eval_parameters)
+        self.time_eval.execute(time_eval_parameters)
         time_eval_parameters = TimeEvalParameters(
             name="dae",
             execution_type="execute",
-            data_input=command.file_path,
+            data_input=command.data_file,
             parameters=param_dict,
         )
-        self.time_eval_wrapper.execute(time_eval_parameters)
+        self.time_eval.execute(time_eval_parameters)
 
     def evaluate_performance(self, original_file, result_file):
         file = os.path.join(DATA_PATH_DOCKER, original_file)

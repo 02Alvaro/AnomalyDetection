@@ -14,9 +14,9 @@ class AlgorithmDataFactory:
         return decorator
 
     @staticmethod
-    def create(name, file_name, **kwargs):
+    def create(name, data_file, **kwargs):
         data_class: AlgorithmData = AlgorithmDataFactory.data_classes.get(name)
         if not data_class:
             raise AlgorithmDataNotFound(name)
 
-        return data_class(file_path=file_name, **kwargs)
+        return data_class(data_file=data_file, **kwargs)

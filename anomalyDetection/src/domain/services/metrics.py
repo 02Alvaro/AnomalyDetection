@@ -47,35 +47,6 @@ def instantiate_clfs(classifiers_parameters, anomaly_fraction, random_state=None
     return classifiers
 
 
-def compare_predictions(y_values, y_predictions):
-    count = {}
-    for actual, pred in zip(y_values, y_predictions):
-        count[(actual, pred)] = count.get((actual, pred), 0) + 1
-    return count
-
-
-def performance_metrics(y_test_binary, y_test_prediction):
-    cm = confusion_matrix(y_test_binary, y_test_prediction)
-    sensitivity = (
-        round(cm[1, 1] / (cm[1, 0] + cm[1, 1]), ndigits=4)
-        if cm[1, 0] + cm[1, 1] != 0
-        else 0
-    )
-    specificity = (
-        round(cm[0, 0] / (cm[0, 0] + cm[0, 1]), ndigits=4)
-        if cm[0, 0] + cm[0, 1] != 0
-        else 0
-    )
-    precision = (
-        round(cm[1, 1] / (cm[1, 1] + cm[0, 1]), ndigits=4)
-        if cm[1, 1] + cm[0, 1] != 0
-        else 0
-    )
-    roc = round(roc_auc_score(y_test_binary, y_test_prediction), ndigits=4)
-
-    return {"se": sensitivity, "sp": specificity, "p": precision, "roc": roc}
-
-
 def train_and_evaluate(clf, x_train_norm, x_test_norm, y_test):
     t0 = time()
     clf.fit(x_train_norm)
@@ -126,6 +97,36 @@ def process_dataset(csv_dataset, classifiers_parameters, random_state, target_va
     )
 
 
+def compare_predictions(y_values, y_predictions):
+    count = {}
+    for actual, pred in zip(y_values, y_predictions):
+        count[(actual, pred)] = count.get((actual, pred), 0) + 1
+    return count
+
+
+def performance_metrics(y_test_binary, y_test_prediction):
+    cm = confusion_matrix(y_test_binary, y_test_prediction)
+    sensitivity = (
+        round(cm[1, 1] / (cm[1, 0] + cm[1, 1]), ndigits=4)
+        if cm[1, 0] + cm[1, 1] != 0
+        else 0
+    )
+    specificity = (
+        round(cm[0, 0] / (cm[0, 0] + cm[0, 1]), ndigits=4)
+        if cm[0, 0] + cm[0, 1] != 0
+        else 0
+    )
+    precision = (
+        round(cm[1, 1] / (cm[1, 1] + cm[0, 1]), ndigits=4)
+        if cm[1, 1] + cm[0, 1] != 0
+        else 0
+    )
+    roc = round(roc_auc_score(y_test_binary, y_test_prediction), ndigits=4)
+
+    return {"se": sensitivity, "sp": specificity, "p": precision, "roc": roc}
+
+
+# TODO take away randomize and train_test_split
 def file_data(csv_dataset, random_state=42, target_variable="is_anomaly"):
     file = os.path.join(DATA_PATH_DOCKER, csv_dataset)
     df = pd.read_csv(file)
@@ -140,5 +141,5 @@ def file_data(csv_dataset, random_state=42, target_variable="is_anomaly"):
         "name": csv_dataset,
         "num_examples": x_train_norm.shape[0],
         "num_dims": x_train_norm.shape[1],
-        "anomaly_percentage": round(anomaly_fraction * 100, ndigits=4),
+        "anomaly_percentage":  round(anomaly_fraction * 100, ndigits=4),
     }

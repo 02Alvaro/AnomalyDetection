@@ -6,34 +6,36 @@ from application.algorithms.autoencoder.AutoEncoderData import AutoEncoderData
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
 from application.utils.datapaths import (
-    DATA_PATH,
     DATA_PATH_DOCKER,
-    RESULTS_PATH,
+    DATA_PATH_HOST,
     RESULTS_PATH_DOCKER,
+    RESULTS_PATH_HOST,
 )
 from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
 from domain.services.metrics import performance_metrics
+from inject import Inject
 
 
 @AlgorithmManager.executor_for(AutoEncoderData)
 class AutoEncoderExecutor(AlgorithmExecutor):
-    def __init__(self) -> None:
-        self.time_eval_wrapper = TimeEvalWrapper(DATA_PATH, RESULTS_PATH)
+    @Inject
+    def __init__(self,) -> None:
+        self.time_eval_wrapper = TimeEvalWrapper(DATA_PATH_HOST, RESULTS_PATH_HOST)
 
     def execute(self, command: AutoEncoderData):
         self.executeAlgorithm(command)
         self.evaluate_performance(
-            command.file_path, os.path.join(RESULTS_PATH_DOCKER, "anomaly_scores.ts")
+            command.data_file, os.path.join(RESULTS_PATH_DOCKER, "anomaly_scores.ts")
         )
 
     def executeAlgorithm(self, command: AutoEncoderData):
         param_dict = asdict(command)
-        del param_dict["file_path"]
+        del param_dict["data_file"]
 
         time_eval_parameters = TimeEvalParameters(
             name="autoencoder",
             execution_type="train",
-            data_input=command.file_path,
+            data_input=command.data_file,
             parameters=param_dict,
         )
 
@@ -41,7 +43,7 @@ class AutoEncoderExecutor(AlgorithmExecutor):
         time_eval_parameters = TimeEvalParameters(
             name="autoencoder",
             execution_type="execute",
-            data_input=command.file_path,
+            data_input=command.data_file,
             parameters=param_dict,
         )
 

@@ -13,14 +13,16 @@ class AlgorithmEvaluationMetrics:
 
     def __init__(
         self,
-        algorithmData,
+        algorithm_name,
+        algorithm_parameters,
         dataset_name,
         num_examples,
         num_dims,
         anomaly_percentage,
         metrics,
     ):
-        self.algorithmData = algorithmData
+        self.algorithm_name = algorithm_name
+        self.algorithm_parameters = algorithm_parameters
         self.dataset_name = dataset_name
         self.num_examples = num_examples
         self.num_dims = num_dims
