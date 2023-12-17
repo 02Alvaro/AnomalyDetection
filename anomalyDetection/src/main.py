@@ -1,16 +1,19 @@
 from time import time
 
+import application.algorithms
+import debugpy
 from application.factories.FileAlgorithmFactory import FileAlgorithmFactory
 from application.services.AlgorithmManager import AlgorithmManager
 
-import application.algorithms
+#debugpy.listen(("0.0.0.0", 5678))
+#debugpy.wait_for_client()
 
 
 def main():
-    [trains, executes] = FileAlgorithmFactory.create_from_config()
-    for train in trains:
+    actions = FileAlgorithmFactory.create_from_config()
+    for train in actions["trains"]:
         AlgorithmManager.train(train)
-    for execute in executes:
+    for execute in actions["tests"]:
         AlgorithmManager.execute(execute)
 
 

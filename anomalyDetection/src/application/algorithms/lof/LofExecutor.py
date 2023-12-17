@@ -5,7 +5,9 @@ from application.algorithms.lof.LofData import LofData
 from application.services.AlgorithmManager import AlgorithmManager
 from application.utils.datapaths import DATA_PATH_DOCKER
 from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
+from domain.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from domain.services.metrics import performance_metrics
+from inject import Inject
 from pyod.models.lof import LOF
 from pyod.utils.utility import standardizer
 from sklearn.model_selection import train_test_split
@@ -13,13 +15,17 @@ from sklearn.model_selection import train_test_split
 
 @AlgorithmManager.executor_for(LofData)
 class LofExecutor(AlgorithmExecutor):
+    @Inject
+    def __init__(self, data_procesor: AlgorithmDataProcesor):
+        self.data_procesor = data_procesor
+
     def execute(self, command: LofData):
         self.executeAlgorithm(command)
 
     def executeAlgorithm(self, command: LofData):
-        df = pd.read_csv(os.path.join(DATA_PATH_DOCKER, command.file_path))
-        y = df[command.tarjet_variable]
-        X = df.drop(command.tarjet_variable, axis=1)
+        df = pd.read_csv(os.path.join(DATA_PATH_DOCKER, command.data_file))
+        y = df[command.target_variable]
+        X = df.drop(command.target_variable, axis=1)
         anomaly_fraction: float = (y == 1).sum() / len(y)
 
         x_train, x_test, _, y_test = train_test_split(

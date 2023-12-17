@@ -17,9 +17,9 @@ class CofExecutor(AlgorithmExecutor):
         self.executeAlgorithm(command)
 
     def executeAlgorithm(self, command: CofData):
-        df = pd.read_csv(os.path.join(DATA_PATH_DOCKER, command.file_path))
-        y = df[command.tarjet_variable]
-        X = df.drop(command.tarjet_variable, axis=1)
+        df = pd.read_csv(os.path.join(DATA_PATH_DOCKER, command.data_file))
+        y = df[command.target_variable]
+        X = df.drop(command.target_variable, axis=1)
         anomaly_fraction: float = (y == 1).sum() / len(y)
 
         x_train, x_test, _, y_test = train_test_split(

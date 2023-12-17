@@ -11,5 +11,5 @@ class HbosData(AlgorithmData):
     n_bins: int = 10
     alpha: float = 0.1
     tol: float = 0.5
-    tarjet_variable: str = None
+    target_variable: str = None
     random_state: int = None

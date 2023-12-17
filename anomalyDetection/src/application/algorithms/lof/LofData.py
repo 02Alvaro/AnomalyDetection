@@ -16,5 +16,5 @@ class LofData(AlgorithmData):
     contamination: float = 0.1
     n_jobs: int = 1
     novelty: bool = True
-    tarjet_variable: str = None
+    target_variable: str = None
     random_state: int = None

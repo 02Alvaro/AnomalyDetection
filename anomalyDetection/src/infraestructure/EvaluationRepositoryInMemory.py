@@ -7,6 +7,7 @@ class EvaluationRepositoryInMemory(EvaluationRepository):
         self.metrics = []
 
     def save(self, metrics: AlgorithmEvaluationMetrics):
+        print(metrics)
         self.metrics.append(metrics)
 
     def printAll(self):

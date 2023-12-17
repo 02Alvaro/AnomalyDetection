@@ -9,26 +9,29 @@ from domain.models.AlgorithmEvaluationMetrics import AlgorithmEvaluationMetrics
 from domain.services.metrics import file_data, performance_metrics
 
 
-class AlgorithmDataProcesor():
-    execution_data = {}
+class AlgorithmDataProcesor:
+    def process(
+        self, algorithm_data: AlgorithmData, prediction_data: pd.DataFrame
+    ) -> AlgorithmEvaluationMetrics:
+        try:
+            target_variable = algorithm_data.target_variable
+        except AttributeError:
+            target_variable = "is_anomaly"
 
-    def __init__(self, repository: EvaluationRepository) -> None:
-        self.repositoy = repository
-
-    def process(self, algorithm_data: AlgorithmData, prediction_data):
-        file = os.path.join(DATA_PATH_DOCKER, algorithm_data.file_path)
-        original_data = pd.read_csv(file)["is_anomaly"]
-        metrics = performance_metrics(original_data, prediction_data)
+        file = os.path.join(DATA_PATH_DOCKER, algorithm_data.data_file)
+        original_data = pd.read_csv(file)[target_variable]
+        original_data = original_data[1:]
+        metrics = performance_metrics(
+            original_data, prediction_data.round().astype(int)
+        )
         file_info: {
             "name": str,
             "num_examples": int,
             "num_dims": int,
             "anomaly_percentage": float,
         }
-        if algorithm_data.random_state == None:
-            file_info = file_data(algorithm_data.file_path)
-        else:
-            file_info = file_data(algorithm_data.file_path, algorithm_data.random_state)
+
+        file_info = file_data(algorithm_data.data_file)
 
         algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
             AlgorithmEvaluationMetrics(
@@ -42,4 +45,4 @@ class AlgorithmDataProcesor():
             )
         )
 
-        self.repositoy.save(algorithm_evaluation_metrics)
+        return algorithm_evaluation_metrics

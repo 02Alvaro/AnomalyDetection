@@ -1,8 +1,10 @@
-version: '3'
+version: "3"
 services:
   anomaly_detection:
     build:
       context: ./anomalyDetection
+    ports:
+      - "5678:5678"
     volumes:
       - ./anomalyDetection:/app
       - /var/run/docker.sock:/var/run/docker.sock
