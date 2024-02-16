@@ -1,6 +1,12 @@
 algorithms:
   - name: lstmvae
     reportFile: "lstmvae_report.txt"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "lstmvae_model.pk2"
+        parameters:
+          epochs: 100
+          batch_size: 32
     test:
       - data_file: "dataset.csv"
-        model_input: "lstmvae_model.pkl"
+        model_input: "lstmvae_model.pk2"

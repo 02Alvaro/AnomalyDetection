@@ -3,13 +3,6 @@ from domain.models.AlgorithmEvaluationMetrics import AlgorithmEvaluationMetrics
 
 
 class EvaluationRepositoryInMemory(EvaluationRepository):
-    def __init__(self):
-        self.metrics = []
-
     def save(self, metrics: AlgorithmEvaluationMetrics):
-        print(metrics)
-        self.metrics.append(metrics)
-
-    def printAll(self):
-        for metric in self.metrics:
-            print(metric)
+        with open("/app/metrics/all_results.csv", "a") as f:
+            f.write(str(metrics) + "\n")

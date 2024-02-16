@@ -1,12 +1,8 @@
 from time import time
 
 import application.algorithms
-import debugpy
 from application.factories.FileAlgorithmFactory import FileAlgorithmFactory
 from application.services.AlgorithmManager import AlgorithmManager
-
-#debugpy.listen(("0.0.0.0", 5678))
-#debugpy.wait_for_client()
 
 
 def main():
