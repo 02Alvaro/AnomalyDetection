@@ -11,7 +11,7 @@ from domain.services.metrics import file_data, performance_metrics
 
 class AlgorithmDataProcesor:
     def process(
-        self, algorithm_data: AlgorithmData, prediction_data: pd.DataFrame
+        self, algorithm_data: AlgorithmData, prediction_data: pd.DataFrame, time: int
     ) -> AlgorithmEvaluationMetrics:
         try:
             target_variable = algorithm_data.target_variable
@@ -24,12 +24,7 @@ class AlgorithmDataProcesor:
         metrics = performance_metrics(
             original_data, prediction_data.round().astype(int)
         )
-        file_info: {
-            "name": str,
-            "num_examples": int,
-            "num_dims": int,
-            "anomaly_percentage": float,
-        }
+        metrics["time"] = time
 
         file_info = file_data(algorithm_data.data_file)
 
