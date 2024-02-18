@@ -2,7 +2,7 @@ from application.services.TimeEvalWrapper import TimeEvalWrapper
 from application.utils.datapaths import DATA_PATH_HOST, RESULTS_PATH_HOST
 from domain.interfaces.EvaluationRepository import EvaluationRepository
 from domain.services.AlgorithmDataProcesor import AlgorithmDataProcesor
-from infraestructure.EvaluationRepositoryInMemory import EvaluationRepositoryInMemory
+from infrastructure.EvaluationRepositoryInMemory import EvaluationRepositoryInMemory
 
 
 class DependencyContainer:
