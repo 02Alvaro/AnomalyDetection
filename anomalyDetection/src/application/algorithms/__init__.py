@@ -1,6 +1,7 @@
 import importlib
 from pathlib import Path
 
+"""
 try:
     # Obtén la ruta actual del paquete
     current_dir = Path(__file__).parent
@@ -21,3 +22,5 @@ try:
             importlib.import_module(f"application.{module_name}")
 except Exception as e:
     raise Exception(f"{module_name}")
+
+"""
