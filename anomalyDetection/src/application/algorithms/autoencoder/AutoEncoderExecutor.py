@@ -19,7 +19,9 @@ from inject import Inject
 @AlgorithmManager.executor_for(AutoEncoderData)
 class AutoEncoderExecutor(AlgorithmExecutor):
     @Inject
-    def __init__(self,) -> None:
+    def __init__(
+        self,
+    ) -> None:
         self.time_eval_wrapper = TimeEvalWrapper(DATA_PATH_HOST, RESULTS_PATH_HOST)
 
     def execute(self, command: AutoEncoderData):

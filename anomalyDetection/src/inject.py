@@ -1,20 +1,4 @@
-from application.services.TimeEvalWrapper import TimeEvalWrapper
-from application.utils.datapaths import DATA_PATH_HOST, RESULTS_PATH_HOST
-from domain.interfaces.EvaluationRepository import EvaluationRepository
-from domain.services.AlgorithmDataProcesor import AlgorithmDataProcesor
-from infrastructure.EvaluationRepositoryInMemory import EvaluationRepositoryInMemory
-
-
-class DependencyContainer:
-    services = {}
-
-    @classmethod
-    def add_service(cls, service_type, instance):
-        cls.services[service_type] = instance
-
-    @classmethod
-    def get_service(cls, service_type):
-        return cls.services.get(service_type)
+from DependencyContainer import DependencyContainer
 
 
 def Inject(cls):
@@ -48,11 +32,3 @@ def Inject(cls):
 
     cls.__init__ = new_init
     return cls
-
-
-DependencyContainer.services = {
-    EvaluationRepository: EvaluationRepositoryInMemory(),
-    TimeEvalWrapper: TimeEvalWrapper(DATA_PATH_HOST, RESULTS_PATH_HOST),
-    EvaluationRepository: EvaluationRepositoryInMemory(),
-    AlgorithmDataProcesor: AlgorithmDataProcesor(),
-}

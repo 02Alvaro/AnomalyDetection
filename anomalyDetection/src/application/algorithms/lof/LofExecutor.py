@@ -5,7 +5,7 @@ from application.algorithms.lof.LofData import LofData
 from application.services.AlgorithmManager import AlgorithmManager
 from application.utils.datapaths import DATA_PATH_DOCKER
 from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
-from domain.services.AlgorithmDataProcesor import AlgorithmDataProcesor
+from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from domain.services.metrics import performance_metrics
 from inject import Inject
 from pyod.models.lof import LOF

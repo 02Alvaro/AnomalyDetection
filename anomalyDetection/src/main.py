@@ -1,6 +1,8 @@
 from time import time
 
-import application.algorithms
+import application.algorithms.lstmVae.LstmVaeData
+import application.algorithms.lstmVae.LstmVaeExecutor
+import application.algorithms.lstmVae.LstmVaeTrainer
 from application.factories.FileAlgorithmFactory import FileAlgorithmFactory
 from application.services.AlgorithmManager import AlgorithmManager
 
