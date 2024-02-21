@@ -1,12 +1,12 @@
 algorithms:
-  - name: autoencoder
-    reportFile: "autoencoder.csv"
+  - name: dae
+    reportFile: "dae.csv"
     train:
       - data_file: "dataset.csv"
-        model_output: "autoencoder_model.pkl"
+        model_output: "dae_model.pkl"
         parameters:
           epochs: 12
           latent_size: 31
     test:
       - data_file: "dataset.csv"
-        model_input: "autoencoder_model.pkl"
+        model_input: "dae_model.pkl"
