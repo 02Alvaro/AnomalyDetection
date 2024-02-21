@@ -1,6 +1,12 @@
 algorithms:
-  - name: lstmvae
-    reportFile: "lstmvae_report.csv"
+  - name: autoencoder
+    reportFile: "autoencoder.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "autoencoder_model.pkl"
+        parameters:
+          epochs: 12
+          latent_size: 31
     test:
       - data_file: "dataset.csv"
-        model_input: "lstmvae_model.pk2"
+        model_input: "autoencoder_model.pkl"

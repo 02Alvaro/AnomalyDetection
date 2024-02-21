@@ -2,7 +2,6 @@ import os
 from random import randint
 from time import time
 
-import pandas as pd
 from application.algorithms.lstmVae.LstmVaeData import LstmVaeData
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.AlgorithmManager import AlgorithmManager
