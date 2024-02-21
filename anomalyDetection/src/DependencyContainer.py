@@ -20,7 +20,7 @@ class DependencyContainer:
         return cls.services.get(service_type)
 
 
-# Todo elemento que utilice docker, necesita el path de host para hacer un mapeo con volumenes
+# Cualquier elemento que utilice docker, necesita el path de host para hacer un mapeo con volumenes
 HOST = "E:/AnomalyDetection/anomalyDetection"
 DOCKER = "/app"
 

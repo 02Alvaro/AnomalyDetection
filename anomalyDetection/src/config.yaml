@@ -1,6 +1,6 @@
 algorithms:
   - name: lstmvae
-    reportFile: "lstmvae_report.txt"
+    reportFile: "lstmvae_report.csv"
     test:
       - data_file: "dataset.csv"
         model_input: "lstmvae_model.pk2"

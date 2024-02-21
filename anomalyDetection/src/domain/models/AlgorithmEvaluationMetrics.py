@@ -31,8 +31,8 @@ class AlgorithmEvaluationMetrics:
 
     def __str__(self):
         return (
-            f"{self.algorithm_name},{self.algorithm_parameters},{self.dataset_name},"
+            f"{self.algorithm_name},{self.dataset_name},"
             f"{self.num_examples},{self.num_dims},{self.anomaly_percentage},"
             f"{self.metrics['time']},{self.metrics['se']},{self.metrics['sp']},"
-            f"{self.metrics['p']},{self.metrics['roc']}"
+            f"{self.metrics['p']},{self.metrics['roc']},{self.algorithm_parameters}"
         )
