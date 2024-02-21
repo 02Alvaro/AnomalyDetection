@@ -1,8 +1,7 @@
 from time import time
 
-import application.algorithms.lstmVae.LstmVaeData
-import application.algorithms.lstmVae.LstmVaeExecutor
-import application.algorithms.lstmVae.LstmVaeTrainer
+import application.algorithms.autoencoder.AutoEncoderExecutor
+import application.algorithms.autoencoder.AutoEncoderTrainer
 from application.factories.FileAlgorithmFactory import FileAlgorithmFactory
 from application.services.AlgorithmManager import AlgorithmManager
 
