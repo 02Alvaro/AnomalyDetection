@@ -1,4 +1,4 @@
-from dataclasses import asdict
+from dataclasses import asdict, fields
 
 import pandas as pd
 from application.services.FileSystemService import FileSystemService
@@ -31,10 +31,20 @@ class AlgorithmDataProcesor:
         file_data = self.file_system_service.read_dataFrom(algorithm_data.data_file)
         file_info_results = file_info(file_data)
 
+        param_dict = asdict(algorithm_data)
+
+        base_class_fields = {field.name for field in fields(AlgorithmData)}
+
+        specific_params = {
+            key: value
+            for key, value in param_dict.items()
+            if key not in base_class_fields
+        }
+
         algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
             AlgorithmEvaluationMetrics(
                 algorithm_name=algorithm_data.__class__.__name__.replace("Data", ""),
-                algorithm_parameters=asdict(algorithm_data),
+                algorithm_parameters=specific_params,
                 dataset_name=algorithm_data.data_file,
                 num_examples=file_info_results["num_examples"],
                 num_dims=file_info_results["num_dims"],

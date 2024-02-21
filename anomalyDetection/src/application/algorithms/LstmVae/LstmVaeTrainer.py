@@ -17,7 +17,6 @@ class LstmVaeTrainer(AlgorithmTrainer):
     def __init__(
         self,
         time_eval_wrapper: TimeEvalWrapper,
-        
     ):
         self.time_eval_wrapper = time_eval_wrapper
 

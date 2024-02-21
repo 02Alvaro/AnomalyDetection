@@ -30,7 +30,8 @@ class LstmVaeExecutor(AlgorithmExecutor):
         self.file_system_service = file_system_service
 
     def execute(self, data: LstmVaeData):
-        output_file_name = f"{data.__class__.__name__}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
+        output_file_name = data.__class__.__name__.replace("Data", "")
+        output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
 
         time_eval_parameters = TimeEvalParameters(
             name="lstm_vae",
@@ -39,6 +40,7 @@ class LstmVaeExecutor(AlgorithmExecutor):
             data_input=data.data_file,
             data_output=output_file_name,
         )
+
         t0 = time()
         self.time_eval_wrapper.execute(time_eval_parameters)
         t1 = time()
@@ -50,5 +52,4 @@ class LstmVaeExecutor(AlgorithmExecutor):
         algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
             self.algorithm_data_procesor.process(data, processed_data, executionTime)
         )
-        print(algorithm_evaluation_metrics)
-        self.repository.save(algorithm_evaluation_metrics)
+        self.repository.save(algorithm_evaluation_metrics, data.report_file)
