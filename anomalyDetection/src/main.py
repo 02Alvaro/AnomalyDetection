@@ -1,7 +1,7 @@
 from time import time
 
-import application.algorithms.autoencoder.AutoEncoderExecutor
-import application.algorithms.autoencoder.AutoEncoderTrainer
+import application.algorithms.dae.DaeExecutor
+import application.algorithms.dae.DaeTrainer
 from application.factories.FileAlgorithmFactory import FileAlgorithmFactory
 from application.services.AlgorithmManager import AlgorithmManager
 
