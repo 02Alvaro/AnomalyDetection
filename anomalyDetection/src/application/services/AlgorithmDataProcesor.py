@@ -44,7 +44,7 @@ class AlgorithmDataProcesor:
         algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
             AlgorithmEvaluationMetrics(
                 algorithm_name=algorithm_data.__class__.__name__.replace("Data", ""),
-                algorithm_parameters=specific_params,
+                algorithm_parameters=specific_params.__str__().replace(",", ";"),
                 dataset_name=algorithm_data.data_file,
                 num_examples=file_info_results["num_examples"],
                 num_dims=file_info_results["num_dims"],
