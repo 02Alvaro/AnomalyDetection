@@ -1,26 +1,33 @@
 import subprocess
 
-
 class DockerExecutor:
     @staticmethod
     def execute(docker_command):
         try:
-            result = subprocess.run(
+            with subprocess.Popen(
                 docker_command,
                 shell=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
-                check=True,
-            )
-            stdout_lines = result.stdout.splitlines()
+            ) as process:
 
-            for line in stdout_lines:
-                print(f"[Algorithm] {line}")
+                # Procesar stdout en tiempo real
+                for stdout_line in iter(process.stdout.readline, ""):
+                    print(f"[Algorithm] {stdout_line}", end="")
+
+                # Esperar a que el proceso termine y obtener el código de salida
+                process.wait()
+
+                # Procesar stderr después de que el proceso haya terminado
+                # Esto es solo si necesitas procesar los errores después
+                stderr_lines = process.stderr.read().splitlines()
+                for line in stderr_lines:
+                    print(f"[AlgorithmError] {line}")
+
+                if process.returncode != 0:
+                    raise subprocess.CalledProcessError(process.returncode, docker_command)
 
         except subprocess.CalledProcessError as e:
-            stderr_lines = e.stderr.splitlines()
-            for line in stderr_lines:
-                print(f"[AlgorithmError] {line}")
-
+            print(f"Failed to execute docker command, error code: {e.returncode}")
             raise RuntimeError("Failed to execute docker command") from e

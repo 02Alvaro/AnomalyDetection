@@ -1,5 +1,6 @@
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.FileSystemService import FileSystemService
+from application.services.PyodWrapper import PyodWrapper
 from application.services.TimeEvalWrapper import TimeEvalWrapper
 from domain.enums.PathKey import PathKey
 from domain.interfaces.EvaluationRepository import EvaluationRepository
@@ -49,4 +50,9 @@ DependencyContainer.add_service(
 DependencyContainer.add_service(
     AlgorithmDataProcesor,
     AlgorithmDataProcesor(DependencyContainer.get_service(FileSystemService)),
+)
+
+DependencyContainer.add_service(
+    PyodWrapper,
+    PyodWrapper(DependencyContainer.get_service(FileSystemService)),
 )

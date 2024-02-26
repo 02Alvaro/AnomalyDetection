@@ -26,3 +26,10 @@ class FileSystemService:
     def save_metricsTo(self, filename, metrics):
         file_path = self.get_path(PathKey.METRICS, filename)
         metrics.to_csv(file_path, index=False)
+
+    def save_resultsTo(self, filename, results):
+        file_path = self.get_path(PathKey.RESULTS, filename)
+        results.to_csv(file_path, index=False)
+
+    def get_results_path(self):
+        return self.get_path(PathKey.RESULTS, "")
