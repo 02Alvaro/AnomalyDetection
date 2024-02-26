@@ -1,4 +1,15 @@
 algorithms:
+  - name: cblof
+    reportFile: "cblof.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "cblof_model.pkl"
+        parameters:
+          alpha: 0.5
+          beta: 2
+    test:
+      - data_file: "dataset.csv"
+        model_input: "cblof_model.pkl"
   - name: dae
     reportFile: "dae.csv"
     train:

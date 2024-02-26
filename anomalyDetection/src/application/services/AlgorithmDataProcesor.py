@@ -16,13 +16,19 @@ class AlgorithmDataProcesor:
     ) -> AlgorithmEvaluationMetrics:
         try:
             target_variable = algorithm_data.target_variable
+            if target_variable is None:
+                target_variable = "is_anomaly"
         except AttributeError:
             target_variable = "is_anomaly"
 
         original_data = self.file_system_service.read_dataFrom(
             algorithm_data.data_file
         )[target_variable]
-        original_data = original_data[1:]
+
+        # If the original data has more examples than the prediction data, its the header so we remove it
+        if original_data.shape[0] > prediction_data.shape[0]:
+            original_data = original_data[1:]
+
         metrics = performance_metrics(
             original_data, prediction_data.round().astype(int)
         )

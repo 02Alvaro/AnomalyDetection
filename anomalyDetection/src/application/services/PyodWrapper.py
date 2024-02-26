@@ -3,30 +3,34 @@ from dataclasses import dataclass, field
 
 import pandas as pd
 import pyod
+from application.services.FileSystemService import FileSystemService
 from domain.services.metrics import performance_metrics
-from pyod import PyODParameters
+from joblib import dump, load
 from pyod.models.base import BaseDetector
 
 
 @dataclass
-class PyODParameters:
+class PyodParameters:
     algorithm_name: str
     contamination: float
     params: dict = field(default_factory=dict)
 
 
-class PyODEWrapper:
-    def __init__(self, data_path: str, results_path: str):
-        self.data_path = data_path
-        self.results_path = results_path
+class PyodWrapper:
 
-    def _get_algorithm_instance(self, params: PyODParameters) -> BaseDetector:
+    def __init__(
+        self,
+        file_system_service: FileSystemService,
+    ):
+        self.file_system_service = file_system_service
+
+    def _get_algorithm_instance(self, params: PyodParameters) -> BaseDetector:
         # Aquí importamos dinámicamente el algoritmo basado en params.algorithm_name
         # y lo instanciamos con los parámetros proporcionados.
         algorithm_class = getattr(pyod.models, params.algorithm_name)
         return algorithm_class(**params.params)
 
-    def execute(self, params: PyODParameters, x_train, x_test):
+    def execute(self, params: PyodParameters, x_train, x_test):
         # Crear una instancia del algoritmo
         clf = self._get_algorithm_instance(params)
 
@@ -52,6 +56,11 @@ class PyODEWrapper:
 
         # Calcular métricas de rendimiento
         metrics = performance_metrics(y_true, y_test_pred)
-        print(metrics)
 
         return metrics
+
+    def saveModel(self, model, filename):
+        dump(model, os.path.join(self.file_system_service.get_results_path(), filename))
+
+    def loadModel(self, filename):
+        return load(os.path.join(self.file_system_service.get_results_path(), filename))
