@@ -1,10 +1,7 @@
 import sys
 from time import time
 
-import application.algorithms.cblof.CblofExecutor
-import application.algorithms.cblof.CblofTrainer
-import application.algorithms.dae.DaeExecutor
-import application.algorithms.dae.DaeTrainer
+import application.algorithms
 from application.factories.FileAlgorithmFactory import FileAlgorithmFactory
 from application.services.AlgorithmManager import AlgorithmManager
 
