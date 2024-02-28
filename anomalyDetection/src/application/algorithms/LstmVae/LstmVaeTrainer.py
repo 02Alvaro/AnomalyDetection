@@ -1,24 +1,21 @@
-import os
 from dataclasses import asdict, fields
 from random import randint
 
-import pandas as pd
 from application.algorithms.lstmVae.LstmVaeData import LstmVaeData
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
 from domain.interfaces.AlgorithmData import AlgorithmData
 from domain.interfaces.AlgorithmTrainer import AlgorithmTrainer
+from domain.interfaces.TrainRepository import TrainRepository
 from inject import Inject
 
 
 @AlgorithmManager.trainer_for(LstmVaeData)
 @Inject
 class LstmVaeTrainer(AlgorithmTrainer):
-    def __init__(
-        self,
-        time_eval_wrapper: TimeEvalWrapper,
-    ):
+    def __init__(self, time_eval_wrapper: TimeEvalWrapper, repository: TrainRepository):
         self.time_eval_wrapper = time_eval_wrapper
+        self.repository = repository
 
     def train(self, data: LstmVaeData):
         param_dict = asdict(data)
@@ -40,3 +37,5 @@ class LstmVaeTrainer(AlgorithmTrainer):
         )
 
         self.time_eval_wrapper.execute(time_eval_parameters)
+
+        self.repository.save(data)

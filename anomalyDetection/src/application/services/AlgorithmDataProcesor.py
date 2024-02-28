@@ -39,20 +39,10 @@ class AlgorithmDataProcesor:
         file_data = self.file_system_service.read_dataFrom(algorithm_data.data_file)
         file_info_results = file_info(file_data)
 
-        param_dict = asdict(algorithm_data)
-
-        base_class_fields = {field.name for field in fields(AlgorithmData)}
-
-        specific_params = {
-            key: value
-            for key, value in param_dict.items()
-            if key not in base_class_fields
-        }
-
         algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
             AlgorithmEvaluationMetrics(
                 algorithm_name=algorithm_data.__class__.__name__.replace("Data", ""),
-                algorithm_parameters=specific_params.__str__().replace(",", ";"),
+                model=algorithm_data.model_name,
                 dataset_name=algorithm_data.data_file,
                 num_examples=file_info_results["num_examples"],
                 num_dims=file_info_results["num_dims"],
