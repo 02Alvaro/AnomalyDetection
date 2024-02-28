@@ -11,4 +11,4 @@ class CofData(AlgorithmData):
     n_neighbors: int = 20
     method: str = "fast"
     random_state: int = 42
-    target_variable: str = "final_result"
+    target_variable: str = "is_anomaly"

@@ -17,5 +17,5 @@ class KnnData(AlgorithmData):
     p: int = 2
     metric_params = None
     n_jobs: int = 1
-    target_variable: str = "final_result"
+    target_variable: str = "is_anomaly"
     random_state: int = 42

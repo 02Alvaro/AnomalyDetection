@@ -21,6 +21,8 @@ class AlgorithmDataProcesor:
         except AttributeError:
             target_variable = "is_anomaly"
 
+        print(f"Target variable: {target_variable}")
+        print(f"Algorithm data: {algorithm_data}")
         original_data = self.file_system_service.read_dataFrom(
             algorithm_data.data_file
         )[target_variable]

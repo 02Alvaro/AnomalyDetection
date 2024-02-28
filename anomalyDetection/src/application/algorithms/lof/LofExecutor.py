@@ -1,52 +1,53 @@
 import os
+from random import randint
+from time import time
 
 import pandas as pd
 from application.algorithms.lof.LofData import LofData
-from application.services.AlgorithmManager import AlgorithmManager
-from application.utils.datapaths import DATA_PATH_DOCKER
-from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
-from domain.services.metrics import performance_metrics
+from application.services.AlgorithmManager import AlgorithmManager
+from application.services.FileSystemService import FileSystemService
+from application.services.PyodWrapper import PyodWrapper
+from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
+from domain.interfaces.EvaluationRepository import EvaluationRepository
+from domain.models.AlgorithmEvaluationMetrics import AlgorithmEvaluationMetrics
 from inject import Inject
-from pyod.models.lof import LOF
-from pyod.utils.utility import standardizer
-from sklearn.model_selection import train_test_split
+from pyod.models.lof import LOF as LOF
 
 
 @AlgorithmManager.executor_for(LofData)
+@Inject
 class LofExecutor(AlgorithmExecutor):
-    @Inject
-    def __init__(self, data_procesor: AlgorithmDataProcesor):
-        self.data_procesor = data_procesor
+    def __init__(
+        self,
+        algorithm_data_procesor: AlgorithmDataProcesor,
+        pyod_service: PyodWrapper,
+        repository: EvaluationRepository,
+        file_system_service: FileSystemService,
+    ):
+        self.pyod_service = pyod_service
+        self.algorithm_data_procesor = algorithm_data_procesor
+        self.repository = repository
+        self.file_system_service = file_system_service
 
-    def execute(self, command: LofData):
-        self.executeAlgorithm(command)
+    def execute(self, data: LofData):
+        output_file_name = data.__class__.__name__.replace("Data", "")
+        output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
 
-    def executeAlgorithm(self, command: LofData):
-        df = pd.read_csv(os.path.join(DATA_PATH_DOCKER, command.data_file))
-        y = df[command.target_variable]
-        X = df.drop(command.target_variable, axis=1)
-        anomaly_fraction: float = (y == 1).sum() / len(y)
+        fileData = self.file_system_service.read_dataFrom(data.data_file)
 
-        x_train, x_test, _, y_test = train_test_split(
-            X, y, test_size=0.3, random_state=command.random_state
+        algorithm_instance: LOF = self.pyod_service.loadModel(data.model_name)
+
+        t0 = time()
+        predictedData = algorithm_instance.predict(fileData)
+        t1 = time()
+
+        executionTime = round(t1 - t0, ndigits=4)
+
+        processed_data = pd.DataFrame(predictedData)
+        self.file_system_service.save_resultsTo(output_file_name, processed_data)
+
+        algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
+            self.algorithm_data_procesor.process(data, processed_data, executionTime)
         )
-        x_train_norm, x_test_norm = standardizer(x_train, x_test)
-
-        algorithm_instance = LOF(
-            n_neighbors=command.n_neighbors,
-            algorithm=command.algorithm,
-            leaf_size=command.leaf_size,
-            metric=command.metric,
-            p=command.p,
-            metric_params=command.metric_params,
-            contamination=command.contamination,
-            n_jobs=command.n_jobs,
-            novelty=command.novelty,
-        )
-
-        algorithm_instance.fit(x_train_norm)
-        y_test_pred = algorithm_instance.predict(x_test_norm)
-        print(y_test)
-        metrics = performance_metrics(y_test, y_test_pred)
-        print(metrics)
+        self.repository.save(algorithm_evaluation_metrics, data.report_file)

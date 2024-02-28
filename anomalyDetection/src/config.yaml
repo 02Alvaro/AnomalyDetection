@@ -1,23 +1,12 @@
 algorithms:
-  - name: cblof
-    reportFile: "cblof.csv"
+  - name: lstmvae
+    reportFile: "allReports.csv"
     train:
       - data_file: "dataset.csv"
-        model_output: "cblof_model.pkl"
+        model_output: "lstmvae_model.pkl"
         parameters:
-          alpha: 0.5
-          beta: 2
+          learning_rate: 0.002
+          epochs: 5
     test:
       - data_file: "dataset.csv"
-        model_input: "cblof_model.pkl"
-  - name: dae
-    reportFile: "dae.csv"
-    train:
-      - data_file: "dataset.csv"
-        model_output: "dae_model.pkl"
-        parameters:
-          epochs: 12
-          latent_size: 31
-    test:
-      - data_file: "dataset.csv"
-        model_input: "dae_model.pkl"
+        model_input: "lstmvae_model.pkl"

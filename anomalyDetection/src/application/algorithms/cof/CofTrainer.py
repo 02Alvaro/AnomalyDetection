@@ -1,15 +1,15 @@
-from application.algorithms.lof.LofData import LofData
+from application.algorithms.cof.CofData import CofData
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
 from application.services.PyodWrapper import PyodWrapper
 from domain.interfaces.AlgorithmTrainer import AlgorithmTrainer
 from inject import Inject
-from pyod.models.lof import LOF as LOF
+from pyod.models.cof import COF
 
 
-@AlgorithmManager.trainer_for(LofData)
+@AlgorithmManager.trainer_for(CofData)
 @Inject
-class LofTrainer(AlgorithmTrainer):
+class CofTrainer(AlgorithmTrainer):
     def __init__(
         self,
         pyod_service: PyodWrapper,
@@ -18,19 +18,13 @@ class LofTrainer(AlgorithmTrainer):
         self.pyod_service = pyod_service
         self.file_system_service = file_system_service
 
-    def train(self, data: LofData):
+    def train(self, data: CofData):
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 
-        algorithm_instance = LOF(
-            n_neighbors=data.n_neighbors,
-            algorithm=data.algorithm,
-            leaf_size=data.leaf_size,
-            metric=data.metric,
-            p=data.p,
-            metric_params=data.metric_params,
+        algorithm_instance = COF(
             contamination=data.contamination,
-            n_jobs=data.n_jobs,
-            novelty=data.novelty,
+            n_neighbors=data.n_neighbors,
+            method=data.method,
         )
 
         algorithm_instance.fit(fileData)
