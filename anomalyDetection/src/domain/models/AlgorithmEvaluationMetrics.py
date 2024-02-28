@@ -4,7 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class AlgorithmEvaluationMetrics:
     algorithm_name: str
-    algorithm_parameters: dict
+    model: str
     dataset_name: str
     num_examples: int
     num_dims: int
@@ -14,7 +14,7 @@ class AlgorithmEvaluationMetrics:
     def __init__(
         self,
         algorithm_name,
-        algorithm_parameters,
+        model,
         dataset_name,
         num_examples,
         num_dims,
@@ -22,7 +22,7 @@ class AlgorithmEvaluationMetrics:
         metrics,
     ):
         self.algorithm_name = algorithm_name
-        self.algorithm_parameters = algorithm_parameters
+        self.model = model
         self.dataset_name = dataset_name
         self.num_examples = num_examples
         self.num_dims = num_dims
@@ -31,8 +31,8 @@ class AlgorithmEvaluationMetrics:
 
     def __str__(self):
         return (
-            f"{self.algorithm_name},{self.dataset_name},"
+            f"{self.algorithm_name},{self.model},{self.dataset_name},"
             f"{self.num_examples},{self.num_dims},{self.anomaly_percentage},"
             f"{self.metrics['time']},{self.metrics['se']},{self.metrics['sp']},"
-            f"{self.metrics['p']},{self.metrics['roc']},{self.algorithm_parameters}"
+            f"{self.metrics['p']},{self.metrics['roc']}"
         )

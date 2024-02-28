@@ -11,7 +11,7 @@ class EvaluationRepositoryInFile(EvaluationRepository):
     def save(
         self, metrics: AlgorithmEvaluationMetrics, filename: str = "all_results.csv"
     ):
-        header = "Algorithm,dataset,samples,dims,anomaly_rate,time,se,sp,p,roc,params\n"
+        header = "Algorithm,model,dataset,samples,dims,anomaly_rate,time,se,sp,p,roc\n"
         file_path = os.path.join(self.file_path, filename)
 
         if not os.path.exists(file_path):

@@ -4,9 +4,11 @@ from application.services.PyodWrapper import PyodWrapper
 from application.services.TimeEvalWrapper import TimeEvalWrapper
 from domain.enums.PathKey import PathKey
 from domain.interfaces.EvaluationRepository import EvaluationRepository
+from domain.interfaces.TrainRepository import TrainRepository
 from infrastructure.repository.EvaluationRepositoryInFile import (
     EvaluationRepositoryInFile,
 )
+from infrastructure.repository.TrainRepositoryInFile import TrainRepositoryInFile
 
 
 class DependencyContainer:
@@ -23,6 +25,7 @@ class DependencyContainer:
 
 # Cualquier elemento que utilice docker, necesita el path de host para hacer un mapeo con volumenes
 HOST = "E:/AnomalyDetection/anomalyDetection"
+
 DOCKER = "/app"
 
 paths = {
@@ -35,6 +38,12 @@ DependencyContainer.add_service(
     EvaluationRepository,
     EvaluationRepositoryInFile(DOCKER + "/" + paths[PathKey.METRICS]),
 )
+
+DependencyContainer.add_service(
+    TrainRepository,
+    TrainRepositoryInFile(DOCKER + "/" + paths[PathKey.RESULTS]),
+)
+
 
 DependencyContainer.add_service(
     TimeEvalWrapper,
