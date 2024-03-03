@@ -6,7 +6,7 @@ from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 
 @dataclass
 @AlgorithmFactory.Configurator_for("lof")
-class LofConfigurator(AlgorithmConfigurator):
+class LofConfiguration(AlgorithmConfigurator):
     n_neighbors: int = 20
     algorithm: str = "auto"
     leaf_size: int = 30

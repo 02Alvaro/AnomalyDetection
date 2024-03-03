@@ -3,7 +3,7 @@ from random import randint
 from time import time
 
 import pandas as pd
-from application.algorithms.lof.LofConfigurator import LofConfigurator
+from application.algorithms.lof.LofConfiguration import LofConfiguration
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
@@ -15,7 +15,7 @@ from inject import Inject
 from pyod.models.lof import LOF as LOF
 
 
-@AlgorithmManager.evaluator_for(LofConfigurator)
+@AlgorithmManager.evaluator_for(LofConfiguration)
 @Inject
 class Lof(AlgorithmEvaluate):
     def __init__(
@@ -30,7 +30,7 @@ class Lof(AlgorithmEvaluate):
         self.repository = repository
         self.file_system_service = file_system_service
 
-    def evaluate(self, data: LofConfigurator):
+    def evaluate(self, data: LofConfiguration):
         output_file_name = data.__class__.__name__.replace("Configuration", "")
         output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
 
