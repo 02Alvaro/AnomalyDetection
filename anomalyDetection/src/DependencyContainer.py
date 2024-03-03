@@ -5,9 +5,7 @@ from application.services.TimeEvalWrapper import TimeEvalWrapper
 from domain.enums.PathKey import PathKey
 from domain.interfaces.ReportInterface import ReportInterface
 from domain.interfaces.TrainRepository import TrainRepository
-from infrastructure.repository.EvaluationRepositoryInFile import (
-    EvaluationRepositoryInFile,
-)
+from infrastructure.repository.ReportInFile import ReportInFile
 from infrastructure.repository.TrainRepositoryInFile import TrainRepositoryInFile
 
 
@@ -36,7 +34,7 @@ paths = {
 
 DependencyContainer.add_service(
     ReportInterface,
-    EvaluationRepositoryInFile(DOCKER + "/" + paths[PathKey.METRICS]),
+    ReportInFile(DOCKER + "/" + paths[PathKey.METRICS]),
 )
 
 DependencyContainer.add_service(
