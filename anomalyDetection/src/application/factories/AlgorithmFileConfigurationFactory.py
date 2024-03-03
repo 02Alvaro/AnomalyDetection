@@ -1,18 +1,22 @@
 import yaml
-from application.factories.AlgorithmDataFactory import AlgorithmDataFactory
+from application.factories.AlgorithmFactory import AlgorithmFactory
 
 
 class ConfigLoader:
-    @staticmethod
-    def load_config(config_path="/app/src/config.yaml"):
-        with open(config_path, "r") as file:
+    def __init__(self, config_path):
+        self.config_path = config_path
+
+    def load_config(self):
+        with open(self.config_path, "r") as file:
             return yaml.safe_load(file)
 
 
-class FileAlgorithmFactory:
-    @staticmethod
-    def create_from_config():
-        config = ConfigLoader.load_config()
+class AlgorithmFileConfigurationFactory:
+    def __init__(self, config: ConfigLoader):
+        self.configLoader = config
+
+    def create_from_config(self):
+        config = self.configLoader.load_config()
         actions = {"trains": [], "tests": [], "train_test": []}
 
         for algorithm_config in config.get("algorithms", []):
@@ -23,7 +27,7 @@ class FileAlgorithmFactory:
                 data_file = train["data_file"]
                 model_output = train.get("model_output", "")
                 parameters = train["parameters"]
-                train_executer = AlgorithmDataFactory.create(
+                train_executer = AlgorithmFactory.create(
                     algorithm_name,
                     data_file,
                     model_name=model_output,
@@ -31,25 +35,34 @@ class FileAlgorithmFactory:
                     **parameters
                 )
                 actions["trains"].append(train_executer)
-            """
+
             for train_test in algorithm_config.get("train_test", []):
                 data_file_train = train_test["data_file_train"]
                 data_file_test = train_test["data_file_test"]
-                model_output = train_test.get("model_output", str.EMPTY)
+                model_output = train_test.get("model_output")
                 parameters = train_test["parameters"]
-                train_test_executer = AlgorithmDataFactory.create(
+
+                train_executer = AlgorithmFactory.create(
                     algorithm_name,
-                    data_file,
+                    data_file_train,
                     model_name=model_output,
                     report_file=reportFile,
                     **parameters
                 )
-                actions["train_test"].append(train_test_executer)
-            """
+                actions["trains"].append(train_executer)
+
+                test_executer = AlgorithmFactory.create(
+                    algorithm_name,
+                    data_file_test,
+                    model_name=model_output,
+                    report_file=reportFile,
+                )
+                actions["tests"].append(test_executer)
+
             for test in algorithm_config.get("test", []):
                 data_file = test["data_file"]
                 model_input = test.get("model_input", "")
-                test_executer = AlgorithmDataFactory.create(
+                test_executer = AlgorithmFactory.create(
                     algorithm_name,
                     data_file,
                     model_name=model_input,

@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 
-from application.factories.AlgorithmDataFactory import AlgorithmDataFactory
-from domain.interfaces.AlgorithmData import AlgorithmData
+from application.factories.AlgorithmFactory import AlgorithmFactory
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 
 
 @dataclass
-@AlgorithmDataFactory.dataClass_for("lstmvae")
-class LstmVaeData(AlgorithmData):
+@AlgorithmFactory.Configurator_for("lstmvae")
+class LstmVaeConfiguration(AlgorithmConfigurator):
     learning_rate: float = 0.001
     epochs: int = 10
     batch_size: int = 32

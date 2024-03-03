@@ -1,12 +1,13 @@
 import argparse
 import json
+import shutil
 import sys
+from dataclasses import asdict, dataclass
+
 import numpy as np
 import pandas as pd
-from tensorflow import keras
 from model import AutoEn
-from dataclasses import dataclass, asdict
-import shutil
+from tensorflow import keras
 
 
 @dataclass
@@ -23,10 +24,15 @@ class CustomParameters:
 
 class AlgorithmArgs(argparse.Namespace):
     @staticmethod
-    def from_sys_args() -> 'AlgorithmArgs':
+    def from_sys_args() -> "AlgorithmArgs":
         args: dict = json.loads(sys.argv[1])
         custom_parameter_keys = dir(CustomParameters())
-        filtered_parameters = dict(filter(lambda x: x[0] in custom_parameter_keys, args.get("customParameters", {}).items()))
+        filtered_parameters = dict(
+            filter(
+                lambda x: x[0] in custom_parameter_keys,
+                args.get("customParameters", {}).items(),
+            )
+        )
         args["customParameters"] = CustomParameters(**filtered_parameters)
         return AlgorithmArgs(**args)
 
@@ -40,7 +46,7 @@ def load_data(args):
 
 def train(args):
     xtr, ytr = load_data(args)
-    ii = (ytr == 0)
+    ii = ytr == 0
     not_anamoly_data = xtr[ii]
     params = asdict(args.customParameters)
     del params["random_state"]
@@ -51,22 +57,25 @@ def train(args):
 
 def pred(args):
     xte, _ = load_data(args)
-    shutil.unpack_archive(args.modelOutput+".zip", "m", "zip")
+    shutil.unpack_archive(args.modelOutput + ".zip", "m", "zip")
     model = keras.models.load_model("m")
     pred = model.predict(xte)
     pred = np.mean(np.abs(pred - xte), axis=1)
-    np.savetxt(args.dataOutput, pred, delimiter= ",")
+    np.savetxt(args.dataOutput, pred, delimiter=",")
 
 
 def set_random_state(config: AlgorithmArgs) -> None:
     seed = config.customParameters.random_state
-    import random, tensorflow
+    import random
+
+    import tensorflow
+
     random.seed(seed)
     np.random.seed(seed)
     tensorflow.random.set_seed(seed)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     args = AlgorithmArgs.from_sys_args()
     set_random_state(args)
 

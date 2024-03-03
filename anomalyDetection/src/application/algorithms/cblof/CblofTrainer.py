@@ -1,4 +1,4 @@
-from application.algorithms.cblof.CblofData import CblofData
+from application.algorithms.cblof.CblofConfiguration import CblofConfiguration
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
 from application.services.PyodWrapper import PyodWrapper
@@ -8,7 +8,7 @@ from inject import Inject
 from pyod.models.cblof import CBLOF
 
 
-@AlgorithmManager.trainer_for(CblofData)
+@AlgorithmManager.trainer_for(CblofConfiguration)
 @Inject
 class CblofTrainer(AlgorithmTrainer):
     def __init__(
@@ -21,7 +21,7 @@ class CblofTrainer(AlgorithmTrainer):
         self.file_system_service = file_system_service
         self.repository = repository
 
-    def train(self, data: CblofData):
+    def train(self, data: CblofConfiguration):
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 
         algorithm_instance = CBLOF(
@@ -32,7 +32,7 @@ class CblofTrainer(AlgorithmTrainer):
             beta=data.beta,
             use_weights=data.use_weights,
             check_estimator=data.check_estimator,
-            random_state=data.random_state,
+            random_state=data.seed,
         )
 
         algorithm_instance.fit(fileData)

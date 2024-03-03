@@ -2,8 +2,8 @@ from dataclasses import asdict, fields
 
 import pandas as pd
 from application.services.FileSystemService import FileSystemService
-from domain.interfaces.AlgorithmData import AlgorithmData
-from domain.models.AlgorithmEvaluationMetrics import AlgorithmEvaluationMetrics
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
+from domain.models.BasicReport import BasicReport
 from domain.services.metrics import file_info, performance_metrics
 
 
@@ -12,8 +12,11 @@ class AlgorithmDataProcesor:
         self.file_system_service = file_system_service
 
     def process(
-        self, algorithm_data: AlgorithmData, prediction_data: pd.DataFrame, time: int
-    ) -> AlgorithmEvaluationMetrics:
+        self,
+        algorithm_data: AlgorithmConfigurator,
+        prediction_data: pd.DataFrame,
+        time: int,
+    ) -> BasicReport:
         try:
             target_variable = algorithm_data.target_variable
             if target_variable is None:
@@ -39,16 +42,16 @@ class AlgorithmDataProcesor:
         file_data = self.file_system_service.read_dataFrom(algorithm_data.data_file)
         file_info_results = file_info(file_data)
 
-        algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
-            AlgorithmEvaluationMetrics(
-                algorithm_name=algorithm_data.__class__.__name__.replace("Data", ""),
-                model=algorithm_data.model_name,
-                dataset_name=algorithm_data.data_file,
-                num_examples=file_info_results["num_examples"],
-                num_dims=file_info_results["num_dims"],
-                anomaly_percentage=file_info_results["anomaly_percentage"],
-                metrics=metrics,
-            )
+        algorithm_evaluation_metrics: BasicReport = BasicReport(
+            algorithm_name=algorithm_data.__class__.__name__.replace(
+                "Configuration", ""
+            ),
+            model=algorithm_data.model_name,
+            dataset_name=algorithm_data.data_file,
+            num_examples=file_info_results["num_examples"],
+            num_dims=file_info_results["num_dims"],
+            anomaly_percentage=file_info_results["anomaly_percentage"],
+            metrics=metrics,
         )
 
         return algorithm_evaluation_metrics

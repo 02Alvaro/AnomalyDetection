@@ -3,7 +3,7 @@ from application.services.FileSystemService import FileSystemService
 from application.services.PyodWrapper import PyodWrapper
 from application.services.TimeEvalWrapper import TimeEvalWrapper
 from domain.enums.PathKey import PathKey
-from domain.interfaces.EvaluationRepository import EvaluationRepository
+from domain.interfaces.ReportInterface import ReportInterface
 from domain.interfaces.TrainRepository import TrainRepository
 from infrastructure.repository.EvaluationRepositoryInFile import (
     EvaluationRepositoryInFile,
@@ -35,7 +35,7 @@ paths = {
 }
 
 DependencyContainer.add_service(
-    EvaluationRepository,
+    ReportInterface,
     EvaluationRepositoryInFile(DOCKER + "/" + paths[PathKey.METRICS]),
 )
 

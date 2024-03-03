@@ -25,7 +25,12 @@ class PyodWrapper:
         self.file_system_service = file_system_service
 
     def saveModel(self, model, filename):
-        dump(model, os.path.join(self.file_system_service.get_results_path(), filename))
+        dump(
+            model,
+            os.path.join(self.file_system_service.get_results_path(), filename),
+            protocol=4,
+        )
 
     def loadModel(self, filename):
-        return load(os.path.join(self.file_system_service.get_results_path(), filename))
+        return load(
+            os.path.join(self.file_system_service.get_results_path(), filename))

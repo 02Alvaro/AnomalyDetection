@@ -1,26 +1,26 @@
 from dataclasses import asdict, fields
 from random import randint
 
-from application.algorithms.lstmVae.LstmVaeData import LstmVaeData
+from application.algorithms.lstmVae.LstmVaeConfiguration import LstmVaeConfiguration
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
-from domain.interfaces.AlgorithmData import AlgorithmData
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 from domain.interfaces.AlgorithmTrainer import AlgorithmTrainer
 from domain.interfaces.TrainRepository import TrainRepository
 from inject import Inject
 
 
-@AlgorithmManager.trainer_for(LstmVaeData)
+@AlgorithmManager.trainer_for(LstmVaeConfiguration)
 @Inject
 class LstmVaeTrainer(AlgorithmTrainer):
     def __init__(self, time_eval_wrapper: TimeEvalWrapper, repository: TrainRepository):
         self.time_eval_wrapper = time_eval_wrapper
         self.repository = repository
 
-    def train(self, data: LstmVaeData):
+    def train(self, data: LstmVaeConfiguration):
         param_dict = asdict(data)
 
-        base_class_fields = {field.name for field in fields(AlgorithmData)}
+        base_class_fields = {field.name for field in fields(AlgorithmConfigurator)}
 
         specific_params = {
             key: value

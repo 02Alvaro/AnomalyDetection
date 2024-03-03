@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 
-from application.factories.AlgorithmDataFactory import AlgorithmDataFactory
-from domain.interfaces.AlgorithmData import AlgorithmData
+from application.factories.AlgorithmFactory import AlgorithmFactory
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 
 
 @dataclass
-@AlgorithmDataFactory.dataClass_for("dae")
-class DaeData(AlgorithmData):
+@AlgorithmFactory.Configurator_for("dae")
+class DaeConfiguration(AlgorithmConfigurator):
     latent_size: int = 32
     epochs: int = 10
     learning_rate: float = 0.005
@@ -14,4 +14,3 @@ class DaeData(AlgorithmData):
     split: float = 0.8
     early_stopping_delta: float = 1e-2
     early_stopping_patience: int = 10
-    random_state: int = 42
