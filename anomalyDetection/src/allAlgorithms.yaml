@@ -54,17 +54,6 @@ algorithms:
     test:
       - data_file: "dataset.csv"
         model_input: "hbos_model.pkl"
-  - name: hbos
-    reportFile: "allReports.csv"
-    train:
-      - data_file: "dataset.csv"
-        model_output: "hbos_model.pkl"
-        parameters:
-          n_bins: 8
-          alpha: 0.2
-    test:
-      - data_file: "dataset.csv"
-        model_input: "hbos_model.pkl"
   - name: knn
     reportFile: "allReports.csv"
     train:

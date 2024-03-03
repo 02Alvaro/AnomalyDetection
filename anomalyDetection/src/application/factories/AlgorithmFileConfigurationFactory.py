@@ -17,7 +17,7 @@ class AlgorithmFileConfigurationFactory:
 
     def create_from_config(self):
         config = self.configLoader.load_config()
-        actions = {"trains": [], "tests": [], "train_test": []}
+        actions = {"trains": [], "tests": []}
 
         for algorithm_config in config.get("algorithms", []):
             algorithm_name = algorithm_config["name"]
@@ -36,16 +36,16 @@ class AlgorithmFileConfigurationFactory:
                 )
                 actions["trains"].append(train_executer)
 
-            for train_test in algorithm_config.get("train_test", []):
+            for train_test in algorithm_config.get("train-test", []):
                 data_file_train = train_test["data_file_train"]
                 data_file_test = train_test["data_file_test"]
-                model_output = train_test.get("model_output")
+                model = train_test["model"]
                 parameters = train_test["parameters"]
 
                 train_executer = AlgorithmFactory.create(
                     algorithm_name,
-                    data_file_train,
-                    model_name=model_output,
+                    data_file=data_file_train,
+                    model_name=model,
                     report_file=reportFile,
                     **parameters
                 )
@@ -53,8 +53,8 @@ class AlgorithmFileConfigurationFactory:
 
                 test_executer = AlgorithmFactory.create(
                     algorithm_name,
-                    data_file_test,
-                    model_name=model_output,
+                    data_file=data_file_test,
+                    model_name=model,
                     report_file=reportFile,
                 )
                 actions["tests"].append(test_executer)
@@ -69,5 +69,4 @@ class AlgorithmFileConfigurationFactory:
                     report_file=reportFile,
                 )
                 actions["tests"].append(test_executer)
-
         return actions
