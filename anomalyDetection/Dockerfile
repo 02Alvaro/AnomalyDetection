@@ -6,4 +6,4 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install -y docker.io
-CMD ["python","src/main.py"]
+CMD ["python","src/algorithmRun.py","-f","src/config.yaml"]

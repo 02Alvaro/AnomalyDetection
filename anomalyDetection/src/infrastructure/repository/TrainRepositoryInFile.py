@@ -2,7 +2,7 @@ import json
 import os
 from dataclasses import asdict
 
-from domain.interfaces.AlgorithmData import AlgorithmData
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 from domain.interfaces.TrainRepository import TrainRepository
 
 
@@ -10,7 +10,7 @@ class TrainRepositoryInFile(TrainRepository):
     def __init__(self, file_path: str):
         self.file_path = file_path
 
-    def save(self, algorithmData: AlgorithmData, filename="all_models.csv"):
+    def save(self, algorithmData: AlgorithmConfigurator, filename="all_models.csv"):
         header = "Algorithm,data_file,model_name,params\n"
         file_path = os.path.join(self.file_path, filename)
 
@@ -19,7 +19,7 @@ class TrainRepositoryInFile(TrainRepository):
                 f.write(header)
 
         data_dict = asdict(algorithmData)
-        name = algorithmData.__class__.__name__.replace("Data", "")
+        name = algorithmData.__class__.__name__.replace("Configuration", "")
 
         data_file = data_dict.pop("data_file")
         model_name = data_dict.pop("model_name")

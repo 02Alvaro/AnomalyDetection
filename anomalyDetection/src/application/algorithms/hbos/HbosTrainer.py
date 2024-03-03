@@ -1,4 +1,4 @@
-from application.algorithms.hbos.HbosData import HbosData
+from application.algorithms.hbos.HbosConfiguration import HbosConfiguration
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
 from application.services.PyodWrapper import PyodWrapper
@@ -8,7 +8,7 @@ from inject import Inject
 from pyod.models.hbos import HBOS
 
 
-@AlgorithmManager.trainer_for(HbosData)
+@AlgorithmManager.trainer_for(HbosConfiguration)
 @Inject
 class HbosTrainer(AlgorithmTrainer):
     def __init__(
@@ -21,7 +21,7 @@ class HbosTrainer(AlgorithmTrainer):
         self.file_system_service = file_system_service
         self.repository = repository
 
-    def train(self, data: HbosData):
+    def train(self, data: HbosConfiguration):
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 
         algorithm_instance = HBOS(

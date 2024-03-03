@@ -1,21 +1,21 @@
 from domain.exceptions.AlgorithmNotFound import AlgorithmDataNotFound
-from domain.interfaces.AlgorithmData import AlgorithmData
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 
 
-class AlgorithmDataFactory:
-    data_classes = {}
+class AlgorithmFactory:
+    algorithm_config = {}
 
     @staticmethod
-    def dataClass_for(name):
+    def Configurator_for(name):
         def decorator(cls):
-            AlgorithmDataFactory.data_classes[name] = cls
+            AlgorithmFactory.algorithm_config[name] = cls
             return cls
 
         return decorator
 
     @staticmethod
     def create(name, data_file, **kwargs):
-        data_class: AlgorithmData = AlgorithmDataFactory.data_classes.get(name)
+        data_class: AlgorithmConfigurator = AlgorithmFactory.algorithm_config.get(name)
         if not data_class:
             raise AlgorithmDataNotFound(name)
 

@@ -1,4 +1,4 @@
-from application.algorithms.lof.LofData import LofData
+from application.algorithms.lof.LofConfigurator import LofConfigurator
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
 from application.services.PyodWrapper import PyodWrapper
@@ -8,7 +8,7 @@ from inject import Inject
 from pyod.models.lof import LOF as LOF
 
 
-@AlgorithmManager.trainer_for(LofData)
+@AlgorithmManager.trainer_for(LofConfigurator)
 @Inject
 class LofTrainer(AlgorithmTrainer):
     def __init__(
@@ -21,7 +21,7 @@ class LofTrainer(AlgorithmTrainer):
         self.file_system_service = file_system_service
         self.repository = repository
 
-    def train(self, data: LofData):
+    def train(self, data: LofConfigurator):
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 
         algorithm_instance = LOF(

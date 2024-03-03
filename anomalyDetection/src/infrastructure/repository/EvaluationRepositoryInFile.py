@@ -1,16 +1,14 @@
 import os
 
-from domain.interfaces.EvaluationRepository import EvaluationRepository
-from domain.models.AlgorithmEvaluationMetrics import AlgorithmEvaluationMetrics
+from domain.interfaces.ReportInterface import ReportInterface
+from domain.models.BasicReport import BasicReport
 
 
-class EvaluationRepositoryInFile(EvaluationRepository):
+class EvaluationRepositoryInFile(ReportInterface):
     def __init__(self, file_path: str):
         self.file_path = file_path
 
-    def save(
-        self, metrics: AlgorithmEvaluationMetrics, filename: str = "all_results.csv"
-    ):
+    def save(self, metrics: BasicReport, filename: str = "all_results.csv"):
         header = "Algorithm,model,dataset,samples,dims,anomaly_rate,time,se,sp,p,roc\n"
         file_path = os.path.join(self.file_path, filename)
 

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class AlgorithmEvaluationMetrics:
+class BasicReport:
     algorithm_name: str
     model: str
     dataset_name: str

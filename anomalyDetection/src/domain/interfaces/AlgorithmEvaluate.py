@@ -3,7 +3,7 @@ from abc import abstractmethod
 from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 
 
-class TrainRepository:
+class AlgorithmEvaluate:
     @abstractmethod
-    def save(algorithmData: AlgorithmConfigurator):
+    def evaluate(self, algorithm_data: AlgorithmConfigurator):
         pass

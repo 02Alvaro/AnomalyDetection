@@ -1,4 +1,4 @@
-from application.algorithms.cof.CofData import CofData
+from application.algorithms.cof.CofConfigurator import CofConfigurator
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
 from application.services.PyodWrapper import PyodWrapper
@@ -8,7 +8,7 @@ from inject import Inject
 from pyod.models.cof import COF
 
 
-@AlgorithmManager.trainer_for(CofData)
+@AlgorithmManager.trainer_for(CofConfigurator)
 @Inject
 class CofTrainer(AlgorithmTrainer):
     def __init__(
@@ -21,7 +21,7 @@ class CofTrainer(AlgorithmTrainer):
         self.file_system_service = file_system_service
         self.repository = repository
 
-    def train(self, data: CofData):
+    def train(self, data: CofConfigurator):
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 
         algorithm_instance = COF(

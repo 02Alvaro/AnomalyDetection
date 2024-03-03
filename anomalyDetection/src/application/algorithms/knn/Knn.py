@@ -3,26 +3,26 @@ from random import randint
 from time import time
 
 import pandas as pd
-from application.algorithms.hbos.HbosData import HbosData
+from application.algorithms.knn.KnnConfiguration import KnnConfiguration
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
 from application.services.PyodWrapper import PyodWrapper
-from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
-from domain.interfaces.EvaluationRepository import EvaluationRepository
-from domain.models.AlgorithmEvaluationMetrics import AlgorithmEvaluationMetrics
+from domain.interfaces.AlgorithmEvaluate import AlgorithmEvaluate
+from domain.interfaces.ReportInterface import ReportInterface
+from domain.models.BasicReport import BasicReport
 from inject import Inject
-from pyod.models.hbos import HBOS
+from pyod.models.knn import KNN
 
 
-@AlgorithmManager.executor_for(HbosData)
+@AlgorithmManager.evaluator_for(KnnConfiguration)
 @Inject
-class HbosExecutor(AlgorithmExecutor):
+class Knn(AlgorithmEvaluate):
     def __init__(
         self,
         algorithm_data_procesor: AlgorithmDataProcesor,
         pyod_service: PyodWrapper,
-        repository: EvaluationRepository,
+        repository: ReportInterface,
         file_system_service: FileSystemService,
     ):
         self.pyod_service = pyod_service
@@ -30,13 +30,13 @@ class HbosExecutor(AlgorithmExecutor):
         self.repository = repository
         self.file_system_service = file_system_service
 
-    def execute(self, data: HbosData):
-        output_file_name = data.__class__.__name__.replace("Data", "")
+    def evaluate(self, data: KnnConfiguration):
+        output_file_name = data.__class__.__name__.replace("Configuration", "")
         output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
 
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 
-        algorithm_instance: HBOS = self.pyod_service.loadModel(data.model_name)
+        algorithm_instance: KNN = self.pyod_service.loadModel(data.model_name)
 
         t0 = time()
         predictedData = algorithm_instance.predict(fileData)
@@ -47,7 +47,7 @@ class HbosExecutor(AlgorithmExecutor):
         processed_data = pd.DataFrame(predictedData)
         self.file_system_service.save_resultsTo(output_file_name, processed_data)
 
-        algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
+        algorithm_evaluation_metrics: BasicReport = (
             self.algorithm_data_procesor.process(data, processed_data, executionTime)
         )
         self.repository.save(algorithm_evaluation_metrics, data.report_file)

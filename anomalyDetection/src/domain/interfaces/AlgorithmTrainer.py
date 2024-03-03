@@ -1,9 +1,9 @@
 from abc import abstractmethod
 
-from domain.interfaces.AlgorithmData import AlgorithmData
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 
 
 class AlgorithmTrainer:
     @abstractmethod
-    def train(self, algorithm_data: AlgorithmData):
+    def train(self, algorithm_data: AlgorithmConfigurator):
         pass

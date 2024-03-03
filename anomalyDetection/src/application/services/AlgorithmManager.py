@@ -1,7 +1,7 @@
 from domain.exceptions.ExecuterNotFound import ExecuterNotFound
 from domain.exceptions.TrainerNotFound import TrainerNotFound
-from domain.interfaces.AlgorithmData import AlgorithmData
-from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
+from domain.interfaces.AlgorithmEvaluate import AlgorithmEvaluate
 from domain.interfaces.AlgorithmTrainer import AlgorithmTrainer
 
 
@@ -10,7 +10,7 @@ class AlgorithmManager:
     trainers = {}
 
     @staticmethod
-    def executor_for(target_class: AlgorithmExecutor):
+    def evaluator_for(target_class: AlgorithmEvaluate):
         def decorator(cls):
             AlgorithmManager.executors[target_class] = cls
             return cls
@@ -26,23 +26,23 @@ class AlgorithmManager:
         return decorator
 
     @staticmethod
-    def execute(algorithm: AlgorithmData):
-        executor_class: AlgorithmExecutor = AlgorithmManager.executors.get(
+    def evaluate(algorithm: AlgorithmConfigurator):
+        executor_class: AlgorithmEvaluate = AlgorithmManager.executors.get(
             algorithm.__class__
         )
         if not executor_class:
             raise ExecuterNotFound(algorithm)
 
-        algorithm_executor = executor_class()
-        algorithm_executor.execute(algorithm)
+        algorithm_executor: AlgorithmEvaluate = executor_class()
+        algorithm_executor.evaluate(algorithm)
 
     @staticmethod
-    def train(algorithm: AlgorithmData):
+    def train(algorithm: AlgorithmConfigurator):
         trainer_class: AlgorithmTrainer = AlgorithmManager.trainers.get(
             algorithm.__class__
         )
         if not trainer_class:
             raise TrainerNotFound(algorithm)
 
-        algorithm_trainer = trainer_class()
+        algorithm_trainer: AlgorithmTrainer = trainer_class()
         algorithm_trainer.train(algorithm)

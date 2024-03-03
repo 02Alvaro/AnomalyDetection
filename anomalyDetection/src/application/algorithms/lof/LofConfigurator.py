@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 
-from application.factories.AlgorithmDataFactory import AlgorithmDataFactory
-from domain.interfaces.AlgorithmData import AlgorithmData
+from application.factories.AlgorithmFactory import AlgorithmFactory
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 
 
 @dataclass
-@AlgorithmDataFactory.dataClass_for("lof")
-class LofData(AlgorithmData):
+@AlgorithmFactory.Configurator_for("lof")
+class LofConfigurator(AlgorithmConfigurator):
     n_neighbors: int = 20
     algorithm: str = "auto"
     leaf_size: int = 30
@@ -16,5 +16,3 @@ class LofData(AlgorithmData):
     contamination: float = 0.1
     n_jobs: int = 1
     novelty: bool = True
-    target_variable: str = None
-    random_state: int = None

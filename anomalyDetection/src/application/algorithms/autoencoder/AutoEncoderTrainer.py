@@ -1,15 +1,17 @@
 from dataclasses import asdict, fields
 
-from application.algorithms.autoencoder.AutoEncoderData import AutoEncoderData
+from application.algorithms.autoencoder.AutoEncoderConfiguration import (
+    AutoEncoderConfiguration,
+)
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
-from domain.interfaces.AlgorithmData import AlgorithmData
+from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 from domain.interfaces.AlgorithmTrainer import AlgorithmTrainer
 from domain.interfaces.TrainRepository import TrainRepository
 from inject import Inject
 
 
-@AlgorithmManager.trainer_for(AutoEncoderData)
+@AlgorithmManager.trainer_for(AutoEncoderConfiguration)
 @Inject
 class AutoEncoderTrainer(AlgorithmTrainer):
     def __init__(
@@ -20,10 +22,10 @@ class AutoEncoderTrainer(AlgorithmTrainer):
         self.time_eval_wrapper = time_eval_wrapper
         self.repository = repository
 
-    def train(self, data: AutoEncoderData):
+    def train(self, data: AutoEncoderConfiguration):
         param_dict = asdict(data)
 
-        base_class_fields = {field.name for field in fields(AlgorithmData)}
+        base_class_fields = {field.name for field in fields(AlgorithmConfigurator)}
 
         specific_params = {
             key: value
@@ -41,7 +43,7 @@ class AutoEncoderTrainer(AlgorithmTrainer):
 
         self.time_eval_wrapper.execute(time_eval_parameters)
 
-        base_class_fields = {field.name for field in fields(AlgorithmData)}
+        base_class_fields = {field.name for field in fields(AlgorithmConfigurator)}
 
         specific_params = specific_params.__str__().replace(",", ";")
 

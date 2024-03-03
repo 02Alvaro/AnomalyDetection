@@ -1,26 +1,29 @@
 import os
+from dataclasses import asdict
 from random import randint
 from time import time
 
-from application.algorithms.lstmVae.LstmVaeData import LstmVaeData
+from application.algorithms.autoencoder.AutoEncoderConfiguration import (
+    AutoEncoderConfiguration,
+)
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
 from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
-from domain.interfaces.AlgorithmExecutor import AlgorithmExecutor
-from domain.interfaces.EvaluationRepository import EvaluationRepository
-from domain.models.AlgorithmEvaluationMetrics import AlgorithmEvaluationMetrics
+from domain.interfaces.AlgorithmEvaluate import AlgorithmEvaluate
+from domain.interfaces.ReportInterface import ReportInterface
+from domain.models.BasicReport import BasicReport
 from inject import Inject
 
 
-@AlgorithmManager.executor_for(LstmVaeData)
+@AlgorithmManager.evaluator_for(AutoEncoderConfiguration)
 @Inject
-class LstmVaeExecutor(AlgorithmExecutor):
+class AutoEncoder(AlgorithmEvaluate):
     def __init__(
         self,
         algorithm_data_procesor: AlgorithmDataProcesor,
         time_eval_wrapper: TimeEvalWrapper,
-        repository: EvaluationRepository,
+        repository: ReportInterface,
         file_system_service: FileSystemService,
     ):
         self.time_eval_wrapper = time_eval_wrapper
@@ -28,12 +31,12 @@ class LstmVaeExecutor(AlgorithmExecutor):
         self.repository = repository
         self.file_system_service = file_system_service
 
-    def execute(self, data: LstmVaeData):
-        output_file_name = data.__class__.__name__.replace("Data", "")
+    def evaluate(self, data: AutoEncoderConfiguration):
+        output_file_name = data.__class__.__name__.replace("Configuration", "")
         output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
 
         time_eval_parameters = TimeEvalParameters(
-            name="lstm_vae",
+            name="autoencoder",
             execution_type="execute",
             model_input=data.model_name,
             data_input=data.data_file,
@@ -48,7 +51,7 @@ class LstmVaeExecutor(AlgorithmExecutor):
 
         processed_data = self.file_system_service.read_resultsFrom(output_file_name)
 
-        algorithm_evaluation_metrics: AlgorithmEvaluationMetrics = (
+        algorithm_evaluation_metrics: BasicReport = (
             self.algorithm_data_procesor.process(data, processed_data, executionTime)
         )
         self.repository.save(algorithm_evaluation_metrics, data.report_file)
