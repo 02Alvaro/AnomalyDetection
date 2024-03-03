@@ -25,7 +25,7 @@ class TimeEvalWrapper:
             f"docker run --rm "
             f"-v {self.data_path}:/data:ro "
             f"-v {self.results_path}:/results:rw "
-            f"registry.gitlab.hpi.de/akita/i/{algorithm.name}:latest execute-algorithm "
+            f"ghcr.io/timeeval/{algorithm.name}:latest execute-algorithm "
             f'\'{{"executionType": "{algorithm.execution_type}", "dataInput": "/data/{algorithm.data_input}", '
             f'"dataOutput": "/results/{algorithm.data_output}", "modelInput": "/results/{algorithm.model_input}", '
             f'"modelOutput": "/results/{algorithm.model_output}", "customParameters": {json.dumps(algorithm.parameters)}}}\''
@@ -37,6 +37,6 @@ class TimeEvalWrapper:
 
     def create_image(self, algorithm_name):
         docker_command_str = (
-            f"docker build -t registry.gitlab.hpi.de/akita/i/{algorithm_name}:latest ."
+            f"docker build -t ghcr.io/timeeval/{algorithm_name}:latest ."
         )
         DockerExecutor().execute(docker_command_str)

@@ -43,6 +43,12 @@ algorithms:
     test:
       - data_file: "dataset.csv"
         model_input: "dae_model.pkl"
+    train-test:
+      - data_file_test: "dataset.csv"
+        data_file_train: "dataset.csv"
+        model: "dae_model.zip"
+        parameters:
+          latent_size: 10
   - name: hbos
     reportFile: "allReports.csv"
     train:
