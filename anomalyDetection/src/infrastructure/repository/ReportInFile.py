@@ -4,7 +4,7 @@ from domain.interfaces.ReportInterface import ReportInterface
 from domain.models.BasicReport import BasicReport
 
 
-class EvaluationRepositoryInFile(ReportInterface):
+class ReportInFile(ReportInterface):
     def __init__(self, file_path: str):
         self.file_path = file_path
 
