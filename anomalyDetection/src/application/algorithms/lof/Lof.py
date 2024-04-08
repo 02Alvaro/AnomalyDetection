@@ -36,6 +36,9 @@ class Lof(AlgorithmEvaluate):
 
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 
+        if "is_anomaly" in fileData.columns:
+            fileData = fileData.drop(columns=["is_anomaly"])
+
         algorithm_instance: LOF = self.pyod_service.loadModel(data.model_name)
 
         t0 = time()

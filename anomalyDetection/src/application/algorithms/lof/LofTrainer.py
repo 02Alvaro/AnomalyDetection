@@ -23,6 +23,10 @@ class LofTrainer(AlgorithmTrainer):
 
     def train(self, data: LofConfiguration):
         fileData = self.file_system_service.read_dataFrom(data.data_file)
+        # quitamos la columna is_anomaly si existe
+
+        if "is_anomaly" in fileData.columns:
+            fileData = fileData.drop(columns=["is_anomaly"])
 
         algorithm_instance = LOF(
             n_neighbors=data.n_neighbors,
