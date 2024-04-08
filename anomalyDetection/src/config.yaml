@@ -1,10 +1,30 @@
 algorithms:
-  - name: autoencoder
-    reportFile: "allReports.csv"
-    train-test:
-      - data_file_test: "dataset.csv"
-        data_file_train: "dataset.csv"
-        model: "au_model.zip"
-        parameters:
-          latent_size: 5
-          epochs: 2
+  - name: lof
+    reportFile: allReports.csv
+    train:
+      - data_file: fold_excluyendo_parte_1.csv
+        model_output: fold_1.zip
+        parameters: {}
+      - data_file: fold_excluyendo_parte_2.csv
+        model_output: fold_2.zip
+        parameters: {}
+      - data_file: fold_excluyendo_parte_3.csv
+        model_output: fold_3.zip
+        parameters: {}
+      - data_file: fold_excluyendo_parte_4.csv
+        model_output: fold_4.zip
+        parameters: {}
+      - data_file: fold_excluyendo_parte_5.csv
+        model_output: fold_5.zip
+        parameters: {}
+    test:
+      - data_file: all_students_click_data_part_1.csv
+        model_input: fold_1.zip
+      - data_file: all_students_click_data_part_2.csv
+        model_input: fold_2.zip
+      - data_file: all_students_click_data_part_3.csv
+        model_input: fold_3.zip
+      - data_file: all_students_click_data_part_4.csv
+        model_input: fold_4.zip
+      - data_file: all_students_click_data_part_5.csv
+        model_input: fold_5.zip
