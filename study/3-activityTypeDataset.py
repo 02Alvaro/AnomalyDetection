@@ -19,11 +19,32 @@ database_connection = create_engine(
 output_dir = "activityTypeDataset"
 file_name = "all_students_click_data_activity_type"
 
+
+def pivot_and_export(group, all_days, all_activity_types):
+    # Creando la tabla pivotante
+    pivot_df = pd.pivot_table(group, values='sum_click', index=['date', 'id_student', 'is_anomaly'], columns='activity_type', aggfunc='sum', fill_value=0)
+    
+    # Reindexando las columnas para incluir todos los tipos de actividad
+    pivot_df = pivot_df.reindex(columns=all_activity_types, fill_value=0)
+    
+    # Reestableciendo el índice para manipular las filas
+    pivot_df.reset_index(inplace=True)
+    
+    # Creando un MultiIndex con todas las combinaciones posibles de fecha, id_student y is_anomaly
+    multi_index = pd.MultiIndex.from_product([all_days, pivot_df['id_student'].unique(), pivot_df['is_anomaly'].unique()], names=['date', 'id_student', 'is_anomaly'])
+    
+    # Reindexando las filas para incluir todas las combinaciones de fechas y valores comunes de id_student y is_anomaly
+    pivot_df.set_index(['date', 'id_student', 'is_anomaly'], inplace=True)
+    pivot_df = pivot_df.reindex(multi_index, fill_value=0)
+    
+    # Restaurando el índice para devolver el DataFrame en un formato estándar
+    pivot_df.reset_index(inplace=True)
+    return pivot_df
+
 def extract_and_transform_data():
     """
     Extrae datos de la base de datos y los transforma preparándolos para la exportación.
     """
-    DAY_INCREMENT = 1  # Define el incremento de días para cada estudiante sucesivo
     code_module = "AAA"
     
     query = """
@@ -41,7 +62,9 @@ def extract_and_transform_data():
     GROUP BY SV.date, SV.id_student,StudentInfo.final_result,Vle.activity_type;
     """
     vle_list = pd.read_sql_query(query, database_connection, params=(code_module,))
+    vle_list = vle_list.astype({"date": "int32", "id_student": "int32", "sum_click": "int32"})
 
+    # Guardar todos los tipos de actividad y días únicos
     all_activity_types = vle_list["activity_type"].unique()
     all_activity_types.sort()
 
@@ -49,16 +72,17 @@ def extract_and_transform_data():
     max_day = vle_list["date"].max()
     all_days = range(min_day, max_day + 1)
 
-    all_data_frames = []
-    current_day_increment = 0
+    all_students = []
 
     for student_id, group in vle_list.groupby("id_student"):
-        df = pivot_and_export(group, student_id, all_days, all_activity_types)
-        all_data_frames.append(df)
-        current_day_increment += DAY_INCREMENT
 
-    final_df = pd.concat(all_data_frames)
+        df = pivot_and_export(group, all_days, all_activity_types)
+        all_students.append(df)
+
+
+    final_df = pd.concat(all_students)
     final_csv_path = os.path.join(output_dir, f"{file_name}.csv")
+
 
     columns_to_normalize = final_df.columns.difference(['id_student', 'timestamp', 'is_anomaly', 'date', 'activity_type'])
     scaler = MinMaxScaler()
@@ -82,6 +106,7 @@ def segment_data():
         start_index = i * segment_size
         end_index = min((i + 1) * segment_size, num_rows)
         segment_df = final_df.iloc[start_index:end_index]
+        segment_df['timestamp'] = range(1, len(segment_df) + 1)
 
         segment_file_name = f"{file_name}_part_{i+1}.csv"
         segment_file_path = os.path.join(output_dir, segment_file_name)
@@ -103,8 +128,6 @@ def generate_exclusion_folds():
                 dfs.append(df)
 
         df_concatenado = pd.concat(dfs, ignore_index=True)
-        df_concatenado.reset_index(drop=True, inplace=True)
-        df_concatenado.index += 1
         df_concatenado['timestamp'] = range(1, len(df_concatenado) + 1)
         archivo_salida = f"fold_excluyendo_parte_{i+1}.csv"
         archivo_salida_path = os.path.join(output_dir, archivo_salida)
@@ -112,18 +135,7 @@ def generate_exclusion_folds():
         df_concatenado.to_csv(archivo_salida_path, index=False)
         print(f"Archivo generado: {archivo_salida_path}")
 
-# Función auxiliar para pivotar y exportar datos
-def pivot_and_export(df, student_id, all_days, all_activity_types):
-    aggregated_df = df.groupby(["date", "activity_type"])["sum_click"].sum().reset_index()
-    pivot_df = aggregated_df.pivot(index="date", columns="activity_type", values="sum_click").fillna(0)
-    pivot_df = pivot_df.reindex(all_days, fill_value=0)
-    pivot_df = pivot_df.reindex(columns=all_activity_types, fill_value=0)
-    pivot_df.columns = [f"id_{col}" for col in pivot_df.columns]
-    pivot_df.reset_index(inplace=True)
-    pivot_df['id_student'] = student_id  # Añadir columna para el ID del estudiante
-    pivot_df['is_anomaly'] = df['is_anomaly'].iloc[0]  # Asume que is_anomaly es constante por estudiante
-    print(pivot_df)
-    return pivot_df
+
 
 if __name__ == "__main__":
     # Asegurarse de que el directorio de salida existe
@@ -143,4 +155,5 @@ if __name__ == "__main__":
     generate_exclusion_folds()
 
     print("Proceso completado.")
+
 
