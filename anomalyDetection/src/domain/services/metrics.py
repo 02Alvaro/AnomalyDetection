@@ -125,18 +125,15 @@ def performance_metrics(y_test_binary, y_test_prediction):
     return {"se": sensitivity, "sp": specificity, "p": precision, "roc": roc}
 
 
-# TODO take away randomize and train_test_split
-def file_info(csv_dataset, random_state=42, target_variable="is_anomaly"):
+
+def file_info(csv_dataset, target_variable="is_anomaly"):
     df = csv_dataset
     y = df[target_variable]
     X = df.drop(target_variable, axis=1)
     anomaly_fraction = (y == 1).sum() / len(y)
-    x_train, x_test, _, y_test = train_test_split(
-        X, y, random_state=random_state, test_size=0.3
-    )
-    x_train_norm, x_test_norm = standardizer(x_train, x_test)
+
     return {
-        "num_examples": x_train_norm.shape[0],
-        "num_dims": x_train_norm.shape[1],
+        "num_examples": X.shape[0],
+        "num_dims": X.shape[1],
         "anomaly_percentage": round(anomaly_fraction * 100, ndigits=4),
     }
