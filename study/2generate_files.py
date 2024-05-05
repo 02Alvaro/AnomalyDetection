@@ -1,8 +1,8 @@
 import os
 
-import numpy as np
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
+from sklearn.preprocessing import MinMaxScaler
 from sqlalchemy import create_engine
 
 # Configuración de la base de datos
@@ -43,10 +43,24 @@ def extract_and_transform_data():
         df = pivot_and_export(group, student_id, all_days, all_sites)
         all_data_frames.append(df)
     final_df = pd.concat(all_data_frames)
-    final_csv_path = os.path.join(output_dir, "all_students_click_data.csv")
+    columns_to_normalize = final_df.columns.difference(['id_student', 'date', 'is_anomaly'])
+    scaler = MinMaxScaler()
+    final_df[columns_to_normalize] = scaler.fit_transform(final_df[columns_to_normalize])
     final_df['timestamp'] = range(1, len(final_df) + 1)
+    final_csv_path = os.path.join(output_dir, "all_students_click_data.csv")
     final_df.to_csv(final_csv_path, index=False)
     return final_df
+
+def pivot_and_export(df, student_id, all_days, all_sites):
+    aggregated_df = df.groupby(["date", "id_site"])["sum_click"].sum().reset_index()
+    pivot_df = aggregated_df.pivot(index="date", columns="id_site", values="sum_click").fillna(0)
+    pivot_df = pivot_df.reindex(all_days, fill_value=0)
+    pivot_df = pivot_df.reindex(columns=all_sites, fill_value=0)
+    pivot_df.columns = [f"id_{col}" for col in pivot_df.columns]
+    pivot_df.reset_index(inplace=True)
+    pivot_df['id_student'] = student_id
+    pivot_df['is_anomaly'] = df['is_anomaly'].iloc[0]
+    return pivot_df
 
 def stratified_k_fold(final_df):
     skf = StratifiedKFold(n_splits=5)
@@ -62,17 +76,6 @@ def stratified_k_fold(final_df):
         test_df.to_csv(test_path, index=False)
         print(f"Train fold {fold_number} and Test fold {fold_number} generated.")
         fold_number += 1
-
-def pivot_and_export(df, student_id, all_days, all_sites):
-    aggregated_df = df.groupby(["date", "id_site"])["sum_click"].sum().reset_index()
-    pivot_df = aggregated_df.pivot(index="date", columns="id_site", values="sum_click").fillna(0)
-    pivot_df = pivot_df.reindex(all_days, fill_value=0)
-    pivot_df = pivot_df.reindex(columns=all_sites, fill_value=0)
-    pivot_df.columns = [f"id_{col}" for col in pivot_df.columns]
-    pivot_df.reset_index(inplace=True)
-    pivot_df['id_student'] = student_id
-    pivot_df['is_anomaly'] = df['is_anomaly'].iloc[0]
-    return pivot_df
 
 if __name__ == "__main__":
     if not os.path.exists(output_dir):
