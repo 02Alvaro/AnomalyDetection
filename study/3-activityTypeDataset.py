@@ -68,18 +68,33 @@ def extract_and_transform_data():
 
 def stratified_k_fold(final_df):
     skf = StratifiedKFold(n_splits=5)
-    X = final_df.drop(['is_anomaly'], axis=1)
+    # Elimina 'id_student' del DataFrame antes de procedere
+    final_df = final_df.drop(['id_student','date'], axis=1)
+    
+    # Reordena las columnas poniendo 'timestamp' primero y 'is_anomaly' al final
+    columns = ['timestamp'] + [col for col in final_df.columns if col not in ['timestamp', 'is_anomaly']] + ['is_anomaly']
+    final_df = final_df[columns]
+    
+    # Define X e y con las nuevas columnas excluyendo 'is_anomaly'
+    X = final_df.drop('is_anomaly', axis=1)
     y = final_df['is_anomaly']
+    
     fold_number = 1
     for train_index, test_index in skf.split(X, y):
         train_df = final_df.iloc[train_index]
         test_df = final_df.iloc[test_index]
+        
+        # Rutas para guardar los archivos CSV
         train_path = os.path.join(output_dir, f"train_fold_{fold_number}.csv")
         test_path = os.path.join(output_dir, f"test_fold_{fold_number}.csv")
+        
+        # Guarda los DataFrames en archivos CSV
         train_df.to_csv(train_path, index=False)
         test_df.to_csv(test_path, index=False)
+        
         print(f"Train fold {fold_number} and Test fold {fold_number} generated.")
         fold_number += 1
+
 
 if __name__ == "__main__":
     if not os.path.exists(output_dir):
