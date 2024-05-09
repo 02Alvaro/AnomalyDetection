@@ -8,7 +8,7 @@ from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 @AlgorithmFactory.Configurator_for("autoencoder")
 class AutoEncoderConfiguration(AlgorithmConfigurator):
     latent_size: int = 32
-    epochs: int = 10
+    epochs: int = 100
     learning_rate: float = 0.005
     early_stopping_delta: float = 1e-2
     early_stopping_patience: int = 10
