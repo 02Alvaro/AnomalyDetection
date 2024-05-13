@@ -1,12 +1,8 @@
 import os
 from dataclasses import dataclass, field
 
-import pandas as pd
-import pyod
 from application.services.FileSystemService import FileSystemService
-from domain.services.metrics import performance_metrics
 from joblib import dump, load
-from pyod.models.base import BaseDetector
 
 
 @dataclass

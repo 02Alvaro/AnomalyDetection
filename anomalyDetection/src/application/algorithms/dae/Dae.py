@@ -6,7 +6,8 @@ from application.algorithms.dae.DaeConfiguration import DaeConfiguration
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
-from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
+from application.services.TimeEvalWrapper import (TimeEvalParameters,
+                                                  TimeEvalWrapper)
 from domain.interfaces.AlgorithmEvaluate import AlgorithmEvaluate
 from domain.interfaces.ReportInterface import ReportInterface
 from domain.models.BasicReport import BasicReport

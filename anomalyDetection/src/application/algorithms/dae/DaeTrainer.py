@@ -2,7 +2,8 @@ from dataclasses import asdict, fields
 
 from application.algorithms.dae.DaeConfiguration import DaeConfiguration
 from application.services.AlgorithmManager import AlgorithmManager
-from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
+from application.services.TimeEvalWrapper import (TimeEvalParameters,
+                                                  TimeEvalWrapper)
 from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 from domain.interfaces.AlgorithmTrainer import AlgorithmTrainer
 from domain.interfaces.TrainRepository import TrainRepository
@@ -30,6 +31,8 @@ class DaeTrainer(AlgorithmTrainer):
             for key, value in param_dict.items()
             if key not in base_class_fields
         }
+
+        specific_params["random_state"] = data.seed
 
         time_eval_parameters = TimeEvalParameters(
             name="dae",
