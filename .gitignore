@@ -6,3 +6,5 @@ __pycache__
 *.pk2
 *.pkl
 *.zip
+*.pdf
+*.omv

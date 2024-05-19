@@ -1,30 +1,50 @@
 algorithms:
+  - name: cblof
+    reportFile: allReports.csv
+    train:
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_output: cblof_model_seed_114_fold_1.pkl
+        parameters:
+          seed: 114
+          n_clusters: 100
+    test:
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_input: cblof_model_seed_114_fold_1.pkl
+      - data_file: activity_type_clicks/test_fold_1.csv
+        model_input: cblof_model_seed_114_fold_1.pkl
+  - name: hbos
+    reportFile: allReports.csv
+    train:
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_output: hbos_model_seed_114_fold_1.pkl
+        parameters:
+          seed: 114
+    test:
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_input: hbos_model_seed_114_fold_1.pkl
+      - data_file: activity_type_clicks/test_fold_1.csv
+        model_input: hbos_model_seed_114_fold_1.pkl
+  - name: knn
+    reportFile: allReports.csv
+    train:
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_output: knn_model_seed_114_fold_1.pkl
+        parameters:
+          seed: 114
+    test:
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_input: knn_model_seed_114_fold_1.pkl
+      - data_file: activity_type_clicks/test_fold_1.csv
+        model_input: knn_model_seed_114_fold_1.pkl
   - name: lof
     reportFile: allReports.csv
     train:
-      - data_file: fold_excluyendo_parte_1.csv
-        model_output: fold_1.zip
-        parameters: {}
-      - data_file: fold_excluyendo_parte_2.csv
-        model_output: fold_2.zip
-        parameters: {}
-      - data_file: fold_excluyendo_parte_3.csv
-        model_output: fold_3.zip
-        parameters: {}
-      - data_file: fold_excluyendo_parte_4.csv
-        model_output: fold_4.zip
-        parameters: {}
-      - data_file: fold_excluyendo_parte_5.csv
-        model_output: fold_5.zip
-        parameters: {}
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_output: lof_model_seed_114_fold_1.pkl
+        parameters:
+          seed: 114
     test:
-      - data_file: all_students_click_data_part_1.csv
-        model_input: fold_1.zip
-      - data_file: all_students_click_data_part_2.csv
-        model_input: fold_2.zip
-      - data_file: all_students_click_data_part_3.csv
-        model_input: fold_3.zip
-      - data_file: all_students_click_data_part_4.csv
-        model_input: fold_4.zip
-      - data_file: all_students_click_data_part_5.csv
-        model_input: fold_5.zip
+      - data_file: activity_type_clicks/train_fold_1.csv
+        model_input: lof_model_seed_114_fold_1.pkl
+      - data_file: activity_type_clicks/test_fold_1.csv
+        model_input: lof_model_seed_114_fold_1.pkl

@@ -1,10 +1,10 @@
 import yaml
 
 
-def generate_config(num_folds=5, num_seeds=5):
-    algorithms = ["dae", "autoencoder", "lstmvae"]
-    folders = ["unique_sites_clicks", "activity_type_clicks"]
-    seeds = [42, 123, 456, 789, 101112]  # Example seeds
+def generate_config(num_folds=1, num_seeds=1):
+    algorithms = ["cblof" ,"hbos","knn","lof"]
+    folders = [ "activity_type_clicks"]
+    seeds = [114]  # Example seeds
 
     config = {
         "algorithms": []
@@ -46,7 +46,7 @@ def generate_config(num_folds=5, num_seeds=5):
 
             config["algorithms"].append(algo_config)
 
-    with open("config.yaml", "w") as file:
+    with open("anomalyDetection/src/config.yaml", "w") as file:
         yaml.dump(config, file, sort_keys=False)
 
 generate_config()
