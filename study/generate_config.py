@@ -1,9 +1,9 @@
 import yaml
 
 
-def generate_config(num_folds=1, num_seeds=1):
+def generate_config(num_folds=5, num_seeds=1):
     algorithms = ["cblof" ,"hbos","knn","lof"]
-    folders = [ "activity_type_clicks"]
+    folders = [ "average_activity_type_clicks_avg","average_activity_type_clicks_sum"]
     seeds = [114]  # Example seeds
 
     config = {
