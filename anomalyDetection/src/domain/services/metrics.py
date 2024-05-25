@@ -120,7 +120,10 @@ def performance_metrics(y_test_binary, y_test_prediction):
         if cm[1, 1] + cm[0, 1] != 0
         else 0
     )
-    roc = round(roc_auc_score(y_test_binary, y_test_prediction), ndigits=4)
+
+    roc = "N/A"
+    if len(np.unique(y_test_binary)) > 1:
+        roc = round(roc_auc_score(y_test_binary, y_test_prediction), ndigits=4)
 
     return {"se": sensitivity, "sp": specificity, "p": precision, "roc": roc}
 

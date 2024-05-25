@@ -2,7 +2,8 @@ import yaml
 
 
 def generate_config(num_folds=5, num_seeds=1):
-    algorithms = ["cblof" ,"hbos","knn","lof"]
+    #algorithms = ["cblof" ,"hbos","knn","lof"]
+    algorithms = ["autoencoder","dae"]
     folders = [ "average_activity_type_clicks_avg","average_activity_type_clicks_sum"]
     seeds = [114]  # Example seeds
 
@@ -20,9 +21,9 @@ def generate_config(num_folds=5, num_seeds=1):
             }
             for folder in folders:
                 for fold in range(1, num_folds + 1):
-                    train_data_file = f"{folder}/train_fold_{fold}.csv"
+                    train_data_file = f"{folder}/train_no_anomaly_fold_{fold}.csv"
                     test_data_file = f"{folder}/test_fold_{fold}.csv"
-                    model_output = f"{algorithm}_model_seed_{seed}_fold_{fold}.pkl"
+                    model_output = f"{algorithm}_{folder}_model_seed_{seed}_fold_{fold}.pkl"
 
                     train_config = {
                         "data_file": train_data_file,

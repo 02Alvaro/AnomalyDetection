@@ -2,6 +2,7 @@ import os
 from random import randint
 from time import time
 
+import numpy as np
 from application.algorithms.dae.DaeConfiguration import DaeConfiguration
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.AlgorithmManager import AlgorithmManager
@@ -49,6 +50,11 @@ class Dae(AlgorithmEvaluate):
         executionTime = round(t1 - t0, ndigits=4)
 
         processed_data = self.file_system_service.read_resultsFrom(output_file_name)
+
+        # Binarize processed_data based on the top 20%
+        threshold_percent = 20
+        threshold_value = np.percentile(processed_data, 100 - threshold_percent)
+        processed_data = (processed_data >= threshold_value).astype(int)
 
         algorithm_evaluation_metrics: BasicReport = (
             self.algorithm_data_procesor.process(data, processed_data, executionTime)
