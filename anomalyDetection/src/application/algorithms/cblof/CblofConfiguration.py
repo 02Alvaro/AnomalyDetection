@@ -7,7 +7,7 @@ from domain.interfaces.AlgorithmConfigurator import AlgorithmConfigurator
 @dataclass
 @AlgorithmFactory.Configurator_for("cblof")
 class CblofConfiguration(AlgorithmConfigurator):
-    n_clusters: int = 8
+    n_clusters: int = 100
     contamination: float = 0.1
     clustering_estimator = None
     alpha: float = 0.9
