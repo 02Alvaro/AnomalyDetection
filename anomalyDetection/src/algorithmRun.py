@@ -24,6 +24,8 @@ def parse_arguments():
     )
     return parser.parse_args()
 
+#importante leer DependecyContainer.py en caso de error
+
 
 def main(config_path):
     config_loader = ConfigLoader(config_path)

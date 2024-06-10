@@ -6,7 +6,8 @@ from domain.enums.PathKey import PathKey
 from domain.interfaces.ReportInterface import ReportInterface
 from domain.interfaces.TrainRepository import TrainRepository
 from infrastructure.repository.ReportInFile import ReportInFile
-from infrastructure.repository.TrainRepositoryInFile import TrainRepositoryInFile
+from infrastructure.repository.TrainRepositoryInFile import \
+    TrainRepositoryInFile
 
 
 class DependencyContainer:
@@ -25,6 +26,8 @@ class DependencyContainer:
 HOST = "E:/AnomalyDetection/anomalyDetection"
 
 DOCKER = "/app"
+# si se ejecuta sin docker, se debe de descomentar la siguiente linea
+#DOCKER= HOST
 
 paths = {
     PathKey.RESULTS: "results",
