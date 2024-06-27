@@ -19,7 +19,7 @@ def generate_param_config(num_folds=5, num_seeds=10):
 
     param_values = {
         "n_neighbors": [5, 10, 20, 30, 40],
-        "n_clusters": [50, 100, 200, 300, 400],
+        "n_clusters": [6,7,8,9,10],
         "n_bins": [5, 10, 15, 20, 25],
         "latent_size": [16, 32, 64, 128, 256]
     }

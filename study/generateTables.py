@@ -28,7 +28,7 @@ algorithms = {
 # Diccionario de valores de parámetros para cada tipo
 param_values = {
     "n_neighbors": [5, 10, 20, 30, 40],
-    "n_clusters": [50, 100, 200, 300, 400],
+    "n_clusters": [6,7,8,9,10],
     "n_bins": [5, 10, 15, 20, 25],
     "latent_size": [16, 32, 64, 128, 256]
 }
@@ -63,6 +63,9 @@ for metric in metrics:
                 combined_df = result_df.reset_index()
             else:
                 combined_df = pd.concat([combined_df, result_df.reset_index()])
+
+        # Ordenar por 'type', 'module', 'value'
+        combined_df = combined_df.sort_values(by=['type', 'module', 'value'])
 
         # Crear el nombre del archivo
         file_name = f'{metric}_metrics_{param}.csv'

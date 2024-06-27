@@ -3,9 +3,9 @@ import os
 import pandas as pd
 
 datasets = ["AAA.csv", "BBB.csv", "CCC.csv", "DDD.csv"]
-output_directory = "../TimeEval-algorithms-main/1-data/"
+output_directory = "anomalyDetection/data/processed"
 for dataset in datasets:
-    df = pd.read_csv(os.path.join(os.getcwd(), "coursesData", dataset))
+    df = pd.read_csv(os.path.join(os.getcwd(), "anomalyDetection","data","primaryCoursesData", dataset))
 
     df.drop(["code_module", "code_presentation", "id_student"], axis=1, inplace=True)
 
