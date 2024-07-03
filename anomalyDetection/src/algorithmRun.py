@@ -4,14 +4,20 @@ from time import time
 
 import application.algorithms
 from application.factories.AlgorithmFileConfigurationFactory import (
-    AlgorithmFileConfigurationFactory,
-    ConfigLoader,
-)
+    AlgorithmFileConfigurationFactory, ConfigLoader)
 from application.services.AlgorithmManager import AlgorithmManager
 from joblib import Parallel, delayed
 
 
 def parse_arguments():
+    """
+    Parses command line arguments.
+
+    Returns
+    -------
+    argparse.Namespace
+        Parsed command line arguments.
+    """
     parser = argparse.ArgumentParser(
         description="Ejecuta algoritmos basados en una configuración."
     )
@@ -24,10 +30,17 @@ def parse_arguments():
     )
     return parser.parse_args()
 
-#importante leer DependecyContainer.py en caso de error
-
+# Importante leer DependencyContainer.py en caso de error
 
 def main(config_path):
+    """
+    Main function to execute algorithms based on the configuration file.
+
+    Parameters
+    ----------
+    config_path : str
+        Path to the configuration YAML file.
+    """
     config_loader = ConfigLoader(config_path)
     algorithm_factory = AlgorithmFileConfigurationFactory(config_loader)
     actions = algorithm_factory.create_from_config()
@@ -38,7 +51,6 @@ def main(config_path):
     Parallel(n_jobs=-1)(
         delayed(AlgorithmManager.evaluate)(execute) for execute in actions["tests"]
     )
-
 
 if __name__ == "__main__":
     args = parse_arguments()

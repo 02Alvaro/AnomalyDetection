@@ -20,6 +20,16 @@ from inject import Inject
 @AlgorithmManager.evaluator_for(AutoEncoderConfiguration)
 @Inject
 class AutoEncoder(AlgorithmEvaluate):
+    """
+    Class for evaluating an AutoEncoder algorithm configuration.
+
+    Attributes:
+        algorithm_data_procesor (AlgorithmDataProcesor): Service to process algorithm data.
+        time_eval_wrapper (TimeEvalWrapper): Wrapper for time evaluation.
+        repository (ReportInterface): Interface for report storage.
+        file_system_service (FileSystemService): Service for file system operations.
+    """
+
     def __init__(
         self,
         algorithm_data_procesor: AlgorithmDataProcesor,
@@ -27,14 +37,32 @@ class AutoEncoder(AlgorithmEvaluate):
         repository: ReportInterface,
         file_system_service: FileSystemService,
     ):
+        """
+        Initializes the AutoEncoder evaluator with the provided services.
+
+        Args:
+            algorithm_data_procesor (AlgorithmDataProcesor): Service to process algorithm data.
+            time_eval_wrapper (TimeEvalWrapper): Wrapper for time evaluation.
+            repository (ReportInterface): Interface for report storage.
+            file_system_service (FileSystemService): Service for file system operations.
+        """
         self.time_eval_wrapper = time_eval_wrapper
         self.algorithm_data_procesor = algorithm_data_procesor
         self.repository = repository
         self.file_system_service = file_system_service
 
     def evaluate(self, data: AutoEncoderConfiguration):
+        """
+        Evaluates the AutoEncoder configuration with the provided data.
+
+        Args:
+            data (AutoEncoderConfiguration): Configuration data for the AutoEncoder.
+
+        Returns:
+            None
+        """
         output_file_name = data.__class__.__name__.replace("Configuration", "")
-        output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
+        output_file_name = f"{output_file_name}_{randint(1000, 9999)}_{os.path.basename(data.data_file)}"
 
         time_eval_parameters = TimeEvalParameters(
             name="autoencoder",

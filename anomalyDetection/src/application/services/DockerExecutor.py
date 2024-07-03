@@ -1,8 +1,31 @@
 import subprocess
 
+
 class DockerExecutor:
+    """
+    Class for executing Docker commands.
+
+    Methods
+    -------
+    execute(docker_command)
+        Executes the given Docker command.
+    """
+
     @staticmethod
     def execute(docker_command):
+        """
+        Executes the given Docker command.
+
+        Parameters
+        ----------
+        docker_command : str
+            The Docker command to be executed.
+
+        Raises
+        ------
+        RuntimeError
+            If the Docker command fails to execute.
+        """
         try:
             with subprocess.Popen(
                 docker_command,

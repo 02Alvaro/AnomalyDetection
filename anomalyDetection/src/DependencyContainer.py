@@ -11,23 +11,55 @@ from infrastructure.repository.TrainRepositoryInFile import \
 
 
 class DependencyContainer:
+    """
+    Container for managing service dependencies.
+
+    Attributes
+    ----------
+    services : dict
+        Dictionary to store service instances.
+    """
+
     services = {}
 
     @classmethod
     def add_service(cls, service_type, instance):
+        """
+        Adds a service instance to the container.
+
+        Parameters
+        ----------
+        service_type : type
+            The type of the service.
+        instance : object
+            The instance of the service.
+        """
         cls.services[service_type] = instance
 
     @classmethod
     def get_service(cls, service_type):
+        """
+        Retrieves a service instance from the container.
+
+        Parameters
+        ----------
+        service_type : type
+            The type of the service.
+
+        Returns
+        -------
+        object
+            The instance of the requested service, or None if not found.
+        """
         return cls.services.get(service_type)
 
 
-# Cualquier elemento que utilice docker, necesita el path de host para hacer un mapeo con volumenes
+# Cualquier elemento que utilice docker, necesita el path de host para hacer un mapeo con volúmenes
 HOST = "E:/AnomalyDetection/anomalyDetection"
 
 DOCKER = "/app"
-# si se ejecuta sin docker, se debe de descomentar la siguiente linea
-#DOCKER= HOST
+# Si se ejecuta sin docker, se debe de descomentar la siguiente linea
+# DOCKER = HOST
 
 paths = {
     PathKey.RESULTS: "results",
@@ -44,7 +76,6 @@ DependencyContainer.add_service(
     TrainRepository,
     TrainRepositoryInFile(DOCKER + "/" + paths[PathKey.RESULTS]),
 )
-
 
 DependencyContainer.add_service(
     TimeEvalWrapper,

@@ -2,11 +2,13 @@ import os
 from random import randint
 from time import time
 
-from application.algorithms.lstmVae.LstmVaeConfiguration import LstmVaeConfiguration
+from application.algorithms.lstmVae.LstmVaeConfiguration import \
+    LstmVaeConfiguration
 from application.services.AlgorithmDataProcesor import AlgorithmDataProcesor
 from application.services.AlgorithmManager import AlgorithmManager
 from application.services.FileSystemService import FileSystemService
-from application.services.TimeEvalWrapper import TimeEvalParameters, TimeEvalWrapper
+from application.services.TimeEvalWrapper import (TimeEvalParameters,
+                                                  TimeEvalWrapper)
 from domain.interfaces.AlgorithmEvaluate import AlgorithmEvaluate
 from domain.interfaces.ReportInterface import ReportInterface
 from domain.models.BasicReport import BasicReport
@@ -16,6 +18,21 @@ from inject import Inject
 @AlgorithmManager.evaluator_for(LstmVaeConfiguration)
 @Inject
 class LstmVae(AlgorithmEvaluate):
+    """
+    Class for evaluating an LSTM-VAE algorithm configuration.
+
+    Attributes
+    ----------
+    algorithm_data_procesor : AlgorithmDataProcesor
+        Service to process algorithm data.
+    time_eval_wrapper : TimeEvalWrapper
+        Wrapper for time evaluation.
+    repository : ReportInterface
+        Interface for report storage.
+    file_system_service : FileSystemService
+        Service for file system operations.
+    """
+
     def __init__(
         self,
         algorithm_data_procesor: AlgorithmDataProcesor,
@@ -23,14 +40,40 @@ class LstmVae(AlgorithmEvaluate):
         repository: ReportInterface,
         file_system_service: FileSystemService,
     ):
+        """
+        Initializes the LSTM-VAE evaluator with the provided services.
+
+        Parameters
+        ----------
+        algorithm_data_procesor : AlgorithmDataProcesor
+            Service to process algorithm data.
+        time_eval_wrapper : TimeEvalWrapper
+            Wrapper for time evaluation.
+        repository : ReportInterface
+            Interface for report storage.
+        file_system_service : FileSystemService
+            Service for file system operations.
+        """
         self.time_eval_wrapper = time_eval_wrapper
         self.algorithm_data_procesor = algorithm_data_procesor
         self.repository = repository
         self.file_system_service = file_system_service
 
     def evaluate(self, data: LstmVaeConfiguration):
+        """
+        Evaluates the LSTM-VAE configuration with the provided data.
+
+        Parameters
+        ----------
+        data : LstmVaeConfiguration
+            Configuration data for the LSTM-VAE algorithm.
+
+        Returns
+        -------
+        None
+        """
         output_file_name = data.__class__.__name__.replace("Configuration", "")
-        output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
+        output_file_name = f"{output_file_name}_{randint(1000, 9999)}_{os.path.basename(data.data_file)}"
 
         time_eval_parameters = TimeEvalParameters(
             name="lstm_vae",

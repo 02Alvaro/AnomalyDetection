@@ -18,6 +18,16 @@ from pyod.models.cblof import CBLOF
 @AlgorithmManager.evaluator_for(CblofConfiguration)
 @Inject
 class Cblof(AlgorithmEvaluate):
+    """
+    Class for evaluating a CBLOF algorithm configuration.
+
+    Attributes:
+        algorithm_data_procesor (AlgorithmDataProcesor): Service to process algorithm data.
+        pyod_service (PyodWrapper): Wrapper for the PyOD library.
+        repository (ReportInterface): Interface for report storage.
+        file_system_service (FileSystemService): Service for file system operations.
+    """
+
     def __init__(
         self,
         algorithm_data_procesor: AlgorithmDataProcesor,
@@ -25,14 +35,32 @@ class Cblof(AlgorithmEvaluate):
         repository: ReportInterface,
         file_system_service: FileSystemService,
     ):
+        """
+        Initializes the CBLOF evaluator with the provided services.
+
+        Args:
+            algorithm_data_procesor (AlgorithmDataProcesor): Service to process algorithm data.
+            pyod_service (PyodWrapper): Wrapper for the PyOD library.
+            repository (ReportInterface): Interface for report storage.
+            file_system_service (FileSystemService): Service for file system operations.
+        """
         self.pyod_service = pyod_service
         self.algorithm_data_procesor = algorithm_data_procesor
         self.repository = repository
         self.file_system_service = file_system_service
 
     def evaluate(self, data: CblofConfiguration):
+        """
+        Evaluates the CBLOF configuration with the provided data.
+
+        Args:
+            data (CblofConfiguration): Configuration data for the CBLOF algorithm.
+
+        Returns:
+            None
+        """
         output_file_name = data.__class__.__name__.replace("Configuration", "")
-        output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
+        output_file_name = f"{output_file_name}_{randint(1000, 9999)}_{os.path.basename(data.data_file)}"
 
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 

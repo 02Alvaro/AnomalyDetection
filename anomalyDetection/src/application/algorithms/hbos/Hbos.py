@@ -18,6 +18,21 @@ from pyod.models.hbos import HBOS
 @AlgorithmManager.evaluator_for(HbosConfiguration)
 @Inject
 class Hbos(AlgorithmEvaluate):
+    """
+    Class for evaluating an HBOS algorithm configuration.
+
+    Attributes
+    ----------
+    algorithm_data_procesor : AlgorithmDataProcesor
+        Service to process algorithm data.
+    pyod_service : PyodWrapper
+        Wrapper for the PyOD library.
+    repository : ReportInterface
+        Interface for report storage.
+    file_system_service : FileSystemService
+        Service for file system operations.
+    """
+
     def __init__(
         self,
         algorithm_data_procesor: AlgorithmDataProcesor,
@@ -25,14 +40,40 @@ class Hbos(AlgorithmEvaluate):
         repository: ReportInterface,
         file_system_service: FileSystemService,
     ):
+        """
+        Initializes the HBOS evaluator with the provided services.
+
+        Parameters
+        ----------
+        algorithm_data_procesor : AlgorithmDataProcesor
+            Service to process algorithm data.
+        pyod_service : PyodWrapper
+            Wrapper for the PyOD library.
+        repository : ReportInterface
+            Interface for report storage.
+        file_system_service : FileSystemService
+            Service for file system operations.
+        """
         self.pyod_service = pyod_service
         self.algorithm_data_procesor = algorithm_data_procesor
         self.repository = repository
         self.file_system_service = file_system_service
 
     def evaluate(self, data: HbosConfiguration):
+        """
+        Evaluates the HBOS configuration with the provided data.
+
+        Parameters
+        ----------
+        data : HbosConfiguration
+            Configuration data for the HBOS algorithm.
+
+        Returns
+        -------
+        None
+        """
         output_file_name = data.__class__.__name__.replace("Configuration", "")
-        output_file_name = f"{output_file_name}_{randint(1000,9999)}_{os.path.basename(data.data_file)}"
+        output_file_name = f"{output_file_name}_{randint(1000, 9999)}_{os.path.basename(data.data_file)}"
 
         fileData = self.file_system_service.read_dataFrom(data.data_file)
 

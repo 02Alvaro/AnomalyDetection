@@ -8,7 +8,24 @@ from domain.services.metrics import file_info, performance_metrics
 
 
 class AlgorithmDataProcesor:
+    """
+    Class for processing algorithm data and generating evaluation metrics.
+
+    Attributes
+    ----------
+    file_system_service : FileSystemService
+        Service for file system operations.
+    """
+
     def __init__(self, file_system_service: FileSystemService):
+        """
+        Initializes the AlgorithmDataProcesor with the provided file system service.
+
+        Parameters
+        ----------
+        file_system_service : FileSystemService
+            Service for file system operations.
+        """
         self.file_system_service = file_system_service
 
     def process(
@@ -17,6 +34,23 @@ class AlgorithmDataProcesor:
         prediction_data: pd.DataFrame,
         time: int,
     ) -> BasicReport:
+        """
+        Processes the algorithm data and prediction results to generate evaluation metrics.
+
+        Parameters
+        ----------
+        algorithm_data : AlgorithmConfigurator
+            Configuration data for the algorithm.
+        prediction_data : pd.DataFrame
+            DataFrame containing the prediction results.
+        time : int
+            The time taken for the algorithm to execute.
+
+        Returns
+        -------
+        BasicReport
+            A report containing the evaluation metrics for the algorithm.
+        """
         try:
             target_variable = algorithm_data.target_variable
             if target_variable is None:
@@ -30,7 +64,7 @@ class AlgorithmDataProcesor:
             algorithm_data.data_file
         )[target_variable]
 
-        # If the original data has more examples than the prediction data, its the header so we remove it
+        # If the original data has more examples than the prediction data, it's the header so we remove it
         if original_data.shape[0] > prediction_data.shape[0]:
             original_data = original_data[1:]
 
