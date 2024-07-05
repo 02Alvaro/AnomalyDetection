@@ -18,7 +18,7 @@ def autoencoderTutorial():
     AlgorithmManager.train(config)
     AlgorithmManager.evaluate(config)
 
-def cblstmTutorial():
+def cblofTutorial():
     config = CblofConfiguration(data_file="multi-dataset.csv", model_name="cblstm.pkl", report_file="report.csv")
     AlgorithmManager.train(config)
     AlgorithmManager.evaluate(config)
@@ -28,7 +28,7 @@ def cofTutorial():
     AlgorithmManager.train(config)
     AlgorithmManager.evaluate(config)
 
-def DaehanTutorial():
+def daeTutorial():
     config = DaeConfiguration(data_file="multi-dataset.csv", model_name="daehan.pkl", report_file="report.csv")
     AlgorithmManager.train(config)
     AlgorithmManager.evaluate(config)

@@ -1,0 +1,12 @@
+algorithms:
+  - name: cof
+    reportFile: "allReports.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "cof_model.pkl"
+        parameters:
+          n_neighbors: 30
+          method: "fast"
+    test:
+      - data_file: "dataset.csv"
+        model_input: "cof_model.pkl"

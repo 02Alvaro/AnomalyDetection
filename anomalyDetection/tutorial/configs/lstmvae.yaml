@@ -1,0 +1,12 @@
+algorithms:
+  - name: lstmvae
+    reportFile: "allReports.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "lstmvae_model.pkl"
+        parameters:
+          learning_rate: 0.002
+          epochs: 5
+    test:
+      - data_file: "dataset.csv"
+        model_input: "lstmvae_model.pkl"

@@ -1,0 +1,12 @@
+algorithms:
+  - name: knn
+    reportFile: "allReports.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "knn_model.pkl"
+        parameters:
+          n_neighbors: 4
+          method: "fast"
+    test:
+      - data_file: "dataset.csv"
+        model_input: "knn_model.pkl"

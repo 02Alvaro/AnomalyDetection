@@ -1,0 +1,12 @@
+algorithms:
+  - name: autoencoder
+    reportFile: "allReports.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "au_model.zip"
+        parameters:
+          latent_size: 5
+          epochs: 2
+    test:
+      - data_file: "dataset.csv"
+        model_input: "au_model.zip"

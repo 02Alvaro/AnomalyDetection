@@ -1,0 +1,9 @@
+algorithms:
+  - name: cblof
+    reportFile: "allReports.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "cblog_model.pkl"
+        parameters:
+          n_clusters: 5
+          alpha: 0.5

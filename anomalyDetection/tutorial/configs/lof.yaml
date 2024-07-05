@@ -1,0 +1,12 @@
+algorithms:
+  - name: lof
+    reportFile: "allReports.csv"
+    train:
+      - data_file: "dataset.csv"
+        model_output: "lof_model.pkl"
+        parameters:
+          n_neighbors: 4
+          leaf_size: 20
+    test:
+      - data_file: "dataset.csv"
+        model_input: "lof_model.pkl"
