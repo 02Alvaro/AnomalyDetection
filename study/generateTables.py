@@ -73,4 +73,7 @@ for metric in metrics:
         # Guardar el DataFrame en un archivo CSV
         combined_df.to_csv(os.path.join(base_path, file_name), index=False)
 
+        # separamos por modulo y se agrega e
+        for module, group in combined_df.groupby('module'):
+            group.to_csv(os.path.join(base_path,"module_division",f'{metric}_metrics_{param}_{module}.csv'), index=False)
 print("Archivos combinados generados con éxito.")

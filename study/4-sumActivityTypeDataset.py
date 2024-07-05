@@ -80,7 +80,7 @@ def normalize_data(df: pd.DataFrame):
     df[columns_to_normalize] = scaler.fit_transform(df[columns_to_normalize])
     return df
 
-def stratified_k_fold(df: pd.DataFrame, output_dir: str, file_name: str):
+def stratified_k_fold(df: pd.DataFrame, output_dir: str):
     skf = StratifiedKFold(n_splits=5)
     X = df.drop('is_anomaly', axis=1)
     y = df['is_anomaly']
@@ -107,12 +107,11 @@ def main():
         module_output_dir = os.path.join(output_dir, code_module)
         if not os.path.exists(module_output_dir):
             os.makedirs(module_output_dir)
-        file_name = f"{code_module}_students_average_activity_type_clicks"
         df = get_raw_data(code_module)
         df.drop(["code_module", "code_presentation","id_student"], axis=1, inplace=True)
         df = get_is_anomaly(df)
         df = normalize_data(df)
-        stratified_k_fold(df, module_output_dir, file_name)
+        stratified_k_fold(df, module_output_dir)
 
 if __name__ == "__main__":
     main()

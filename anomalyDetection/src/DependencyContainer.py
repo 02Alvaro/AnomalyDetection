@@ -59,7 +59,7 @@ HOST = "E:/AnomalyDetection/anomalyDetection"
 
 DOCKER = "/app"
 # Si se ejecuta sin docker, se debe de descomentar la siguiente linea
-# DOCKER = HOST
+#DOCKER = HOST
 
 paths = {
     PathKey.RESULTS: "results",
