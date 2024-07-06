@@ -4,7 +4,7 @@ import pandas as pd
 
 # Ruta base de los archivos
 base_path = 'anomalyDetection/metrics/'
-
+dir_path = 'param_comparison'
 # Leer el archivo 'all_grouped.csv'
 df = pd.read_csv(os.path.join(base_path, 'all_grouped.csv'))
 
@@ -67,18 +67,13 @@ for metric in metrics:
         # Ordenar por 'type', 'module', 'value'
         combined_df = combined_df.sort_values(by=['type', 'module', 'value'])
 
-        # Crear el nombre del archivo
-        file_name = f'{metric}_metrics_{param}.csv'
-        
-        # Guardar el DataFrame en un archivo CSV
-        combined_df.to_csv(os.path.join(base_path, file_name), index=False)
-
         # separamos por modulo y se agrega e
         for module, group in combined_df.groupby('module'):
-            if not os.path.exists(os.path.join(base_path,"module_division")):
-                os.makedirs(os.path.join(base_path,"module_division"))
-            if not os.path.exists(os.path.join(base_path,"module_division",module)):
-                os.makedirs(os.path.join(base_path,"module_division",module))
-            group.to_csv(os.path.join(base_path,"module_division",module,f'{metric}_metrics_{param}_{module}.csv'), index=False)
+            if not os.path.exists(os.path.join(base_path,dir_path)):
+                os.makedirs(os.path.join(base_path,dir_path))
+            if not os.path.exists(os.path.join(base_path,dir_path,module)):
+                os.makedirs(os.path.join(base_path,dir_path,module))
+                
+            group.to_csv(os.path.join(base_path,dir_path,module,f'{param}_{metric}.csv'), index=False)
     
 print("Archivos combinados generados con éxito.")

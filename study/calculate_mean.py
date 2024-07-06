@@ -51,10 +51,8 @@ def process_file(file):
             df.at[index, 'type'] = 'test'
     
     return df
-    # Guardar el nuevo DataFrame en un archivo CSV
-    #df.to_csv(os.path.join(base_path, 'processed_' + file), index=False)
 
-def group_and_calculate(df, file):    
+def group_and_calculate(df):    
     # Agrupar por las columnas especificadas y calcular la media y la desviación estándar
     grouped_df = df.groupby(['algorithm_parsed', 'code_module_parsed', 'value_parsed', 'type']).agg({
         'samples': ['mean'],
@@ -69,20 +67,23 @@ def group_and_calculate(df, file):
     grouped_df = grouped_df.round(4)
 
     # Renombrar las columnas
-    grouped_df.columns = ['algorithm', 'code_module', 'value', 'type','samples','dims','anomaly_rate', 'se_mean', 'se_std', 'sp_mean', 'sp_std', 'p_mean', 'p_std', 'roc_mean', 'roc_std']
+    grouped_df.columns = ['algorithm', 'code_module', 'value', 'type', 'samples', 'dims', 'anomaly_rate', 'se_mean', 'se_std', 'sp_mean', 'sp_std', 'p_mean', 'p_std', 'roc_mean', 'roc_std']
     
-    # Guardar el nuevo DataFrame en un archivo CSV
-    grouped_df.to_csv(os.path.join(base_path, 'grouped_' + file), index=False)
+    return grouped_df
 
+# Inicializar una lista para almacenar todos los DataFrames agrupados
+all_grouped_dfs = []
 
 # Procesar cada archivo en la lista
 for file in files:
     df = process_file(file)
-    group_and_calculate(df,file)
+    grouped_df = group_and_calculate(df)
+    all_grouped_dfs.append(grouped_df)
 
+# Concatenar todos los DataFrames agrupados
+final_df = pd.concat(all_grouped_dfs, ignore_index=True)
 
-# concatenar todos los archivos
-df = pd.concat([pd.read_csv(os.path.join(base_path, 'grouped_' + file)) for file in files])
-df.to_csv(os.path.join(base_path, 'all_grouped.csv'), index=False)
+# Guardar el DataFrame final en un archivo CSV
+final_df.to_csv(os.path.join(base_path, 'all_grouped.csv'), index=False)
 
-
+print("Procesamiento y guardado final completado.")
