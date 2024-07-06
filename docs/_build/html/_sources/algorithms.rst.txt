@@ -1,0 +1,6 @@
+algorithms
+==========
+
+.. automodule:: application.algorithms
+    :members:
+

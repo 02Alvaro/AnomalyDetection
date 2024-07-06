@@ -57,6 +57,7 @@ class DependencyContainer:
 # Cualquier elemento que utilice docker, necesita el path de host para hacer un mapeo con volúmenes
 HOST = "E:/AnomalyDetection/anomalyDetection"
 
+
 DOCKER = "/app"
 # Si se ejecuta sin docker, se debe de descomentar la siguiente linea
 #DOCKER = HOST

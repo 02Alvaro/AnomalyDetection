@@ -1,0 +1,37 @@
+src.application.algorithms.dae package
+======================================
+
+Submodules
+----------
+
+src.application.algorithms.dae.Dae module
+-----------------------------------------
+
+.. automodule:: src.application.algorithms.dae.Dae
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.dae.DaeConfiguration module
+------------------------------------------------------
+
+.. automodule:: src.application.algorithms.dae.DaeConfiguration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.dae.DaeTrainer module
+------------------------------------------------
+
+.. automodule:: src.application.algorithms.dae.DaeTrainer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.application.algorithms.dae
+   :members:
+   :undoc-members:
+   :show-inheritance:

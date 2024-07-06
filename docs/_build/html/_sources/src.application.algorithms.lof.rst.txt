@@ -1,0 +1,37 @@
+src.application.algorithms.lof package
+======================================
+
+Submodules
+----------
+
+src.application.algorithms.lof.Lof module
+-----------------------------------------
+
+.. automodule:: src.application.algorithms.lof.Lof
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.lof.LofConfiguration module
+------------------------------------------------------
+
+.. automodule:: src.application.algorithms.lof.LofConfiguration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.lof.LofTrainer module
+------------------------------------------------
+
+.. automodule:: src.application.algorithms.lof.LofTrainer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.application.algorithms.lof
+   :members:
+   :undoc-members:
+   :show-inheritance:

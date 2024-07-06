@@ -1,0 +1,6 @@
+knn
+===
+
+.. automodule:: application.algorithms.knn
+    :members:
+

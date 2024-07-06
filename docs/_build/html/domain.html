@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>domain package &mdash; AnomalyDetection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="domain.enums package" href="domain.enums.html" />
+    <link rel="prev" title="application.services package" href="application.services.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            AnomalyDetection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">AnomalyDetection Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DependencyContainer.html">DependencyContainer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithmRun.html">algorithmRun module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html">application package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.html">application.algorithms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.autoencoder.html">application.algorithms.autoencoder package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cblof.html">application.algorithms.cblof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cof.html">application.algorithms.cof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.dae.html">application.algorithms.dae package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.hbos.html">application.algorithms.hbos package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.knn.html">application.algorithms.knn package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lof.html">application.algorithms.lof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lstmVae.html">application.algorithms.lstmVae package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html">application.factories package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html">application.services package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">domain package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.enums.html">domain.enums package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.exceptions.html">domain.exceptions package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html">domain.interfaces package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html">domain.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.services.html">domain.services package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-domain">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.enums.html">domain.enums package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html">domain.exceptions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html">domain.interfaces package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.models.html">domain.models package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.services.html">domain.services package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html">infrastructure package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.repository.html">infrastructure.repository package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inject.html">inject module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">tutorial module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AnomalyDetection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AnomalyDetection Modules</a></li>
+      <li class="breadcrumb-item active">domain package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/domain.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="domain-package">
+<h1>domain package<a class="headerlink" href="#domain-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="domain.enums.html">domain.enums package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="domain.enums.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.enums.html#module-domain.enums.PathKey">domain.enums.PathKey module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.enums.html#domain.enums.PathKey.PathKey"><code class="docutils literal notranslate"><span class="pre">PathKey</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.enums.html#domain.enums.PathKey.PathKey.RESULTS"><code class="docutils literal notranslate"><span class="pre">PathKey.RESULTS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.enums.html#domain.enums.PathKey.PathKey.DATA"><code class="docutils literal notranslate"><span class="pre">PathKey.DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.enums.html#domain.enums.PathKey.PathKey.METRICS"><code class="docutils literal notranslate"><span class="pre">PathKey.METRICS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.enums.html#id0"><code class="docutils literal notranslate"><span class="pre">PathKey.DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.enums.html#id1"><code class="docutils literal notranslate"><span class="pre">PathKey.METRICS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.enums.html#id2"><code class="docutils literal notranslate"><span class="pre">PathKey.RESULTS</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.enums.html#module-domain.enums">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="domain.exceptions.html">domain.exceptions package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html#module-domain.exceptions.AlgorithmNotFound">domain.exceptions.AlgorithmNotFound module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.exceptions.html#domain.exceptions.AlgorithmNotFound.AlgorithmDataNotFound"><code class="docutils literal notranslate"><span class="pre">AlgorithmDataNotFound</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.exceptions.html#domain.exceptions.AlgorithmNotFound.AlgorithmDataNotFound.message"><code class="docutils literal notranslate"><span class="pre">AlgorithmDataNotFound.message</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html#module-domain.exceptions.ExecuterNotFound">domain.exceptions.ExecuterNotFound module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.exceptions.html#domain.exceptions.ExecuterNotFound.ExecuterNotFound"><code class="docutils literal notranslate"><span class="pre">ExecuterNotFound</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.exceptions.html#domain.exceptions.ExecuterNotFound.ExecuterNotFound.message"><code class="docutils literal notranslate"><span class="pre">ExecuterNotFound.message</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html#module-domain.exceptions.TrainerNotFound">domain.exceptions.TrainerNotFound module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.exceptions.html#domain.exceptions.TrainerNotFound.TrainerNotFound"><code class="docutils literal notranslate"><span class="pre">TrainerNotFound</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.exceptions.html#domain.exceptions.TrainerNotFound.TrainerNotFound.message"><code class="docutils literal notranslate"><span class="pre">TrainerNotFound.message</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html#module-domain.exceptions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="domain.interfaces.html">domain.interfaces package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html#module-domain.interfaces.AlgorithmConfigurator">domain.interfaces.AlgorithmConfigurator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmConfigurator.AlgorithmConfigurator"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmConfigurator.AlgorithmConfigurator.data_file"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.data_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmConfigurator.AlgorithmConfigurator.model_name"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.model_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmConfigurator.AlgorithmConfigurator.report_file"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.report_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmConfigurator.AlgorithmConfigurator.seed"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.seed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id0"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.data_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id1"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.model_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id2"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.report_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id3"><code class="docutils literal notranslate"><span class="pre">AlgorithmConfigurator.seed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html#module-domain.interfaces.AlgorithmEvaluate">domain.interfaces.AlgorithmEvaluate module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmEvaluate.AlgorithmEvaluate"><code class="docutils literal notranslate"><span class="pre">AlgorithmEvaluate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmEvaluate.AlgorithmEvaluate.evaluate"><code class="docutils literal notranslate"><span class="pre">AlgorithmEvaluate.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id4"><code class="docutils literal notranslate"><span class="pre">AlgorithmEvaluate.evaluate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html#module-domain.interfaces.AlgorithmTrainer">domain.interfaces.AlgorithmTrainer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmTrainer.AlgorithmTrainer"><code class="docutils literal notranslate"><span class="pre">AlgorithmTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmTrainer.AlgorithmTrainer.train"><code class="docutils literal notranslate"><span class="pre">AlgorithmTrainer.train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id5"><code class="docutils literal notranslate"><span class="pre">AlgorithmTrainer.train()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html#module-domain.interfaces.ReportInterface">domain.interfaces.ReportInterface module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.ReportInterface.ReportInterface"><code class="docutils literal notranslate"><span class="pre">ReportInterface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.ReportInterface.ReportInterface.save"><code class="docutils literal notranslate"><span class="pre">ReportInterface.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id6"><code class="docutils literal notranslate"><span class="pre">ReportInterface.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html#module-domain.interfaces.TrainRepository">domain.interfaces.TrainRepository module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.TrainRepository.TrainRepository"><code class="docutils literal notranslate"><span class="pre">TrainRepository</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#domain.interfaces.TrainRepository.TrainRepository.save"><code class="docutils literal notranslate"><span class="pre">TrainRepository.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.interfaces.html#id7"><code class="docutils literal notranslate"><span class="pre">TrainRepository.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html#module-domain.interfaces">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="domain.models.html">domain.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="domain.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.models.html#module-domain.models.BasicReport">domain.models.BasicReport module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport"><code class="docutils literal notranslate"><span class="pre">BasicReport</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport.algorithm_name"><code class="docutils literal notranslate"><span class="pre">BasicReport.algorithm_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport.model"><code class="docutils literal notranslate"><span class="pre">BasicReport.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport.dataset_name"><code class="docutils literal notranslate"><span class="pre">BasicReport.dataset_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport.num_examples"><code class="docutils literal notranslate"><span class="pre">BasicReport.num_examples</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport.num_dims"><code class="docutils literal notranslate"><span class="pre">BasicReport.num_dims</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport.anomaly_percentage"><code class="docutils literal notranslate"><span class="pre">BasicReport.anomaly_percentage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#domain.models.BasicReport.BasicReport.metrics"><code class="docutils literal notranslate"><span class="pre">BasicReport.metrics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#id0"><code class="docutils literal notranslate"><span class="pre">BasicReport.algorithm_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#id1"><code class="docutils literal notranslate"><span class="pre">BasicReport.anomaly_percentage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#id2"><code class="docutils literal notranslate"><span class="pre">BasicReport.dataset_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#id3"><code class="docutils literal notranslate"><span class="pre">BasicReport.metrics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#id4"><code class="docutils literal notranslate"><span class="pre">BasicReport.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#id5"><code class="docutils literal notranslate"><span class="pre">BasicReport.num_dims</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="domain.models.html#id6"><code class="docutils literal notranslate"><span class="pre">BasicReport.num_examples</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.models.html#module-domain.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="domain.services.html">domain.services package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="domain.services.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.services.html#module-domain.services.metrics">domain.services.metrics module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="domain.services.html#domain.services.metrics.file_info"><code class="docutils literal notranslate"><span class="pre">file_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="domain.services.html#domain.services.metrics.performance_metrics"><code class="docutils literal notranslate"><span class="pre">performance_metrics()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="domain.services.html#module-domain.services">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-domain">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-domain" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="application.services.html" class="btn btn-neutral float-left" title="application.services package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="domain.enums.html" class="btn btn-neutral float-right" title="domain.enums package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Álvaro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

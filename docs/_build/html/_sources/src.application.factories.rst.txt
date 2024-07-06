@@ -1,0 +1,29 @@
+src.application.factories package
+=================================
+
+Submodules
+----------
+
+src.application.factories.AlgorithmFactory module
+-------------------------------------------------
+
+.. automodule:: src.application.factories.AlgorithmFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.factories.AlgorithmFileConfigurationFactory module
+------------------------------------------------------------------
+
+.. automodule:: src.application.factories.AlgorithmFileConfigurationFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.application.factories
+   :members:
+   :undoc-members:
+   :show-inheritance:

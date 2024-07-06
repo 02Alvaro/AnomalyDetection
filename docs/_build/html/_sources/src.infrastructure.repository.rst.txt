@@ -1,0 +1,29 @@
+src.infrastructure.repository package
+=====================================
+
+Submodules
+----------
+
+src.infrastructure.repository.ReportInFile module
+-------------------------------------------------
+
+.. automodule:: src.infrastructure.repository.ReportInFile
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.infrastructure.repository.TrainRepositoryInFile module
+----------------------------------------------------------
+
+.. automodule:: src.infrastructure.repository.TrainRepositoryInFile
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.infrastructure.repository
+   :members:
+   :undoc-members:
+   :show-inheritance:

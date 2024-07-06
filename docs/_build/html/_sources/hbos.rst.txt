@@ -1,0 +1,6 @@
+hbos
+====
+
+.. automodule:: application.algorithms.hbos
+    :members:
+

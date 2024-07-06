@@ -1,0 +1,21 @@
+src.domain.services package
+===========================
+
+Submodules
+----------
+
+src.domain.services.metrics module
+----------------------------------
+
+.. automodule:: src.domain.services.metrics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.domain.services
+   :members:
+   :undoc-members:
+   :show-inheritance:

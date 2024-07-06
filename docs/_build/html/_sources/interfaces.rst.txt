@@ -1,0 +1,6 @@
+interfaces
+==========
+
+.. automodule:: domain.interfaces
+    :members:
+

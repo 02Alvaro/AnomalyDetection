@@ -1,0 +1,37 @@
+src.application.algorithms.hbos package
+=======================================
+
+Submodules
+----------
+
+src.application.algorithms.hbos.Hbos module
+-------------------------------------------
+
+.. automodule:: src.application.algorithms.hbos.Hbos
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.hbos.HbosConfiguration module
+--------------------------------------------------------
+
+.. automodule:: src.application.algorithms.hbos.HbosConfiguration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.hbos.HbosTrainer module
+--------------------------------------------------
+
+.. automodule:: src.application.algorithms.hbos.HbosTrainer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.application.algorithms.hbos
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,21 @@
+src.domain.models package
+=========================
+
+Submodules
+----------
+
+src.domain.models.BasicReport module
+------------------------------------
+
+.. automodule:: src.domain.models.BasicReport
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.domain.models
+   :members:
+   :undoc-members:
+   :show-inheritance:

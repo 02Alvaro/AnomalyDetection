@@ -1,0 +1,53 @@
+src.domain.interfaces package
+=============================
+
+Submodules
+----------
+
+src.domain.interfaces.AlgorithmConfigurator module
+--------------------------------------------------
+
+.. automodule:: src.domain.interfaces.AlgorithmConfigurator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.domain.interfaces.AlgorithmEvaluate module
+----------------------------------------------
+
+.. automodule:: src.domain.interfaces.AlgorithmEvaluate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.domain.interfaces.AlgorithmTrainer module
+---------------------------------------------
+
+.. automodule:: src.domain.interfaces.AlgorithmTrainer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.domain.interfaces.ReportInterface module
+--------------------------------------------
+
+.. automodule:: src.domain.interfaces.ReportInterface
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.domain.interfaces.TrainRepository module
+--------------------------------------------
+
+.. automodule:: src.domain.interfaces.TrainRepository
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.domain.interfaces
+   :members:
+   :undoc-members:
+   :show-inheritance:

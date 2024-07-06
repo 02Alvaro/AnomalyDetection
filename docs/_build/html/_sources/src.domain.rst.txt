@@ -1,0 +1,22 @@
+src.domain package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.domain.enums
+   src.domain.exceptions
+   src.domain.interfaces
+   src.domain.models
+   src.domain.services
+
+Module contents
+---------------
+
+.. automodule:: src.domain
+   :members:
+   :undoc-members:
+   :show-inheritance:

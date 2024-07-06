@@ -1,0 +1,37 @@
+src.domain.exceptions package
+=============================
+
+Submodules
+----------
+
+src.domain.exceptions.AlgorithmNotFound module
+----------------------------------------------
+
+.. automodule:: src.domain.exceptions.AlgorithmNotFound
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.domain.exceptions.ExecuterNotFound module
+---------------------------------------------
+
+.. automodule:: src.domain.exceptions.ExecuterNotFound
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.domain.exceptions.TrainerNotFound module
+--------------------------------------------
+
+.. automodule:: src.domain.exceptions.TrainerNotFound
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.domain.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

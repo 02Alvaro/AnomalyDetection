@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>application package &mdash; AnomalyDetection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="application.algorithms package" href="application.algorithms.html" />
+    <link rel="prev" title="algorithmRun module" href="algorithmRun.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            AnomalyDetection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">AnomalyDetection Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DependencyContainer.html">DependencyContainer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithmRun.html">algorithmRun module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">application package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.html">application.algorithms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html">application.factories package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html">application.services package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-application">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.html">application.algorithms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.autoencoder.html">application.algorithms.autoencoder package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cblof.html">application.algorithms.cblof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cof.html">application.algorithms.cof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.dae.html">application.algorithms.dae package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.hbos.html">application.algorithms.hbos package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.knn.html">application.algorithms.knn package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lof.html">application.algorithms.lof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lstmVae.html">application.algorithms.lstmVae package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html">application.factories package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html">application.services package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.html">domain package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.enums.html">domain.enums package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html">domain.exceptions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html">domain.interfaces package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.models.html">domain.models package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.services.html">domain.services package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html">infrastructure package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.repository.html">infrastructure.repository package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inject.html">inject module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">tutorial module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AnomalyDetection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AnomalyDetection Modules</a></li>
+      <li class="breadcrumb-item active">application package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/application.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="application-package">
+<h1>application package<a class="headerlink" href="#application-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="application.algorithms.html">application.algorithms package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.autoencoder.html">application.algorithms.autoencoder package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.autoencoder.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.autoencoder.html#module-application.algorithms.autoencoder.AutoEncoder">application.algorithms.autoencoder.AutoEncoder module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.autoencoder.html#module-application.algorithms.autoencoder.AutoEncoderConfiguration">application.algorithms.autoencoder.AutoEncoderConfiguration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.autoencoder.html#module-application.algorithms.autoencoder.AutoEncoderTrainer">application.algorithms.autoencoder.AutoEncoderTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.autoencoder.html#module-application.algorithms.autoencoder">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.cblof.html">application.algorithms.cblof package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cblof.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cblof.html#module-application.algorithms.cblof.Cblof">application.algorithms.cblof.Cblof module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cblof.html#module-application.algorithms.cblof.CblofConfiguration">application.algorithms.cblof.CblofConfiguration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cblof.html#module-application.algorithms.cblof.CblofTrainer">application.algorithms.cblof.CblofTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cblof.html#module-application.algorithms.cblof">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.cof.html">application.algorithms.cof package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cof.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cof.html#module-application.algorithms.cof.Cof">application.algorithms.cof.Cof module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cof.html#module-application.algorithms.cof.CofConfigurator">application.algorithms.cof.CofConfigurator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cof.html#module-application.algorithms.cof.CofTrainer">application.algorithms.cof.CofTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cof.html#module-application.algorithms.cof">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.dae.html">application.algorithms.dae package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.dae.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.dae.html#module-application.algorithms.dae.Dae">application.algorithms.dae.Dae module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.dae.html#module-application.algorithms.dae.DaeConfiguration">application.algorithms.dae.DaeConfiguration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.dae.html#module-application.algorithms.dae.DaeTrainer">application.algorithms.dae.DaeTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.dae.html#module-application.algorithms.dae">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.hbos.html">application.algorithms.hbos package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.hbos.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.hbos.html#module-application.algorithms.hbos.Hbos">application.algorithms.hbos.Hbos module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.hbos.html#module-application.algorithms.hbos.HbosConfiguration">application.algorithms.hbos.HbosConfiguration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.hbos.html#module-application.algorithms.hbos.HbosTrainer">application.algorithms.hbos.HbosTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.hbos.html#module-application.algorithms.hbos">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.knn.html">application.algorithms.knn package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.knn.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.knn.html#module-application.algorithms.knn.Knn">application.algorithms.knn.Knn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.knn.html#module-application.algorithms.knn.KnnConfiguration">application.algorithms.knn.KnnConfiguration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.knn.html#module-application.algorithms.knn.KnnTrainer">application.algorithms.knn.KnnTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.knn.html#module-application.algorithms.knn">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.lof.html">application.algorithms.lof package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lof.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lof.html#module-application.algorithms.lof.Lof">application.algorithms.lof.Lof module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lof.html#module-application.algorithms.lof.LofConfiguration">application.algorithms.lof.LofConfiguration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lof.html#module-application.algorithms.lof.LofTrainer">application.algorithms.lof.LofTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lof.html#module-application.algorithms.lof">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.lstmVae.html">application.algorithms.lstmVae package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lstmVae.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lstmVae.html#module-application.algorithms.lstmVae.LstmVae">application.algorithms.lstmVae.LstmVae module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lstmVae.html#module-application.algorithms.lstmVae.LstmVaeConfiguration">application.algorithms.lstmVae.LstmVaeConfiguration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lstmVae.html#module-application.algorithms.lstmVae.LstmVaeTrainer">application.algorithms.lstmVae.LstmVaeTrainer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lstmVae.html#module-application.algorithms.lstmVae">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.html#module-application.algorithms">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="application.factories.html">application.factories package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html#module-application.factories.AlgorithmFactory">application.factories.AlgorithmFactory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFactory.AlgorithmFactory"><code class="docutils literal notranslate"><span class="pre">AlgorithmFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFactory.AlgorithmFactory.algorithm_config"><code class="docutils literal notranslate"><span class="pre">AlgorithmFactory.algorithm_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFactory.AlgorithmFactory.Configurator_for"><code class="docutils literal notranslate"><span class="pre">AlgorithmFactory.Configurator_for()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#id0"><code class="docutils literal notranslate"><span class="pre">AlgorithmFactory.algorithm_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFactory.AlgorithmFactory.create"><code class="docutils literal notranslate"><span class="pre">AlgorithmFactory.create()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html#module-application.factories.AlgorithmFileConfigurationFactory">application.factories.AlgorithmFileConfigurationFactory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFileConfigurationFactory.AlgorithmFileConfigurationFactory"><code class="docutils literal notranslate"><span class="pre">AlgorithmFileConfigurationFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFileConfigurationFactory.AlgorithmFileConfigurationFactory.configLoader"><code class="docutils literal notranslate"><span class="pre">AlgorithmFileConfigurationFactory.configLoader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFileConfigurationFactory.AlgorithmFileConfigurationFactory.create_from_config"><code class="docutils literal notranslate"><span class="pre">AlgorithmFileConfigurationFactory.create_from_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFileConfigurationFactory.ConfigLoader"><code class="docutils literal notranslate"><span class="pre">ConfigLoader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFileConfigurationFactory.ConfigLoader.config_path"><code class="docutils literal notranslate"><span class="pre">ConfigLoader.config_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html#application.factories.AlgorithmFileConfigurationFactory.ConfigLoader.load_config"><code class="docutils literal notranslate"><span class="pre">ConfigLoader.load_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html#module-application.factories">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="application.services.html">application.services package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#module-application.services.AlgorithmDataProcesor">application.services.AlgorithmDataProcesor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.AlgorithmDataProcesor.AlgorithmDataProcesor"><code class="docutils literal notranslate"><span class="pre">AlgorithmDataProcesor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmDataProcesor.AlgorithmDataProcesor.file_system_service"><code class="docutils literal notranslate"><span class="pre">AlgorithmDataProcesor.file_system_service</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmDataProcesor.AlgorithmDataProcesor.process"><code class="docutils literal notranslate"><span class="pre">AlgorithmDataProcesor.process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#module-application.services.AlgorithmManager">application.services.AlgorithmManager module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.AlgorithmManager.AlgorithmManager"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmManager.AlgorithmManager.executors"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.executors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmManager.AlgorithmManager.trainers"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.trainers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmManager.AlgorithmManager.evaluate"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmManager.AlgorithmManager.evaluator_for"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.evaluator_for()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id0"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.executors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmManager.AlgorithmManager.train"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.AlgorithmManager.AlgorithmManager.trainer_for"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.trainer_for()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id1"><code class="docutils literal notranslate"><span class="pre">AlgorithmManager.trainers</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#module-application.services.DockerExecutor">application.services.DockerExecutor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.DockerExecutor.DockerExecutor"><code class="docutils literal notranslate"><span class="pre">DockerExecutor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.DockerExecutor.DockerExecutor.execute"><code class="docutils literal notranslate"><span class="pre">DockerExecutor.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id2"><code class="docutils literal notranslate"><span class="pre">DockerExecutor.execute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#module-application.services.FileSystemService">application.services.FileSystemService module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService"><code class="docutils literal notranslate"><span class="pre">FileSystemService</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.base_path"><code class="docutils literal notranslate"><span class="pre">FileSystemService.base_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.paths"><code class="docutils literal notranslate"><span class="pre">FileSystemService.paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.get_path"><code class="docutils literal notranslate"><span class="pre">FileSystemService.get_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.get_results_path"><code class="docutils literal notranslate"><span class="pre">FileSystemService.get_results_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.read_dataFrom"><code class="docutils literal notranslate"><span class="pre">FileSystemService.read_dataFrom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.read_resultsFrom"><code class="docutils literal notranslate"><span class="pre">FileSystemService.read_resultsFrom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.save_metricsTo"><code class="docutils literal notranslate"><span class="pre">FileSystemService.save_metricsTo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService.save_resultsTo"><code class="docutils literal notranslate"><span class="pre">FileSystemService.save_resultsTo()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#module-application.services.PyodWrapper">application.services.PyodWrapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodParameters"><code class="docutils literal notranslate"><span class="pre">PyodParameters</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodParameters.algorithm_name"><code class="docutils literal notranslate"><span class="pre">PyodParameters.algorithm_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodParameters.contamination"><code class="docutils literal notranslate"><span class="pre">PyodParameters.contamination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodParameters.params"><code class="docutils literal notranslate"><span class="pre">PyodParameters.params</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id3"><code class="docutils literal notranslate"><span class="pre">PyodParameters.algorithm_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id4"><code class="docutils literal notranslate"><span class="pre">PyodParameters.contamination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id5"><code class="docutils literal notranslate"><span class="pre">PyodParameters.params</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodWrapper"><code class="docutils literal notranslate"><span class="pre">PyodWrapper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodWrapper.file_system_service"><code class="docutils literal notranslate"><span class="pre">PyodWrapper.file_system_service</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodWrapper.loadModel"><code class="docutils literal notranslate"><span class="pre">PyodWrapper.loadModel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodWrapper.saveModel"><code class="docutils literal notranslate"><span class="pre">PyodWrapper.saveModel()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#module-application.services.TimeEvalWrapper">application.services.TimeEvalWrapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters.name"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters.execution_type"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.execution_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters.data_input"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.data_input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters.data_output"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.data_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters.model_input"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.model_input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters.model_output"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.model_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalParameters.parameters"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id6"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.data_input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id7"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.data_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id8"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.execution_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id9"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.model_input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id10"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.model_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id11"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#id12"><code class="docutils literal notranslate"><span class="pre">TimeEvalParameters.parameters</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalWrapper"><code class="docutils literal notranslate"><span class="pre">TimeEvalWrapper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalWrapper.data_path"><code class="docutils literal notranslate"><span class="pre">TimeEvalWrapper.data_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalWrapper.results_path"><code class="docutils literal notranslate"><span class="pre">TimeEvalWrapper.results_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalWrapper.create_image"><code class="docutils literal notranslate"><span class="pre">TimeEvalWrapper.create_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html#application.services.TimeEvalWrapper.TimeEvalWrapper.execute"><code class="docutils literal notranslate"><span class="pre">TimeEvalWrapper.execute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html#module-application.services">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-application">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-application" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="algorithmRun.html" class="btn btn-neutral float-left" title="algorithmRun module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="application.algorithms.html" class="btn btn-neutral float-right" title="application.algorithms package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Álvaro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

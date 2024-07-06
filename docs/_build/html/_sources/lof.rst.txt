@@ -1,0 +1,6 @@
+lof
+===
+
+.. automodule:: application.algorithms.lof
+    :members:
+

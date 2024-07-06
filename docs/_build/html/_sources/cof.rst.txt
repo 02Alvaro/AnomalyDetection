@@ -1,0 +1,6 @@
+cof
+===
+
+.. automodule:: application.algorithms.cof
+    :members:
+

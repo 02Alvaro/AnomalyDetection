@@ -1,0 +1,6 @@
+dae
+===
+
+.. automodule:: application.algorithms.dae
+    :members:
+

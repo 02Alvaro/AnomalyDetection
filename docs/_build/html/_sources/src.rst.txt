@@ -1,0 +1,55 @@
+src package
+===========
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.application
+   src.domain
+   src.infrastructure
+
+Submodules
+----------
+
+src.DependencyContainer module
+------------------------------
+
+.. automodule:: src.DependencyContainer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.algorithmRun module
+-----------------------
+
+.. automodule:: src.algorithmRun
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.inject module
+-----------------
+
+.. automodule:: src.inject
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.tutorial module
+-------------------
+
+.. automodule:: src.tutorial
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src
+   :members:
+   :undoc-members:
+   :show-inheritance:

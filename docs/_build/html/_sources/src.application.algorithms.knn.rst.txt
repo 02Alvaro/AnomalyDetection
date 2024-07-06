@@ -1,0 +1,37 @@
+src.application.algorithms.knn package
+======================================
+
+Submodules
+----------
+
+src.application.algorithms.knn.Knn module
+-----------------------------------------
+
+.. automodule:: src.application.algorithms.knn.Knn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.knn.KnnConfiguration module
+------------------------------------------------------
+
+.. automodule:: src.application.algorithms.knn.KnnConfiguration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.algorithms.knn.KnnTrainer module
+------------------------------------------------
+
+.. automodule:: src.application.algorithms.knn.KnnTrainer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.application.algorithms.knn
+   :members:
+   :undoc-members:
+   :show-inheritance:

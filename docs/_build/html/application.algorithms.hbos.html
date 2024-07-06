@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>application.algorithms.hbos package &mdash; AnomalyDetection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="application.algorithms.knn package" href="application.algorithms.knn.html" />
+    <link rel="prev" title="application.algorithms.dae package" href="application.algorithms.dae.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            AnomalyDetection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">AnomalyDetection Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DependencyContainer.html">DependencyContainer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithmRun.html">algorithmRun module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="application.html">application package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="application.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="application.algorithms.html">application.algorithms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.factories.html">application.factories package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.services.html">application.services package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.html#module-application">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="application.algorithms.html">application.algorithms package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="application.algorithms.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.autoencoder.html">application.algorithms.autoencoder package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cblof.html">application.algorithms.cblof package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.cof.html">application.algorithms.cof package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.dae.html">application.algorithms.dae package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">application.algorithms.hbos package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.knn.html">application.algorithms.knn package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lof.html">application.algorithms.lof package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.algorithms.lstmVae.html">application.algorithms.lstmVae package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application.algorithms.html#module-application.algorithms">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.autoencoder.html">application.algorithms.autoencoder package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cblof.html">application.algorithms.cblof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cof.html">application.algorithms.cof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.dae.html">application.algorithms.dae package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">application.algorithms.hbos package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-application.algorithms.hbos.Hbos">application.algorithms.hbos.Hbos module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#application.algorithms.hbos.Hbos.Hbos"><code class="docutils literal notranslate"><span class="pre">Hbos</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-application.algorithms.hbos.HbosConfiguration">application.algorithms.hbos.HbosConfiguration module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration"><code class="docutils literal notranslate"><span class="pre">HbosConfiguration</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-application.algorithms.hbos.HbosTrainer">application.algorithms.hbos.HbosTrainer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#application.algorithms.hbos.HbosTrainer.HbosTrainer"><code class="docutils literal notranslate"><span class="pre">HbosTrainer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-application.algorithms.hbos">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.knn.html">application.algorithms.knn package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lof.html">application.algorithms.lof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lstmVae.html">application.algorithms.lstmVae package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html">application.factories package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html">application.services package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.html">domain package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.enums.html">domain.enums package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html">domain.exceptions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html">domain.interfaces package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.models.html">domain.models package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.services.html">domain.services package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html">infrastructure package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.repository.html">infrastructure.repository package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inject.html">inject module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">tutorial module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AnomalyDetection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AnomalyDetection Modules</a></li>
+          <li class="breadcrumb-item"><a href="application.html">application package</a></li>
+          <li class="breadcrumb-item"><a href="application.algorithms.html">application.algorithms package</a></li>
+      <li class="breadcrumb-item active">application.algorithms.hbos package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/application.algorithms.hbos.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="application-algorithms-hbos-package">
+<h1>application.algorithms.hbos package<a class="headerlink" href="#application-algorithms-hbos-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-application.algorithms.hbos.Hbos">
+<span id="application-algorithms-hbos-hbos-module"></span><h2>application.algorithms.hbos.Hbos module<a class="headerlink" href="#module-application.algorithms.hbos.Hbos" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="application.algorithms.hbos.Hbos.Hbos">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">application.algorithms.hbos.Hbos.</span></span><span class="sig-name descname"><span class="pre">Hbos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/application/algorithms/hbos/Hbos.html#Hbos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#application.algorithms.hbos.Hbos.Hbos" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmEvaluate.AlgorithmEvaluate" title="domain.interfaces.AlgorithmEvaluate.AlgorithmEvaluate"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmEvaluate</span></code></a></p>
+<p>Class for evaluating an HBOS algorithm configuration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.Hbos.Hbos.algorithm_data_procesor">
+<span class="sig-name descname"><span class="pre">algorithm_data_procesor</span></span><a class="headerlink" href="#application.algorithms.hbos.Hbos.Hbos.algorithm_data_procesor" title="Link to this definition"></a></dt>
+<dd><p>Service to process algorithm data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.services.html#application.services.AlgorithmDataProcesor.AlgorithmDataProcesor" title="application.services.AlgorithmDataProcesor.AlgorithmDataProcesor">AlgorithmDataProcesor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.Hbos.Hbos.pyod_service">
+<span class="sig-name descname"><span class="pre">pyod_service</span></span><a class="headerlink" href="#application.algorithms.hbos.Hbos.Hbos.pyod_service" title="Link to this definition"></a></dt>
+<dd><p>Wrapper for the PyOD library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodWrapper" title="application.services.PyodWrapper.PyodWrapper">PyodWrapper</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.Hbos.Hbos.repository">
+<span class="sig-name descname"><span class="pre">repository</span></span><a class="headerlink" href="#application.algorithms.hbos.Hbos.Hbos.repository" title="Link to this definition"></a></dt>
+<dd><p>Interface for report storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="domain.interfaces.html#domain.interfaces.ReportInterface.ReportInterface" title="domain.interfaces.ReportInterface.ReportInterface">ReportInterface</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.Hbos.Hbos.file_system_service">
+<span class="sig-name descname"><span class="pre">file_system_service</span></span><a class="headerlink" href="#application.algorithms.hbos.Hbos.Hbos.file_system_service" title="Link to this definition"></a></dt>
+<dd><p>Service for file system operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService" title="application.services.FileSystemService.FileSystemService">FileSystemService</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.algorithms.hbos.Hbos.Hbos.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration" title="application.algorithms.hbos.HbosConfiguration.HbosConfiguration"><span class="pre">HbosConfiguration</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/application/algorithms/hbos/Hbos.html#Hbos.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#application.algorithms.hbos.Hbos.Hbos.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the HBOS configuration with the provided data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration" title="application.algorithms.hbos.HbosConfiguration.HbosConfiguration"><em>HbosConfiguration</em></a>) – Configuration data for the HBOS algorithm.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-application.algorithms.hbos.HbosConfiguration">
+<span id="application-algorithms-hbos-hbosconfiguration-module"></span><h2>application.algorithms.hbos.HbosConfiguration module<a class="headerlink" href="#module-application.algorithms.hbos.HbosConfiguration" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosConfiguration.HbosConfiguration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">application.algorithms.hbos.HbosConfiguration.</span></span><span class="sig-name descname"><span class="pre">HbosConfiguration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'multi-dataset.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'model.pkl'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'report.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contamination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/application/algorithms/hbos/HbosConfiguration.html#HbosConfiguration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmConfigurator.AlgorithmConfigurator" title="domain.interfaces.AlgorithmConfigurator.AlgorithmConfigurator"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmConfigurator</span></code></a></p>
+<p>Configuration class for the HBOS algorithm.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosConfiguration.HbosConfiguration.contamination">
+<span class="sig-name descname"><span class="pre">contamination</span></span><a class="headerlink" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration.contamination" title="Link to this definition"></a></dt>
+<dd><p>The amount of contamination of the data set, i.e., the proportion of outliers in the data set. Defaults to 0.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosConfiguration.HbosConfiguration.n_bins">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration.n_bins" title="Link to this definition"></a></dt>
+<dd><p>Number of bins to use for the histogram. Defaults to 10.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosConfiguration.HbosConfiguration.alpha">
+<span class="sig-name descname"><span class="pre">alpha</span></span><a class="headerlink" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration.alpha" title="Link to this definition"></a></dt>
+<dd><p>Regularizer parameter to prevent overfitting. Defaults to 0.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosConfiguration.HbosConfiguration.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration.tol" title="Link to this definition"></a></dt>
+<dd><p>Tolerance for the binning process. Defaults to 0.5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">alpha</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">contamination</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">tol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.5</span></em><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-application.algorithms.hbos.HbosTrainer">
+<span id="application-algorithms-hbos-hbostrainer-module"></span><h2>application.algorithms.hbos.HbosTrainer module<a class="headerlink" href="#module-application.algorithms.hbos.HbosTrainer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosTrainer.HbosTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">application.algorithms.hbos.HbosTrainer.</span></span><span class="sig-name descname"><span class="pre">HbosTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/application/algorithms/hbos/HbosTrainer.html#HbosTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#application.algorithms.hbos.HbosTrainer.HbosTrainer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="domain.interfaces.html#domain.interfaces.AlgorithmTrainer.AlgorithmTrainer" title="domain.interfaces.AlgorithmTrainer.AlgorithmTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlgorithmTrainer</span></code></a></p>
+<p>Trainer class for the HBOS algorithm.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosTrainer.HbosTrainer.pyod_service">
+<span class="sig-name descname"><span class="pre">pyod_service</span></span><a class="headerlink" href="#application.algorithms.hbos.HbosTrainer.HbosTrainer.pyod_service" title="Link to this definition"></a></dt>
+<dd><p>Wrapper for the PyOD library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.services.html#application.services.PyodWrapper.PyodWrapper" title="application.services.PyodWrapper.PyodWrapper">PyodWrapper</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosTrainer.HbosTrainer.file_system_service">
+<span class="sig-name descname"><span class="pre">file_system_service</span></span><a class="headerlink" href="#application.algorithms.hbos.HbosTrainer.HbosTrainer.file_system_service" title="Link to this definition"></a></dt>
+<dd><p>Service for file system operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.services.html#application.services.FileSystemService.FileSystemService" title="application.services.FileSystemService.FileSystemService">FileSystemService</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosTrainer.HbosTrainer.repository">
+<span class="sig-name descname"><span class="pre">repository</span></span><a class="headerlink" href="#application.algorithms.hbos.HbosTrainer.HbosTrainer.repository" title="Link to this definition"></a></dt>
+<dd><p>Repository for storing training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="domain.interfaces.html#domain.interfaces.TrainRepository.TrainRepository" title="domain.interfaces.TrainRepository.TrainRepository">TrainRepository</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="application.algorithms.hbos.HbosTrainer.HbosTrainer.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration" title="application.algorithms.hbos.HbosConfiguration.HbosConfiguration"><span class="pre">HbosConfiguration</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/application/algorithms/hbos/HbosTrainer.html#HbosTrainer.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#application.algorithms.hbos.HbosTrainer.HbosTrainer.train" title="Link to this definition"></a></dt>
+<dd><p>Trains the HBOS algorithm with the given configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="#application.algorithms.hbos.HbosConfiguration.HbosConfiguration" title="application.algorithms.hbos.HbosConfiguration.HbosConfiguration"><em>HbosConfiguration</em></a>) – Configuration data for the HBOS algorithm.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-application.algorithms.hbos">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-application.algorithms.hbos" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="application.algorithms.dae.html" class="btn btn-neutral float-left" title="application.algorithms.dae package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="application.algorithms.knn.html" class="btn btn-neutral float-right" title="application.algorithms.knn package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Álvaro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

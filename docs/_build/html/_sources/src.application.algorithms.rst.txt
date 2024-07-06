@@ -1,0 +1,25 @@
+src.application.algorithms package
+==================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.application.algorithms.autoencoder
+   src.application.algorithms.cblof
+   src.application.algorithms.cof
+   src.application.algorithms.dae
+   src.application.algorithms.hbos
+   src.application.algorithms.knn
+   src.application.algorithms.lof
+   src.application.algorithms.lstmVae
+
+Module contents
+---------------
+
+.. automodule:: src.application.algorithms
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,61 @@
+src.application.services package
+================================
+
+Submodules
+----------
+
+src.application.services.AlgorithmDataProcesor module
+-----------------------------------------------------
+
+.. automodule:: src.application.services.AlgorithmDataProcesor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.services.AlgorithmManager module
+------------------------------------------------
+
+.. automodule:: src.application.services.AlgorithmManager
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.services.DockerExecutor module
+----------------------------------------------
+
+.. automodule:: src.application.services.DockerExecutor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.services.FileSystemService module
+-------------------------------------------------
+
+.. automodule:: src.application.services.FileSystemService
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.services.PyodWrapper module
+-------------------------------------------
+
+.. automodule:: src.application.services.PyodWrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.application.services.TimeEvalWrapper module
+-----------------------------------------------
+
+.. automodule:: src.application.services.TimeEvalWrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.application.services
+   :members:
+   :undoc-members:
+   :show-inheritance:

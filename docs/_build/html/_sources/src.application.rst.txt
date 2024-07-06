@@ -1,0 +1,20 @@
+src.application package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.application.algorithms
+   src.application.factories
+   src.application.services
+
+Module contents
+---------------
+
+.. automodule:: src.application
+   :members:
+   :undoc-members:
+   :show-inheritance:

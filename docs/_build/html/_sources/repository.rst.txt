@@ -1,0 +1,6 @@
+repository
+==========
+
+.. automodule:: infrastructure.repository
+    :members:
+

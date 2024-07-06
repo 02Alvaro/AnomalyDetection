@@ -1,0 +1,6 @@
+exceptions
+==========
+
+.. automodule:: domain.exceptions
+    :members:
+

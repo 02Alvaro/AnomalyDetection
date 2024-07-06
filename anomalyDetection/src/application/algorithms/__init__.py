@@ -7,7 +7,7 @@ try:
 
     # Recorre todos los archivos Python en el directorio (excluyendo __init__.py)
     for file in current_dir.glob("**/*.py"):
-        if file.name != "__init__.py" and not file.name.startswith("__"):
+        if file.name != "__init__.py" and not file.name.startswith("__") and not file.name.__contains__("src"):
             # Crea el nombre del módulo Python para la importación
             module_relative_path = file.relative_to(current_dir.parent)
             module_name = (

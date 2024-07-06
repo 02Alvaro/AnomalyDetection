@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tutorial module &mdash; AnomalyDetection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8d563738"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="inject module" href="inject.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            AnomalyDetection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">AnomalyDetection Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DependencyContainer.html">DependencyContainer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithmRun.html">algorithmRun module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.html">application package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.html">application.algorithms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.autoencoder.html">application.algorithms.autoencoder package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cblof.html">application.algorithms.cblof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.cof.html">application.algorithms.cof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.dae.html">application.algorithms.dae package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.hbos.html">application.algorithms.hbos package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.knn.html">application.algorithms.knn package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lof.html">application.algorithms.lof package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.algorithms.lstmVae.html">application.algorithms.lstmVae package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.factories.html">application.factories package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application.services.html">application.services package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.html">domain package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.enums.html">domain.enums package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.exceptions.html">domain.exceptions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.interfaces.html">domain.interfaces package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.models.html">domain.models package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain.services.html">domain.services package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.html">infrastructure package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infrastructure.repository.html">infrastructure.repository package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inject.html">inject module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tutorial module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clases-y-metodos">Clases y Métodos:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nota">Nota:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejemplo-de-uso">Ejemplo de uso:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.autoencoderTutorial"><code class="docutils literal notranslate"><span class="pre">autoencoderTutorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.cblofTutorial"><code class="docutils literal notranslate"><span class="pre">cblofTutorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.cofTutorial"><code class="docutils literal notranslate"><span class="pre">cofTutorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.daeTutorial"><code class="docutils literal notranslate"><span class="pre">daeTutorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.hbosTutorial"><code class="docutils literal notranslate"><span class="pre">hbosTutorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.knnTutorial"><code class="docutils literal notranslate"><span class="pre">knnTutorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.lofTutorial"><code class="docutils literal notranslate"><span class="pre">lofTutorial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial.lstmVaeTutorial"><code class="docutils literal notranslate"><span class="pre">lstmVaeTutorial()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AnomalyDetection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">AnomalyDetection Modules</a></li>
+      <li class="breadcrumb-item active">tutorial module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-tutorial">
+<span id="tutorial-module"></span><h1>tutorial module<a class="headerlink" href="#module-tutorial" title="Link to this heading"></a></h1>
+<p>Este módulo proporciona tutoriales para configurar y evaluar diversos algoritmos de aprendizaje automático utilizando el <cite>AlgorithmManager</cite> de la aplicación.</p>
+<section id="clases-y-metodos">
+<h2>Clases y Métodos:<a class="headerlink" href="#clases-y-metodos" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>autoencoderTutorial:</dt><dd><p>Configura y evalúa un modelo AutoEncoder con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cblofTutorial:</dt><dd><p>Configura y evalúa un modelo CBLOF con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cofTutorial:</dt><dd><p>Configura y evalúa un modelo COF con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>daeTutorial:</dt><dd><p>Configura y evalúa un modelo DAE con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>hbosTutorial:</dt><dd><p>Configura y evalúa un modelo HBOS con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>knnTutorial:</dt><dd><p>Configura y evalúa un modelo KNN con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>lofTutorial:</dt><dd><p>Configura y evalúa un modelo LOF con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>lstmVaeTutorial:</dt><dd><p>Configura y evalúa un modelo LSTM-VAE con el archivo de datos <cite>multi-dataset.csv</cite>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="nota">
+<h2>Nota:<a class="headerlink" href="#nota" title="Link to this heading"></a></h2>
+<p>En caso de error, se recomienda revisar el archivo <cite>DependencyContainer.py</cite> para verificar dependencias y configuraciones adicionales necesarias.</p>
+</section>
+<section id="ejemplo-de-uso">
+<h2>Ejemplo de uso:<a class="headerlink" href="#ejemplo-de-uso" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Para utilizar el tutorial de LOF, simplemente llame al método correspondiente:</dt><dd><p>lofTutorial()</p>
+</dd>
+</dl>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.autoencoderTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">autoencoderTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#autoencoderTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.autoencoderTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo AutoEncoder y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: autoencoder.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.cblofTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">cblofTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#cblofTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.cblofTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo CBLOF y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: cblstm.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.cofTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">cofTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#cofTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.cofTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo COF y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: coffe.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.daeTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">daeTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#daeTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.daeTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo DAE y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: daehan.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.hbosTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">hbosTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#hbosTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.hbosTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo HBOS y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: hbos.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.knnTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">knnTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#knnTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.knnTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo KNN y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: knn.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.lofTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">lofTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#lofTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.lofTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo LOF y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: lof.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tutorial.lstmVaeTutorial">
+<span class="sig-prename descclassname"><span class="pre">tutorial.</span></span><span class="sig-name descname"><span class="pre">lstmVaeTutorial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tutorial.html#lstmVaeTutorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tutorial.lstmVaeTutorial" title="Link to this definition"></a></dt>
+<dd><p>Configura y entrena un modelo LSTM-VAE y genera un reporte de evaluación.</p>
+<ul class="simple">
+<li><p>Archivo de datos: multi-dataset.csv</p></li>
+<li><p>Modelo: lstm_vae.pkl</p></li>
+<li><p>Reporte: report.csv</p></li>
+</ul>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="inject.html" class="btn btn-neutral float-left" title="inject module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Álvaro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

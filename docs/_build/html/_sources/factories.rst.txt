@@ -1,0 +1,6 @@
+factories
+=========
+
+.. automodule:: application.factories
+    :members:
+

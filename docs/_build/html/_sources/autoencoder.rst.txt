@@ -1,0 +1,6 @@
+autoencoder
+===========
+
+.. automodule:: application.algorithms.autoencoder
+    :members:
+

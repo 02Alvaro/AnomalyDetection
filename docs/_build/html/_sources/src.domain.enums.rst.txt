@@ -1,0 +1,21 @@
+src.domain.enums package
+========================
+
+Submodules
+----------
+
+src.domain.enums.PathKey module
+-------------------------------
+
+.. automodule:: src.domain.enums.PathKey
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.domain.enums
+   :members:
+   :undoc-members:
+   :show-inheritance:

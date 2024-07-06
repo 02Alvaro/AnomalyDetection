@@ -1,8 +1,3 @@
-.. AnomalyDetection documentation master file, created by
-   sphinx-quickstart on Thu Jun 27 02:23:11 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to AnomalyDetection's documentation!
 ============================================
 
