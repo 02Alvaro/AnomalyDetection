@@ -75,5 +75,10 @@ for metric in metrics:
 
         # separamos por modulo y se agrega e
         for module, group in combined_df.groupby('module'):
-            group.to_csv(os.path.join(base_path,"module_division",f'{metric}_metrics_{param}_{module}.csv'), index=False)
+            if not os.path.exists(os.path.join(base_path,"module_division")):
+                os.makedirs(os.path.join(base_path,"module_division"))
+            if not os.path.exists(os.path.join(base_path,"module_division",module)):
+                os.makedirs(os.path.join(base_path,"module_division",module))
+            group.to_csv(os.path.join(base_path,"module_division",module,f'{metric}_metrics_{param}_{module}.csv'), index=False)
+    
 print("Archivos combinados generados con éxito.")
